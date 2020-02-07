@@ -12,7 +12,7 @@ public class MainForm {
         mainFrame.setContentPane(new MainForm().mainPanel);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        mainFrame.setSize(200,200);
+        mainFrame.setSize(400,400);
         mainFrame.setLocation((screenSize.width)/2,(screenSize.height)/2);
 //        mainFrame.pack(); packs according to components size
         mainFrame.setVisible(true);
