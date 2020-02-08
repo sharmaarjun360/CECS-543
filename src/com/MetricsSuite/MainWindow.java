@@ -1,34 +1,44 @@
 package com.MetricsSuite;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.*;
 
-public class MainWindow {
+public class MainWindow extends JFrame {
 
-    private JPanel mainPanel;
+    static String TITLE = "CECS 543 Metrics Suite";
+    static int width = 600;
+    static int height = 600;
 
-    public static void main(String[] args){
-        JFrame mainFrame = new JFrame("CECS 543 Metrics Suite");
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        mainFrame.setSize(500,400);
-        mainFrame.setLocation(200,100);
-
-        // add menubar
-        addMenuBar(mainFrame);
-
-        mainFrame.setVisible(true);
+    public MainWindow(){
+        initComponent();
+        setTitle(MainWindow.TITLE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(MainWindow.width,MainWindow.height);
+        setLocation(200,100);
     }
 
-    private static void addMenuBar(JFrame mainFrame){
+    public void initComponent(){
+        addMenuBar();
+
+    }
+
+    private void addMenuBar(){
+        JFrame context = this;
         JMenuBar menubar = new JMenuBar();
-        mainFrame.setJMenuBar(menubar);
+        setJMenuBar(menubar);
 
         JMenu file = new JMenu("File");
         menubar.add(file);
 
         JMenuItem new_menuItem = new JMenuItem("New");
         file.add(new_menuItem);
+        new_menuItem.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NewProject newProject = new NewProject(context);
+                newProject.setVisible(true);
+            }
+        });
 
         JMenuItem open = new JMenuItem("Open");
         file.add(open);
