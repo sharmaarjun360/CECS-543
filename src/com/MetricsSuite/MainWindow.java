@@ -8,7 +8,7 @@ public class MainWindow {
     private JPanel mainPanel;
 
     public static void main(String[] args){
-        JFrame mainFrame = new JFrame("CECS 543 Metrics Suite");
+        JFrame mainFrame = new JFrame("Metrics Suite");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         mainFrame.setSize(500,400);
