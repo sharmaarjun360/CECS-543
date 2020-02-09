@@ -61,12 +61,19 @@ public class NewProject extends JFrame implements ActionListener {
         container.add(comment_area);
 
 
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        buttonPanel.setBounds(10,290,200,50);
+        container.add(buttonPanel);
         ok=new JButton("Ok");
-        ok.setBounds(20, 300, 50, 20);
         cancel=new JButton("Cancel");
-        cancel.setBounds(80, 300, 50, 20);
-        container.add(ok);
-        container.add(cancel);
+        buttonPanel.add(ok);
+        buttonPanel.add(cancel);
+
+        container.add(buttonPanel);
+//        container.add(ok);
+//        container.add(cancel);
 
     }
 
