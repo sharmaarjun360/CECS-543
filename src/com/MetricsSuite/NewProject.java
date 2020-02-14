@@ -60,8 +60,7 @@ public class NewProject extends JFrame implements ActionListener {
         comment_area.setBounds(20, 175,360,100);
         container.add(comment_area);
 
-
-
+        // add button panel
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         buttonPanel.setBounds(10,290,200,50);
@@ -72,8 +71,6 @@ public class NewProject extends JFrame implements ActionListener {
         buttonPanel.add(cancel);
 
         container.add(buttonPanel);
-//        container.add(ok);
-//        container.add(cancel);
 
     }
 

@@ -3,11 +3,16 @@ package com.MetricsSuite;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class MainWindow extends JFrame {
+public class MainWindow extends JFrame implements ActionListener {
+
+    JMenuBar menubar;
+    JMenu file, edit, preferences, metrics, fp, help;
+    JMenuItem new_menuItem, open, save, exit,language, fbData;
 
     static String TITLE = "CECS 543 Metrics Suite";
     static int width = 600;
     static int height = 600;
+    static JFrame activeSubWindow = null;
 
     public MainWindow(){
         initComponent();
@@ -19,55 +24,78 @@ public class MainWindow extends JFrame {
 
     public void initComponent(){
         addMenuBar();
-
+        addActionEvent();
     }
 
     private void addMenuBar(){
         JFrame context = this;
-        JMenuBar menubar = new JMenuBar();
+        menubar = new JMenuBar();
         setJMenuBar(menubar);
 
-        JMenu file = new JMenu("File");
+        file = new JMenu("File");
         menubar.add(file);
 
-        JMenuItem new_menuItem = new JMenuItem("New");
+        new_menuItem = new JMenuItem("New");
         file.add(new_menuItem);
-        new_menuItem.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                NewProject newProject = new NewProject(context);
-                newProject.setVisible(true);
-            }
-        });
 
-        JMenuItem open = new JMenuItem("Open");
+        open = new JMenuItem("Open");
         file.add(open);
 
-        JMenuItem save = new JMenuItem("Save");
+        save = new JMenuItem("Save");
         file.add(save);
 
-        JMenuItem exit = new JMenuItem("Exit");
+        exit = new JMenuItem("Exit");
         file.add(exit);
 
-        JMenu edit = new JMenu("Edit");
+        edit = new JMenu("Edit");
         menubar.add(edit);
 
-        JMenu preferences = new JMenu("Preferences");
+        preferences = new JMenu("Preferences");
         menubar.add(preferences);
 
-        JMenuItem language = new JMenuItem("Language");
+        language = new JMenuItem("Language");
         preferences.add(language);
 
-        JMenu metrics = new JMenu("Metrics");
+        metrics = new JMenu("Metrics");
         menubar.add(metrics);
 
-        JMenu fp = new JMenu("Function Points");
+        fp = new JMenu("Function Points");
         metrics.add(fp);
 
-        JMenuItem fbData = new JMenuItem("Enter FP Data");
+        fbData = new JMenuItem("Enter FP Data");
         fp.add(fbData);
 
-        JMenu help = new JMenu("Help");
+        help = new JMenu("Help");
         menubar.add(help);
+    }
+
+    public void addActionEvent() {
+        new_menuItem.addActionListener(this);
+        exit.addActionListener(this);
+        language.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if(activeSubWindow != null){
+            activeSubWindow.dispose();
+            activeSubWindow = null;
+        }
+
+        if(e.getSource()== new_menuItem){
+
+            NewProject newProject = new NewProject(this);
+            newProject.setVisible(true);
+            activeSubWindow = newProject;
+        } else if(e.getSource() == exit){
+
+            this.dispose();
+        } else if(e.getSource()== language){
+
+            Language languageWindow = new Language();
+            languageWindow.setVisible(true);
+            activeSubWindow = languageWindow;
+        }
     }
 }
