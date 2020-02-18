@@ -1,5 +1,7 @@
 package com.MetricsSuite;
 
+import com.sun.tools.javac.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -7,15 +9,15 @@ import java.awt.event.*;
 public class NewProject extends JFrame implements ActionListener {
 
     Container container = getContentPane();
-    JFrame parentFrame;
+    MainWindow mainWindow;
     JLabel mainLabel, projectName, productName, creator, comment;
     JTextField projectName_text, productName_text, creator_text;
     JTextArea comment_area;
     JButton ok, cancel;
 
-    public NewProject(JFrame parentFrame){
+    public NewProject(MainWindow parentFrame){
 
-        this.parentFrame = parentFrame;
+        this.mainWindow = parentFrame;
         container.setLayout(null);
         initComponent();
         addActionEvent();
@@ -84,23 +86,49 @@ public class NewProject extends JFrame implements ActionListener {
 
         if(e.getSource()== ok){
             String projectName_str = projectName_text.getText();
+            String productName_str = productName_text.getText();
+            String creator_str = creator_text.getText();
+            String comment_str = comment_area.getText();
+            boolean closeWindow = false;
+            Project project = new Project();
 
             if(projectName_str == null || projectName_str.length()==0){
                 // show prompt
                 JOptionPane.showMessageDialog(this, "Please Enter Project Name");
                 projectName_text.requestFocusInWindow();
+                return;
             } else {
                 //pass project name to main frame
                 String title = MainWindow.TITLE + " - "+ projectName_str;
-                this.parentFrame.setTitle(title);
-                setVisible(false);
-                dispose();
+                this.mainWindow.setTitle(title);
+                closeWindow = true;
+                project.setProjectName(projectName_str);
+            }
+
+            if(productName_str != null && productName_str.length()!=0){
+                project.setProductName(productName_str);
+            }
+
+            if(creator_str!= null && creator_str.length()!=0){
+                project.setCreator(creator_str);
+            }
+            if(comment_str!= null && comment_str.length()!=0){
+                project.setComments(comment_str);
+            }
+
+            if(closeWindow){
+                this.mainWindow.getMetricsSuite().setProjectData(project);
+                disposeWindow();
             }
         }
 
         if(e.getSource()==cancel){
-            setVisible(false);
-            dispose();
+            disposeWindow();
         }
+    }
+
+    public void disposeWindow(){
+        setVisible(false);
+        dispose();
     }
 }

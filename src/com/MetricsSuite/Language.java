@@ -10,35 +10,68 @@ public class Language extends JFrame implements ActionListener {
     Container container = getContentPane();
     JLabel mainLabel;
 
+    LanguagePreference[] language= new LanguagePreference[12];
+
     public Language(){
+        initilizeData();
         container.setLayout(null);
         initComponent();
-        setSize(400,360);
+        setSize(200,420);
         setLocation(300,200);
         setTitle("Language");
     }
 
+    private void initilizeData(){
+
+        // TODO: re-factor this code
+        int order = 1;
+        language[order-1] = new LanguagePreference("Assembler", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("Ada 95", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("C", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("C++", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("C#", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("COBOL", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("FORTRAN", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("HTML", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("Java", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("Javascript", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("VBScript", 50, order);
+        order++;
+        language[order-1] = new LanguagePreference("Visual Basic", 50, order);
+
+    }
+
     public void initComponent() {
 
-        mainLabel = new JLabel("Please select one Language");
-        mainLabel.setBounds(0,20,400,20);
-        mainLabel.setHorizontalAlignment(JLabel.CENTER);
+        mainLabel = new JLabel("Select one Language");
+        mainLabel.setBounds(15,20,200,10);
         container.add(mainLabel);
 
         JPanel languagePanel = new JPanel();
-        languagePanel.setLayout(new GridLayout(10,2));
-        languagePanel.setBounds(10,50,400,300);
+        languagePanel.setLayout(new GridLayout(13,1));
+        languagePanel.setBounds(10,30,120,350);
 
         ButtonGroup group = new ButtonGroup();
 
-        JCheckBox c = new JCheckBox("C");
-        group.add(c);
+        for (int i=0; i< language.length;i++){
 
-        JCheckBox cPlus = new JCheckBox("C++");
-        group.add(cPlus);
+            JCheckBox lCheckbox = new JCheckBox(language[i].name);
+            group.add(lCheckbox);
+            languagePanel.add(lCheckbox);
+        }
 
-        languagePanel.add(c);
-        languagePanel.add(cPlus);
+        JButton doneButton = new JButton("Done");
+        languagePanel.add(doneButton);
         container.add(languagePanel);
 
     }

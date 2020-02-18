@@ -2,24 +2,38 @@ package com.MetricsSuite;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 public class MainWindow extends JFrame implements ActionListener {
 
     JMenuBar menubar;
     JMenu file, edit, preferences, metrics, fp, help;
-    JMenuItem new_menuItem, open, save, exit,language, fbData;
+    JMenuItem new_menuItem, open, save, exit,language, fpData;
+
+    public MetricsSuite metricsSuite;
 
     static String TITLE = "CECS 543 Metrics Suite";
     static int width = 600;
     static int height = 600;
     static JFrame activeSubWindow = null;
 
-    public MainWindow(){
+    public MainWindow(MetricsSuite parent){
+        this.metricsSuite = parent;
         initComponent();
         setTitle(MainWindow.TITLE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(MainWindow.width,MainWindow.height);
         setLocation(200,100);
+    }
+
+    public MetricsSuite getMetricsSuite() {
+        return metricsSuite;
+    }
+
+    public void setMetricsSuite(MetricsSuite metricsSuite) {
+        this.metricsSuite = metricsSuite;
     }
 
     public void initComponent(){
@@ -62,8 +76,8 @@ public class MainWindow extends JFrame implements ActionListener {
         fp = new JMenu("Function Points");
         metrics.add(fp);
 
-        fbData = new JMenuItem("Enter FP Data");
-        fp.add(fbData);
+        fpData = new JMenuItem("Enter FP Data");
+        fp.add(fpData);
 
         help = new JMenu("Help");
         menubar.add(help);
@@ -73,6 +87,7 @@ public class MainWindow extends JFrame implements ActionListener {
         new_menuItem.addActionListener(this);
         exit.addActionListener(this);
         language.addActionListener(this);
+        save.addActionListener(this);
     }
 
     @Override
@@ -96,6 +111,22 @@ public class MainWindow extends JFrame implements ActionListener {
             Language languageWindow = new Language();
             languageWindow.setVisible(true);
             activeSubWindow = languageWindow;
+        } else if(e.getSource() == fpData){
+            JTabbedPane tab = new JTabbedPane();
+        } else if(e.getSource() == save){
+
+            try {
+//                File projectFile = new File("./../../../projectData/" + this.metricsSuite.getProjectData().getProjectName() + ".ms");
+                File projectFile = new File("./projectData/" + this.metricsSuite.getProjectData().getProjectName() + ".ms");
+                FileOutputStream fos = new FileOutputStream(projectFile);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+                oos.writeObject(this.metricsSuite.getProjectData());
+
+                oos.close();
+            } catch (Exception ex){
+                System.out.println(ex);
+            }
         }
     }
 }
