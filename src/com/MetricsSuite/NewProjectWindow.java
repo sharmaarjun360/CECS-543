@@ -1,12 +1,10 @@
 package com.MetricsSuite;
 
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class NewProject extends JFrame implements ActionListener {
+public class NewProjectWindow extends JFrame implements ActionListener {
 
     Container container = getContentPane();
     MainWindow mainWindow;
@@ -15,7 +13,7 @@ public class NewProject extends JFrame implements ActionListener {
     JTextArea comment_area;
     JButton ok, cancel;
 
-    public NewProject(MainWindow parentFrame){
+    public NewProjectWindow(MainWindow parentFrame){
 
         this.mainWindow = parentFrame;
         container.setLayout(null);
@@ -90,7 +88,7 @@ public class NewProject extends JFrame implements ActionListener {
             String creator_str = creator_text.getText();
             String comment_str = comment_area.getText();
             boolean closeWindow = false;
-            Project project = new Project();
+            ProjectData project = new ProjectData();
 
             if(projectName_str == null || projectName_str.length()==0){
                 // show prompt

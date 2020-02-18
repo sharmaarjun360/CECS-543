@@ -100,7 +100,7 @@ public class MainWindow extends JFrame implements ActionListener {
 
         if(e.getSource()== new_menuItem){
 
-            NewProject newProject = new NewProject(this);
+            NewProjectWindow newProject = new NewProjectWindow(this);
             newProject.setVisible(true);
             activeSubWindow = newProject;
         } else if(e.getSource() == exit){
@@ -108,7 +108,7 @@ public class MainWindow extends JFrame implements ActionListener {
             this.dispose();
         } else if(e.getSource()== language){
 
-            Language languageWindow = new Language();
+            LanguageWindow languageWindow = new LanguageWindow();
             languageWindow.setVisible(true);
             activeSubWindow = languageWindow;
         } else if(e.getSource() == fpData){

@@ -2,7 +2,7 @@ package com.MetricsSuite;
 
 import java.io.Serializable;
 
-public class Project implements Serializable {
+public class ProjectData implements Serializable {
 
     String projectName;
     String productName;

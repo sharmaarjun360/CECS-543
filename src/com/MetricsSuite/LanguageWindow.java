@@ -5,14 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Language extends JFrame implements ActionListener {
+public class LanguageWindow extends JFrame implements ActionListener {
 
     Container container = getContentPane();
     JLabel mainLabel;
 
     LanguagePreference[] language= new LanguagePreference[12];
 
-    public Language(){
+    public LanguageWindow(){
         initilizeData();
         container.setLayout(null);
         initComponent();

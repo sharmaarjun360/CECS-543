@@ -2,13 +2,13 @@ package com.MetricsSuite;
 
 public class MetricsSuite {
 
-    Project projectData;
+    ProjectData projectData;
 
-    public Project getProjectData() {
+    public ProjectData getProjectData() {
         return projectData;
     }
 
-    public void setProjectData(Project projectData) {
+    public void setProjectData(ProjectData projectData) {
         this.projectData = projectData;
     }
 
