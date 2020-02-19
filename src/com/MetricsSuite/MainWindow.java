@@ -1,10 +1,16 @@
 package com.MetricsSuite;
 
+import com.MetricsSuite.ActionListeners.ActionListener_MainWindow;
+import com.MetricsSuite.Alert.MetricsAlert;
+import com.MetricsSuite.FileChooser.SingleRootFileSystemView;
+import com.MetricsSuite.error.MetricsError;
+import com.MetricsSuite.globalConstants.MetricsConstants;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class MainWindow extends JFrame implements ActionListener {
 
@@ -88,6 +94,9 @@ public class MainWindow extends JFrame implements ActionListener {
         exit.addActionListener(this);
         language.addActionListener(this);
         save.addActionListener(this);
+        open.addActionListener(this);
+//        save.addActionListener(ActionListener_MainWindow.getInstance(this));
+//        open.addActionListener(ActionListener_MainWindow.getInstance(this));
     }
 
     @Override
@@ -98,7 +107,7 @@ public class MainWindow extends JFrame implements ActionListener {
             activeSubWindow = null;
         }
 
-        if(e.getSource()== new_menuItem){
+        if(e.getSource() == new_menuItem){
 
             NewProjectWindow newProject = new NewProjectWindow(this);
             newProject.setVisible(true);
@@ -107,26 +116,73 @@ public class MainWindow extends JFrame implements ActionListener {
 
             this.dispose();
         } else if(e.getSource()== language){
-
             LanguageWindow languageWindow = new LanguageWindow();
             languageWindow.setVisible(true);
             activeSubWindow = languageWindow;
         } else if(e.getSource() == fpData){
             JTabbedPane tab = new JTabbedPane();
         } else if(e.getSource() == save){
-
             try {
-//                File projectFile = new File("./../../../projectData/" + this.metricsSuite.getProjectData().getProjectName() + ".ms");
-                File projectFile = new File("./projectData/" + this.metricsSuite.getProjectData().getProjectName() + ".ms");
-                FileOutputStream fos = new FileOutputStream(projectFile);
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-                oos.writeObject(this.metricsSuite.getProjectData());
-
-                oos.close();
-            } catch (Exception ex){
-                System.out.println(ex);
+                saveProject(this.metricsSuite.getProjectData());
+            } catch ( IOException ioError) {
+                ioError.printStackTrace();
+            }catch (MetricsError metricsError){
+                MetricsAlert.getInstance().showAlert(this,metricsError.toString());
             }
         }
+        else if(e.getSource() == open){
+            openProject(this);
+        }
     }
+
+    public boolean saveProject( ProjectData projectData) throws MetricsError, IOException {
+        if (projectData == null) {
+            throw new MetricsError(MetricsError.ERROR_CODE.ERROR_NULL_PROJECT);
+        }
+        String projectName = projectData.projectName;
+        File projectDir = new File(MetricsConstants.PROJECT_DATA_PATH);
+        if (!projectDir.exists()) {
+            projectDir.mkdir();
+        }
+        File projectFile = new File(projectDir.getPath()+"/" + projectName + MetricsConstants.PROJECT_EXTENSION);
+        FileOutputStream outFile;
+        outFile = new FileOutputStream(projectFile);
+        ObjectOutputStream outObject = new ObjectOutputStream(outFile);
+        outObject.writeObject(projectData);
+        outObject.close();
+        return true;
+    }
+
+    public boolean openProject(Component context) {
+        File root = new File(MetricsConstants.PROJECT_DATA_PATH);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(MetricsConstants.PROJECT_NAME, MetricsConstants.PROJECT_FILE_TYPE);
+        FileSystemView fsv = new SingleRootFileSystemView(root);
+        JFileChooser fileChooser = new JFileChooser(fsv);
+        fileChooser.setFileFilter(filter);
+        String projectFilePath = "";
+        int fileChooserOption = fileChooser.showOpenDialog(context);
+        ProjectData p1 = null;
+        if (fileChooserOption == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            projectFilePath = selectedFile.getAbsolutePath();
+            System.out.println("Selected file: " + projectFilePath);
+            p1 = (ProjectData) readProjectDataFromFile(projectFilePath,this.metricsSuite.projectData);
+        }
+        return true;
+    }
+
+    public Object readProjectDataFromFile(String filepath,Object objectType) {
+        try {
+            FileInputStream fileIn = new FileInputStream(filepath);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            objectType = objectIn.readObject();
+            objectIn.close();
+            return objectType;
+        } catch (Exception ex) {
+            MetricsAlert.getInstance().showAlert(this,new MetricsError(MetricsError.ERROR_CODE.ERROR_READING_PROJECT).toString());
+//            ex.printStackTrace();
+            return null;
+        }
+    }
+
 }
