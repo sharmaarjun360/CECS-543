@@ -1,7 +1,8 @@
-package com.MetricsSuite;
+package com.MetricsSuite.Windows;
 
 import com.MetricsSuite.ActionListeners.ActionListener_MainWindow;
-import com.MetricsSuite.globalConstants.MetricsConstants;
+import com.MetricsSuite.MetricsSuite;
+import com.MetricsSuite.GlobalConstants.MetricsConstants;
 import javax.swing.*;
 
 

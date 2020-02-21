@@ -1,5 +1,8 @@
 package com.MetricsSuite;
 
+import com.MetricsSuite.Models.ProjectData;
+import com.MetricsSuite.Windows.MainWindow;
+
 public class MetricsSuite {
 
     private static MetricsSuite metricsSuiteInstance = null;

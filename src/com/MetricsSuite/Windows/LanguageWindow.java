@@ -1,6 +1,7 @@
-package com.MetricsSuite;
+package com.MetricsSuite.Windows;
 
-import com.MetricsSuite.globalConstants.MetricsConstants;
+import com.MetricsSuite.Models.LanguagePreference;
+import com.MetricsSuite.GlobalConstants.MetricsConstants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +13,7 @@ public class LanguageWindow extends JFrame implements ActionListener {
     private Container container = getContentPane();
     private JLabel mainLabel;
 
-    LanguagePreference[] language= new LanguagePreference[12];
+    LanguagePreference[] language = new LanguagePreference[12];
 
     public LanguageWindow(){
         initilizeData();

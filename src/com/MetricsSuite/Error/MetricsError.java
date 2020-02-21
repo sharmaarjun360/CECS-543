@@ -1,6 +1,4 @@
-package com.MetricsSuite.error;
-
-import com.MetricsSuite.globalConstants.MetricsConstants;
+package com.MetricsSuite.Error;
 
 public class MetricsError extends Exception{
     public enum ERROR_CODE {

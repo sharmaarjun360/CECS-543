@@ -1,8 +1,8 @@
-package com.MetricsSuite;
+package com.MetricsSuite.Models;
 
 public class LanguagePreference {
 
-    String name;
+    public String name;
     int averageCodeSize;
     int order;
 

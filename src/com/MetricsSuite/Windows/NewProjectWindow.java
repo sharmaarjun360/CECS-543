@@ -1,6 +1,9 @@
-package com.MetricsSuite;
+package com.MetricsSuite.Windows;
 
-import com.MetricsSuite.globalConstants.MetricsConstants;
+import com.MetricsSuite.Alert.MetricsAlert;
+import com.MetricsSuite.MetricsSuite;
+import com.MetricsSuite.Models.ProjectData;
+import com.MetricsSuite.GlobalConstants.MetricsConstants;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +24,8 @@ public class NewProjectWindow extends JFrame implements ActionListener {
         container.setLayout(null);
         initComponent();
         addActionEvent();
-        setSize(400,360);
-        setLocation(300,200);
+        setSize(MetricsConstants.NEW_PROJECT_WINDOW_WIDTH,MetricsConstants.NEW_PROJECT__WINDOW_HEIGHT);
+        setLocation(MetricsConstants.NEW_PROJECT__WINDOW_LOCATION_X,MetricsConstants.NEW_PROJECT__WINDOW_LOCATION_Y);
         setTitle("New Project");
 
     }
@@ -94,7 +97,7 @@ public class NewProjectWindow extends JFrame implements ActionListener {
 
             if(projectName_str == null || projectName_str.length()==0){
                 // show prompt
-                JOptionPane.showMessageDialog(this, "Please Enter Project Name");
+                MetricsAlert.getInstance().showAlert(this,"Please Enter Project Name");
                 projectName_text.requestFocusInWindow();
                 return;
             } else {

@@ -1,4 +1,4 @@
-package com.MetricsSuite;
+package com.MetricsSuite.Models;
 
 import java.io.Serializable;
 

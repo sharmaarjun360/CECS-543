@@ -1,4 +1,4 @@
-package com.MetricsSuite.globalConstants;
+package com.MetricsSuite.GlobalConstants;
 
 public class MetricsConstants {
 
@@ -44,7 +44,13 @@ public class MetricsConstants {
     public static final int  LANGUAGE_WINDOW_HEIGHT = 420;
     public static final int LANGUAGE_WINDOW_LOCATION_X = 300;
     public static final int LANGUAGE_WINDOW_LOCATION_Y = 200;
-
+    /**
+     * Language Window Dimension
+     */
+    public static final int NEW_PROJECT_WINDOW_WIDTH = 400;
+    public static final int NEW_PROJECT__WINDOW_HEIGHT = 360;
+    public static final int NEW_PROJECT__WINDOW_LOCATION_X = 300;
+    public static final int NEW_PROJECT__WINDOW_LOCATION_Y = 200;
 
 
 }
