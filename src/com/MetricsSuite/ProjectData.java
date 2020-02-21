@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class ProjectData implements Serializable {
 
-    String projectName;
-    String productName;
-    String creator;
-    String comments;
+    private String projectName;
+    private String productName;
+    private String creator;
+    private String comments;
 
     public String getProjectName() {
         return projectName;

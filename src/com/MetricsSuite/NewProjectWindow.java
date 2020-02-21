@@ -1,5 +1,7 @@
 package com.MetricsSuite;
 
+import com.MetricsSuite.globalConstants.MetricsConstants;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -97,7 +99,7 @@ public class NewProjectWindow extends JFrame implements ActionListener {
                 return;
             } else {
                 //pass project name to main frame
-                String title = MainWindow.TITLE + " - "+ projectName_str;
+                String title = MetricsConstants.PROJECT_TITLE + " - "+ projectName_str;
                 this.mainWindow.setTitle(title);
                 closeWindow = true;
                 project.setProjectName(projectName_str);
@@ -115,7 +117,7 @@ public class NewProjectWindow extends JFrame implements ActionListener {
             }
 
             if(closeWindow){
-                this.mainWindow.getMetricsSuite().setProjectData(project);
+                MetricsSuite.getInstance().setProjectData(project);
                 disposeWindow();
             }
         }

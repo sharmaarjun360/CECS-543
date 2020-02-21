@@ -1,5 +1,7 @@
 package com.MetricsSuite;
 
+import com.MetricsSuite.globalConstants.MetricsConstants;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,8 +9,8 @@ import java.awt.event.ActionListener;
 
 public class LanguageWindow extends JFrame implements ActionListener {
 
-    Container container = getContentPane();
-    JLabel mainLabel;
+    private Container container = getContentPane();
+    private JLabel mainLabel;
 
     LanguagePreference[] language= new LanguagePreference[12];
 
@@ -16,8 +18,8 @@ public class LanguageWindow extends JFrame implements ActionListener {
         initilizeData();
         container.setLayout(null);
         initComponent();
-        setSize(200,420);
-        setLocation(300,200);
+        setSize(MetricsConstants.LANGUAGE_WINDOW_WIDTH,MetricsConstants.LANGUAGE_WINDOW_HEIGHT);
+        setLocation(MetricsConstants.LANGUAGE_WINDOW_LOCATION_X,MetricsConstants.LANGUAGE_WINDOW_LOCATION_Y);
         setTitle("Language");
     }
 
