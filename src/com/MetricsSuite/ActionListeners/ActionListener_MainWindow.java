@@ -185,7 +185,7 @@ public class ActionListener_MainWindow implements ActionListener {
 
     private JComponent addEmptyFunctionPointTabToMainPane(JTabbedPane mainPane) {
         ImageIcon icon = createImageIcon(MetricsConstants.PROJECT_IMAGES + MetricsConstants.PROJECT_IMAGE_SUN);
-        JComponent panel = createNewFunctionPointPanel(MetricsConstants.P_TAB_TITLE);
+        JComponent panel = createNewFunctionPointPanel("We have to add custom panel here "+"@Method: addEmptyFunctionPointTabToMainPane \n @ class: ActionListener_MainWindow ");
         mainPane.addTab(MetricsConstants.P_TAB_TITLE, icon, panel, "Some tool tip");
         return panel;
     }
