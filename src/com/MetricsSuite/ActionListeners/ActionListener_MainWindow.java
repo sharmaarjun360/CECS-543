@@ -9,6 +9,7 @@ import com.MetricsSuite.Windows.MainWindow;
 import com.MetricsSuite.Windows.NewProjectWindow;
 import com.MetricsSuite.Error.MetricsError;
 import com.MetricsSuite.GlobalConstants.MetricsConstants;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
@@ -20,27 +21,34 @@ import java.io.*;
 public class ActionListener_MainWindow implements ActionListener {
 
     private static ActionListener_MainWindow actionListener_MainWindow_Instance = null;
-    private  Component context;
+    private Component context;
     private static JFrame activeSubWindow = null;
+
     private ActionListener_MainWindow(Component context) {
         this.context = context;
     }
 
     /**
      * Returns singleton instance
+     *
      * @param context
      * @return
      */
-    public static ActionListener_MainWindow getInstance(Component context){
+    public static ActionListener_MainWindow getInstance(Component context) {
         if (actionListener_MainWindow_Instance == null)
             actionListener_MainWindow_Instance = new ActionListener_MainWindow(context);
         return actionListener_MainWindow_Instance;
     }
 
+    /**
+     * Action performed on main window are managed here
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        switch (e.getActionCommand()){
+        switch (e.getActionCommand()) {
             case MetricsConstants.P_MENU_ITEM_FILE_NEW:
                 activeSubWindow = newProjectWindow(context);
                 break;
@@ -53,31 +61,33 @@ public class ActionListener_MainWindow implements ActionListener {
             case MetricsConstants.P_MENU_ITEM_FILE_SAVE:
                 try {
                     saveProject(MetricsSuite.getInstance().getProjectData());
-                } catch ( IOException ioError) {
+                } catch (IOException ioError) {
                     ioError.printStackTrace();
-                }catch (MetricsError metricsError){
-                    MetricsAlert.getInstance().showAlert(context,metricsError.toString());
+                } catch (MetricsError metricsError) {
+                    MetricsAlert.getInstance().showAlert(context, metricsError.toString());
                 }
                 break;
             case MetricsConstants.P_MENU_ITEM_PREFERENCES_LANGUAGE:
                 openLanguageWindow();
                 break;
-            case MetricsConstants.P_MENU_ITEM_METRICS_FUNCTION_POINT:
+            case MetricsConstants.P_MENU_ITEM_METRICS_ENTER_FP_DATA:
+                // TODO: 21/02/20 Use call backs to communicate between View and controller
+                // getMainTabbedPane incorrect approch use callbacks instead
+                newFunctionPointPane((JFrame) context, ((MainWindow) context).mainTabbedPane);
                 break;
             default:
         }
-
-
     }
 
     /**
      * Saves Project data to location defined in Metrics Constant
+     *
      * @param projectData
      * @return true after successful transaction
      * @throws MetricsError
      * @throws IOException
      */
-    private boolean saveProject( ProjectData projectData) throws MetricsError, IOException {
+    private boolean saveProject(ProjectData projectData) throws MetricsError, IOException {
         if (projectData == null) {
             throw new MetricsError(MetricsError.ERROR_CODE.ERROR_NULL_PROJECT);
         }
@@ -86,7 +96,7 @@ public class ActionListener_MainWindow implements ActionListener {
         if (!projectDir.exists()) {
             projectDir.mkdir();
         }
-        File projectFile = new File(projectDir.getPath()+"/" + projectName + MetricsConstants.PROJECT_EXTENSION);
+        File projectFile = new File(projectDir.getPath() + "/" + projectName + MetricsConstants.PROJECT_EXTENSION);
         FileOutputStream outFile;
         outFile = new FileOutputStream(projectFile);
         ObjectOutputStream outObject = new ObjectOutputStream(outFile);
@@ -97,6 +107,7 @@ public class ActionListener_MainWindow implements ActionListener {
 
     /**
      * Opens JFile chooser, by default opens to the location defined in Metrics constant
+     *
      * @param context
      * @return
      */
@@ -120,11 +131,12 @@ public class ActionListener_MainWindow implements ActionListener {
 
     /**
      * Reads the file at path selected
+     *
      * @param filepath
      * @param objectType
      * @return
      */
-    private Object readProjectDataFromFile(String filepath,Object objectType) {
+    private Object readProjectDataFromFile(String filepath, Object objectType) {
         try {
             FileInputStream fileIn = new FileInputStream(filepath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
@@ -132,14 +144,14 @@ public class ActionListener_MainWindow implements ActionListener {
             objectIn.close();
             return objectType;
         } catch (Exception ex) {
-            MetricsAlert.getInstance().showAlert(context,new MetricsError(MetricsError.ERROR_CODE.ERROR_READING_PROJECT).toString());
+            MetricsAlert.getInstance().showAlert(context, new MetricsError(MetricsError.ERROR_CODE.ERROR_READING_PROJECT).toString());
 //            ex.printStackTrace();
             return null;
         }
     }
 
-    private JFrame openLanguageWindow(){
-        if(activeSubWindow != null){
+    private JFrame openLanguageWindow() {
+        if (activeSubWindow != null) {
             activeSubWindow.dispose();
             activeSubWindow = null;
         }
@@ -149,10 +161,10 @@ public class ActionListener_MainWindow implements ActionListener {
         return languageWindow;
     }
 
-    private JFrame newProjectWindow(Component context){
+    private JFrame newProjectWindow(Component context) {
         NewProjectWindow newProject = null;
-        if(context instanceof MainWindow){
-            if(activeSubWindow != null){
+        if (context instanceof MainWindow) {
+            if (activeSubWindow != null) {
                 activeSubWindow.dispose();
                 activeSubWindow = null;
             }
@@ -162,7 +174,50 @@ public class ActionListener_MainWindow implements ActionListener {
         return newProject;
     }
 
-    private void exitTheApplication(){
+    private void newFunctionPointPane(JFrame parentFrame, JTabbedPane mainTabbedPane) {
+
+        addEmptyFunctionPointTabToMainPane(mainTabbedPane);
+//        mainPane.setSize(context.getWidth(),context.getHeight());
+        parentFrame.revalidate();
+//        parentFrame.pack();
+//        mainPane.setBounds(200,50,200,200);
+    }
+
+    private JComponent addEmptyFunctionPointTabToMainPane(JTabbedPane mainPane) {
+        ImageIcon icon = createImageIcon(MetricsConstants.PROJECT_IMAGES + MetricsConstants.PROJECT_IMAGE_SUN);
+        JComponent panel = createNewFunctionPointPanel(MetricsConstants.P_TAB_TITLE);
+        mainPane.addTab(MetricsConstants.P_TAB_TITLE, icon, panel, "Some tool tip");
+        return panel;
+    }
+
+    /**
+     * This Function creates Empty FunctionPoint Panel
+     * @param text
+     * @return
+     */
+    protected JComponent createNewFunctionPointPanel(String text) {
+        JPanel panel = new JPanel(false);
+        JLabel filler = new JLabel(text);
+        filler.setHorizontalAlignment(JLabel.CENTER);
+        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
+    }
+
+    /**
+     * Returns an ImageIcon, or null if the path was invalid.
+     */
+    protected static ImageIcon createImageIcon(String path) {
+        java.net.URL imgURL = MetricsSuite.class.getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Couldn't find file: " + path);
+            return null;
+        }
+    }
+
+    private void exitTheApplication() {
         System.exit(0);
     }
 }

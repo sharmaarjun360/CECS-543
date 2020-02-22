@@ -12,6 +12,9 @@ public class MetricsConstants {
     public static final String PROJECT_DATA_PATH = ROOT_PROJECT_PATH + "/projectData/";
     public static final String PROJECT_EXTENSION = ".ms";
     public static final String PROJECT_FILE_TYPE = "ms";
+    public static final String PROJECT_IMAGES = "resources/images/";
+    public static final String PROJECT_IMAGE_SUN = "Sun.png";
+
     /**
      * Main Window Dimension
      */
@@ -45,13 +48,16 @@ public class MetricsConstants {
     public static final int LANGUAGE_WINDOW_LOCATION_X = 300;
     public static final int LANGUAGE_WINDOW_LOCATION_Y = 200;
     /**
-     * Language Window Dimension
+     * New Project Window Dimension
      */
     public static final int NEW_PROJECT_WINDOW_WIDTH = 400;
     public static final int NEW_PROJECT__WINDOW_HEIGHT = 360;
     public static final int NEW_PROJECT__WINDOW_LOCATION_X = 300;
     public static final int NEW_PROJECT__WINDOW_LOCATION_Y = 200;
-
+    /**
+     * FunctionPanel
+     */
+    public static final String P_TAB_TITLE = "Function Points";
 
 }
 

@@ -4,10 +4,12 @@ import com.MetricsSuite.ActionListeners.ActionListener_MainWindow;
 import com.MetricsSuite.MetricsSuite;
 import com.MetricsSuite.GlobalConstants.MetricsConstants;
 import javax.swing.*;
+import java.awt.*;
 
 
 public class MainWindow extends JFrame {
 
+    public JTabbedPane mainTabbedPane = null;
     public MainWindow(MetricsSuite parent){
         initComponent();
         setTitle(MetricsConstants.PROJECT_TITLE);
@@ -20,16 +22,24 @@ public class MainWindow extends JFrame {
      *
      */
     public void initComponent(){
-        addMenuBar();
+        addMenuBar(this);
+        // TODO: 21/02/20 For Iteration 02 refer read me #1:
+//        frame.add(new JScrollPane(tree), BorderLayout.WEST);
+//        addJTREE(this);
+        mainTabbedPane = addTabbedPane(this);
+    }
+    private JTabbedPane addTabbedPane(JFrame parentFrame) {
+        JTabbedPane tabbedPane = new JTabbedPane();
+        parentFrame.add(tabbedPane, BorderLayout.CENTER);
+        return tabbedPane;
     }
 
-    private void addMenuBar(){
-        JFrame context = this;
+    private void addMenuBar(JFrame context){
+
+        JMenuBar menubar = new JMenuBar();
         JMenu file, edit, preferences, metrics, fp, help;
-        JMenuBar menubar;
         JMenuItem fpData;
-        menubar = new JMenuBar();
-        setJMenuBar(menubar);
+        context.setJMenuBar(menubar);
 
         file = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_FILE);
         edit = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_EDIT);
@@ -48,7 +58,7 @@ public class MainWindow extends JFrame {
         metrics.add(fp);
         fpData = new JMenuItem(MetricsConstants.P_MENU_ITEM_METRICS_ENTER_FP_DATA);
         fp.add(fpData);
-
+        fpData.addActionListener(ActionListener_MainWindow.getInstance(context));
     }
 
     /**
