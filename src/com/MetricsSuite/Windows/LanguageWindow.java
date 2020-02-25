@@ -5,10 +5,8 @@ import com.MetricsSuite.GlobalConstants.MetricsConstants;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class LanguageWindow extends JFrame implements ActionListener {
+public class LanguageWindow extends JFrame {
 
     private Container container = getContentPane();
     private JLabel mainLabel;
@@ -76,11 +74,6 @@ public class LanguageWindow extends JFrame implements ActionListener {
         JButton doneButton = new JButton("Done");
         languagePanel.add(doneButton);
         container.add(languagePanel);
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
     }
 }
