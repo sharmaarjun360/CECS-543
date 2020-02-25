@@ -1,5 +1,6 @@
 package com.MetricsSuite.Windows;
 
+import com.MetricsSuite.ActionListeners.NewProjectActionListener;
 import com.MetricsSuite.Alert.MetricsAlert;
 import com.MetricsSuite.MetricsSuite;
 import com.MetricsSuite.Models.ProjectData;
@@ -9,14 +10,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class NewProjectWindow extends JFrame implements ActionListener {
+public class NewProjectWindow extends JFrame {
 
     Container container = getContentPane();
-    MainWindow mainWindow;
-    JLabel mainLabel, projectName, productName, creator, comment;
-    JTextField projectName_text, productName_text, creator_text;
-    JTextArea comment_area;
-    JButton ok, cancel;
+    public MainWindow mainWindow;
+    public JLabel mainLabel, projectName, productName, creator, comment;
+    public JTextField projectName_text, productName_text, creator_text;
+    public JTextArea comment_area;
+    public JButton ok, cancel;
 
     public NewProjectWindow(MainWindow parentFrame){
 
@@ -80,54 +81,9 @@ public class NewProjectWindow extends JFrame implements ActionListener {
     }
 
     public void addActionEvent() {
-        ok.addActionListener(this);
-        cancel.addActionListener(this);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if(e.getSource()== ok){
-            String projectName_str = projectName_text.getText();
-            String productName_str = productName_text.getText();
-            String creator_str = creator_text.getText();
-            String comment_str = comment_area.getText();
-            boolean closeWindow = false;
-            ProjectData project = new ProjectData();
-
-            if(projectName_str == null || projectName_str.length()==0){
-                // show prompt
-                MetricsAlert.getInstance().showAlert(this,"Please Enter Project Name");
-                projectName_text.requestFocusInWindow();
-                return;
-            } else {
-                //pass project name to main frame
-                String title = MetricsConstants.PROJECT_TITLE + " - "+ projectName_str;
-                this.mainWindow.setTitle(title);
-                closeWindow = true;
-                project.setProjectName(projectName_str);
-            }
-
-            if(productName_str != null && productName_str.length()!=0){
-                project.setProductName(productName_str);
-            }
-
-            if(creator_str!= null && creator_str.length()!=0){
-                project.setCreator(creator_str);
-            }
-            if(comment_str!= null && comment_str.length()!=0){
-                project.setComments(comment_str);
-            }
-
-            if(closeWindow){
-                MetricsSuite.getInstance().setProjectData(project);
-                disposeWindow();
-            }
-        }
-
-        if(e.getSource()==cancel){
-            disposeWindow();
-        }
+        NewProjectActionListener listener = NewProjectActionListener.getInstance(this);
+        ok.addActionListener(listener);
+        cancel.addActionListener(listener);
     }
 
     public void disposeWindow(){
