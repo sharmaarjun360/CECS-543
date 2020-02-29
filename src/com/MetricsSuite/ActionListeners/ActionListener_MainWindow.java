@@ -4,6 +4,7 @@ import com.MetricsSuite.*;
 import com.MetricsSuite.Alert.MetricsAlert;
 import com.MetricsSuite.FileChooser.SingleRootFileSystemView;
 import com.MetricsSuite.Models.ProjectData;
+import com.MetricsSuite.Windows.FunctionPointWindowMyVersion;
 import com.MetricsSuite.Windows.LanguageWindow;
 import com.MetricsSuite.Windows.MainWindow;
 import com.MetricsSuite.Windows.NewProjectWindow;
@@ -50,6 +51,7 @@ public class ActionListener_MainWindow implements ActionListener {
 
         switch (e.getActionCommand()) {
             case MetricsConstants.P_MENU_ITEM_FILE_NEW:
+                removeAllTabbedPane();
                 activeSubWindow = newProjectWindow(context);
                 break;
             case MetricsConstants.P_MENU_ITEM_FILE_OPEN:
@@ -159,6 +161,10 @@ public class ActionListener_MainWindow implements ActionListener {
         languageWindow.setVisible(true);
         activeSubWindow = languageWindow;
         return languageWindow;
+    }
+
+    private void removeAllTabbedPane(){
+        ((MainWindow)context).mainTabbedPane.removeAll();
     }
 
     private JFrame newProjectWindow(Component context) {

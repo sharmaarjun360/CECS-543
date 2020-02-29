@@ -81,7 +81,7 @@ public class NewProjectWindow extends JFrame {
     }
 
     public void addActionEvent() {
-        NewProjectActionListener listener = NewProjectActionListener.getInstance(this);
+        NewProjectActionListener listener = new NewProjectActionListener(this);
         ok.addActionListener(listener);
         cancel.addActionListener(listener);
     }

@@ -8,22 +8,15 @@ import com.MetricsSuite.Windows.NewProjectWindow;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class NewProjectActionListener implements ActionListener {
 
-    private static NewProjectActionListener self;
+    private static NewProjectActionListener self = null;
     private NewProjectWindow newProjectWindow;
 
     public NewProjectActionListener(NewProjectWindow newProjectWindow){
         this.newProjectWindow = newProjectWindow;
-    }
-
-    public static NewProjectActionListener getInstance(NewProjectWindow newProjectWindow){
-        if(self == null){
-            self = new NewProjectActionListener(newProjectWindow);
-        }
-
-        return self;
     }
 
     @Override
@@ -43,6 +36,15 @@ public class NewProjectActionListener implements ActionListener {
                 return;
             } else {
                 // check for unique name
+//                File tempFile = File.createTempFile(projectName_str,".ms");
+                File projectDir = new File(MetricsConstants.PROJECT_DATA_PATH);
+                File tempFile = new File(projectDir.getPath() + "/" + projectName_str + MetricsConstants.PROJECT_EXTENSION);
+
+                if(tempFile.exists() == true){
+                    MetricsAlert.getInstance().showAlert(this.newProjectWindow,"Project Name should be unique");
+                    this.newProjectWindow.projectName_text.requestFocusInWindow();
+                    return;
+                }
 
                 closeWindow = true;
                 project.setProjectName(projectName_str);
