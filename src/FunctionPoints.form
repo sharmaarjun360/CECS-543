@@ -71,7 +71,9 @@
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="64cd8" class="javax.swing.JRadioButton" default-binding="true">
         <constraints>
@@ -125,7 +127,9 @@
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="65b0" class="javax.swing.JRadioButton" default-binding="true">
         <constraints>
@@ -179,7 +183,9 @@
           </grid>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="d2b75" class="javax.swing.JRadioButton" default-binding="true">
         <constraints>
