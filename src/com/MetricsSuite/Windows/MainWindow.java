@@ -86,4 +86,8 @@ public class MainWindow extends JFrame {
         return  menu;
     }
 
+    public void createNewProject(){
+        this.mainTabbedPane.removeAll();
+    }
+
 }

@@ -67,6 +67,7 @@ public class NewProjectActionListener implements ActionListener {
                 this.newProjectWindow.mainWindow.setTitle(title);
                 MetricsSuite.getInstance().setProjectData(project);
                 this.newProjectWindow.disposeWindow();
+                this.newProjectWindow.mainWindow.createNewProject();
             }
         }
 
