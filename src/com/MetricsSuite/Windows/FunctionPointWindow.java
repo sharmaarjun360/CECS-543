@@ -1,5 +1,7 @@
 package com.MetricsSuite.Windows;
 
+import com.MetricsSuite.ActionListeners.FunctionPointListner;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -7,6 +9,7 @@ import java.awt.*;
 public class FunctionPointWindow {
 
     JLabel mainLabel;
+    public JButton compute_fp_btn, val_adjust_btn, compute_code_size_btn, change_lang_btn;
 
     public FunctionPointWindow(){
 
@@ -31,10 +34,17 @@ public class FunctionPointWindow {
         JLabel current_lang_lbl = new JLabel("Current language");
 
         // Objects of all buttons
-        JButton compute_fp_btn = new JButton("Compute FP");
-        JButton val_adjust_btn = new JButton("Value Adujstment");
-        JButton compute_code_size_btn = new JButton("Compute Code Size");
-        JButton change_lang_btn = new JButton("Change Language");
+        compute_fp_btn = new JButton("Compute FP");
+        val_adjust_btn = new JButton("Value Adujstment");
+        compute_code_size_btn = new JButton("Compute Code Size");
+        change_lang_btn = new JButton("Change Language");
+
+        // add action listner
+        FunctionPointListner fpListner = new FunctionPointListner(this);
+        compute_fp_btn.addActionListener(fpListner);
+        val_adjust_btn.addActionListener(fpListner);
+        compute_code_size_btn.addActionListener(fpListner);
+        change_lang_btn.addActionListener(fpListner);
 
         //objects of radio button
         JRadioButton ext_ip_r_s = new JRadioButton("3");
