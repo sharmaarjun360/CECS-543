@@ -8,13 +8,16 @@ import java.awt.event.ActionListener;
 public class VAFWindow extends JFrame {
     public JButton done_btn, cancel_btn;
     private Container container = getContentPane();
+    public double vaf, tdi;
 
     public  VAFWindow(){
         setTitle("Set VAF values");
         container.setLayout(null);
+        setVisible(true);
+        setSize(700,600);
 
-         done_btn = new JButton("Done");
-         cancel_btn = new JButton("Cancel");
+        done_btn = new JButton("Done");
+        cancel_btn = new JButton("Cancel");
 
         JLabel heading_lbl = new JLabel("Assign a value from 0 to 5 for each of the following Value Adjustment Factor");
         JLabel VAF1_lbl = new JLabel("Does the system require reliable backup and recovery option?");
@@ -150,19 +153,6 @@ public class VAFWindow extends JFrame {
 
         done_btn.setBounds(5,490,80,20);
         cancel_btn.setBounds(95,490,80,20);
-        done_btn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
-        cancel_btn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
-
 
         add(heading_lbl);
         add(VAF1_lbl);
@@ -198,9 +188,20 @@ public class VAFWindow extends JFrame {
         add(done_btn);
         add(cancel_btn);
 
-
-        setVisible(true);
-        setSize(700,600);
+        done_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tdi = Integer.parseInt(VAF1_cmb.getSelectedItem().toString())+Integer.parseInt(VAF2_cmb.getSelectedItem().toString())+Integer.parseInt(VAF3_cmb.getSelectedItem().toString())+Integer.parseInt(VAF14_cmb.getSelectedItem().toString())+Integer.parseInt(VAF5_cmb.getSelectedItem().toString())+Integer.parseInt(VAF6_cmb.getSelectedItem().toString())+Integer.parseInt(VAF7_cmb.getSelectedItem().toString())+Integer.parseInt(VAF8_cmb.getSelectedItem().toString())+Integer.parseInt(VAF9_cmb.getSelectedItem().toString())+Integer.parseInt(VAF10_cmb.getSelectedItem().toString())+Integer.parseInt(VAF11_cmb.getSelectedItem().toString())+Integer.parseInt(VAF12_cmb.getSelectedItem().toString())+Integer.parseInt(VAF13_cmb.getSelectedItem().toString())+Integer.parseInt(VAF14_cmb.getSelectedItem().toString());
+                vaf = 0.65 + (tdi/100);
+                dispose();
+            }
+        });
+        cancel_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
     }
 }
