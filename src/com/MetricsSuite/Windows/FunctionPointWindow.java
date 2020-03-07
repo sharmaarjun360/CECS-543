@@ -1,18 +1,54 @@
 package com.MetricsSuite.Windows;
 
 import com.MetricsSuite.ActionListeners.FunctionPointListner;
+import com.MetricsSuite.Models.FunctionPointData;
+import com.MetricsSuite.Models.ProjectData;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.List;
 
 public class FunctionPointWindow {
 
-    JLabel mainLabel;
+    MainWindow mainWindow;
+    FunctionPointData fpData;
+
     public JButton compute_fp_btn, val_adjust_btn, compute_code_size_btn, change_lang_btn;
+    public JTextField ext_ip_txt, ext_op_txt, ext_inq_txt, int_lf_txt, ext_if_txt;
+    public JTextField ext_ip_des_txt, ext_op_des_txt, ext_inq_des_txt, int_lf_des_txt, ext_if_des_txt;
+    public JTextField total_count_des_txt, val_adj_des_txt, compute_fp_des_txt;
+    public ButtonGroup ext_ip_r, ext_op_r, ext_inq_r, ext_lf_r, ext_if_r;
+    public JRadioButton ext_ip_r_s, ext_ip_r_a, ext_ip_r_c;
+    public JRadioButton ext_op_r_s, ext_op_r_a, ext_op_r_c;
+    public JRadioButton ext_inq_r_s, ext_inq_r_a, ext_inq_r_c;
+    public JRadioButton ext_lf_r_s, ext_lf_r_a, ext_lf_r_c;
+    public JRadioButton ext_if_r_s, ext_if_r_a, ext_if_r_c;
 
-    public FunctionPointWindow(){
+    public FunctionPointWindow(MainWindow mainWindow){
+        this.mainWindow = mainWindow;
+        this.createFunctionPointDataObject();
+    }
 
+    public FunctionPointData getFpData() {
+        return fpData;
+    }
+
+    public void setFpData(FunctionPointData fpData) {
+        this.fpData = fpData;
+    }
+
+    /**
+     * This Function creates FunctionPointData object and save it in projectData
+     * @return
+     */
+
+    private void createFunctionPointDataObject(){
+        fpData = new FunctionPointData();
+        ProjectData projectData = mainWindow.metricsSuite.getProjectData();
+        List<FunctionPointData> arr = projectData.getFpArray();
+        arr.add(fpData);
+        projectData.setFpArray(arr);
     }
 
     /**
@@ -47,63 +83,91 @@ public class FunctionPointWindow {
         change_lang_btn.addActionListener(fpListner);
 
         //objects of radio button
-        JRadioButton ext_ip_r_s = new JRadioButton("3");
-        JRadioButton ext_ip_r_a = new JRadioButton("4");
-        JRadioButton ext_ip_r_c = new JRadioButton("6");
-        ButtonGroup ext_ip_r = new ButtonGroup();
+        ext_ip_r_s = new JRadioButton("3");
+        ext_ip_r_a = new JRadioButton("4");
+        ext_ip_r_c = new JRadioButton("6");
+        ext_ip_r = new ButtonGroup();
         ext_ip_r.add(ext_ip_r_s);
         ext_ip_r.add(ext_ip_r_a);
         ext_ip_r.add(ext_ip_r_c);
+        // add action listner
+        ext_ip_r_s.addActionListener(fpListner);
+        ext_ip_r_a.addActionListener(fpListner);
+        ext_ip_r_c.addActionListener(fpListner);
 
-        JRadioButton ext_op_r_s = new JRadioButton("4");
-        JRadioButton ext_op_r_a = new JRadioButton("5");
-        JRadioButton ext_op_r_c = new JRadioButton("7");
-        ButtonGroup ext_op_r = new ButtonGroup();
+        ext_op_r_s = new JRadioButton("4");
+        ext_op_r_a = new JRadioButton("5");
+        ext_op_r_c = new JRadioButton("7");
+        ext_op_r = new ButtonGroup();
         ext_op_r.add(ext_op_r_s);
         ext_op_r.add(ext_op_r_a);
         ext_op_r.add(ext_op_r_c);
+        // add action listner
+        ext_op_r_s.addActionListener(fpListner);
+        ext_op_r_a.addActionListener(fpListner);
+        ext_op_r_c.addActionListener(fpListner);
 
-        JRadioButton ext_inq_r_s = new JRadioButton("3");
-        JRadioButton ext_inq_r_a = new JRadioButton("4");
-        JRadioButton ext_inq_r_c = new JRadioButton("6");
-        ButtonGroup ext_inq_r = new ButtonGroup();
+
+        ext_inq_r_s = new JRadioButton("3");
+        ext_inq_r_a = new JRadioButton("4");
+        ext_inq_r_c = new JRadioButton("6");
+        ext_inq_r = new ButtonGroup();
         ext_inq_r.add(ext_inq_r_s);
         ext_inq_r.add(ext_inq_r_a);
         ext_inq_r.add(ext_inq_r_c);
+        // add action listner
+        ext_inq_r_s.addActionListener(fpListner);
+        ext_inq_r_a.addActionListener(fpListner);
+        ext_inq_r_c.addActionListener(fpListner);
 
-        JRadioButton ext_lf_r_s = new JRadioButton("7");
-        JRadioButton ext_lf_r_a = new JRadioButton("10");
-        JRadioButton ext_lf_r_c = new JRadioButton("15");
-        ButtonGroup ext_lf_r = new ButtonGroup();
+        ext_lf_r_s = new JRadioButton("7");
+        ext_lf_r_a = new JRadioButton("10");
+        ext_lf_r_c = new JRadioButton("15");
+        ext_lf_r = new ButtonGroup();
         ext_lf_r.add(ext_lf_r_s);
         ext_lf_r.add(ext_lf_r_a);
         ext_lf_r.add(ext_lf_r_c);
+        // add action listner
+        ext_lf_r_s.addActionListener(fpListner);
+        ext_lf_r_a.addActionListener(fpListner);
+        ext_lf_r_c.addActionListener(fpListner);
 
-        JRadioButton ext_if_r_s = new JRadioButton("5");
-        JRadioButton ext_if_r_a = new JRadioButton("7");
-        JRadioButton ext_if_r_c = new JRadioButton("10");
-        ButtonGroup ext_if_r = new ButtonGroup();
+        ext_if_r_s = new JRadioButton("5");
+        ext_if_r_a = new JRadioButton("7");
+        ext_if_r_c = new JRadioButton("10");
+        ext_if_r = new ButtonGroup();
         ext_if_r.add(ext_if_r_s);
         ext_if_r.add(ext_if_r_a);
         ext_if_r.add(ext_if_r_c);
+        // add action listner
+        ext_if_r_s.addActionListener(fpListner);
+        ext_if_r_a.addActionListener(fpListner);
+        ext_if_r_c.addActionListener(fpListner);
 
 
         //objects of text boxes
-        JTextField ext_ip_txt = new JTextField();
-        JTextField ext_op_txt = new JTextField();
-        JTextField ext_inq_txt = new JTextField();
-        JTextField int_lf_txt = new JTextField();
-        JTextField ext_if_txt = new JTextField();
-        JTextField ext_ip_des_txt = new JTextField();
-        JTextField ext_op_des_txt = new JTextField();
-        JTextField ext_inq_des_txt = new JTextField();
-        JTextField int_lf_des_txt = new JTextField();
-        JTextField ext_if_des_txt = new JTextField();
-        JTextField total_count_des_txt = new JTextField();
-        JTextField compute_fp_des_txt = new JTextField();
-        JTextField val_adj_des_txt = new JTextField("0");
+        ext_ip_txt = new JTextField();
+        ext_op_txt = new JTextField();
+        ext_inq_txt = new JTextField();
+        int_lf_txt = new JTextField();
+        ext_if_txt = new JTextField();
+        ext_ip_des_txt = new JTextField();
+        ext_op_des_txt = new JTextField();
+        ext_inq_des_txt = new JTextField();
+        int_lf_des_txt = new JTextField();
+        ext_if_des_txt = new JTextField();
+        total_count_des_txt = new JTextField();
+        compute_fp_des_txt = new JTextField();
+        val_adj_des_txt = new JTextField("0");
         JTextField current_lang_1_des_txt = new JTextField("Java");
         JTextField current_lang_2_des_txt = new JTextField();
+
+        // add focus listner
+        ext_ip_txt.addFocusListener(fpListner);
+        ext_op_txt.addFocusListener(fpListner);
+        ext_inq_txt.addFocusListener(fpListner);
+        int_lf_txt.addFocusListener(fpListner);
+        ext_if_txt.addFocusListener(fpListner);
 
         // Disable text box
         ext_ip_des_txt.setEditable(false);

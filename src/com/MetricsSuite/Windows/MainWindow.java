@@ -9,6 +9,8 @@ import java.awt.*;
 
 public class MainWindow extends JFrame {
 
+    MetricsSuite metricsSuite;
+
     public JTabbedPane mainTabbedPane = null;
     public MainWindow(MetricsSuite parent){
         initComponent();
@@ -16,6 +18,7 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(MetricsConstants.MAIN_WINDOW_WIDTH,MetricsConstants.MAIN_WINDOW_HEIGHT);
         setLocation(MetricsConstants.MAIN_WINDOW_LOCATION_X,MetricsConstants.MAIN_WINDOW_LOCATION_Y);
+        this.metricsSuite = parent;
     }
 
     /**
