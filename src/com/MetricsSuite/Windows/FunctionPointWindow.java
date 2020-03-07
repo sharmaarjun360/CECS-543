@@ -27,7 +27,7 @@ public class FunctionPointWindow {
 
     public FunctionPointWindow(MainWindow mainWindow){
         this.mainWindow = mainWindow;
-        this.createFunctionPointDataObject();
+        this.createNewFunctionPointPanel();
     }
 
     public FunctionPointData getFpData() {
