@@ -3,6 +3,7 @@ package com.MetricsSuite.ActionListeners;
 import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Windows.FunctionPointWindow;
 import com.MetricsSuite.Windows.LanguageWindow;
+import com.MetricsSuite.Windows.VAFWindow;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -43,6 +44,7 @@ public class FunctionPointListner implements ActionListener, FocusListener {
 
         if(e.getSource() == fpWindow.val_adjust_btn){
             // open VAF window
+            new VAFWindow();
         }
 
         if(e.getSource() == fpWindow.compute_code_size_btn){
