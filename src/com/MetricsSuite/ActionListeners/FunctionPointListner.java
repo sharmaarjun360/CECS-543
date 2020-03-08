@@ -48,6 +48,7 @@ public class FunctionPointListner implements ActionListener, FocusListener {
         }
 
         if(e.getSource() == fpWindow.compute_code_size_btn){
+            // TODO: 07/03/20
             // calculate code size for selected language
         }
 
@@ -61,7 +62,7 @@ public class FunctionPointListner implements ActionListener, FocusListener {
                 || e.getSource() == fpWindow.ext_ip_r_a
                 || e.getSource() == fpWindow.ext_ip_r_c
         ){
-            this.updateInputTotal(fpWindow.ext_ip_txt, fpWindow.ext_ip_r, fpWindow.ext_ip_des_txt);
+            this.updateInputTotal(fpWindow.txt_external_inputs, fpWindow.ext_ip_r, fpWindow.ext_ip_des_txt);
 
             String selectedWeightFactor = this.getSelectedButtonText(fpWindow.ext_ip_r);
             int factor = Integer.parseInt(selectedWeightFactor);
@@ -72,7 +73,7 @@ public class FunctionPointListner implements ActionListener, FocusListener {
                 || e.getSource() == fpWindow.ext_op_r_a
                 || e.getSource() == fpWindow.ext_op_r_c
         ){
-            this.updateInputTotal(fpWindow.ext_op_txt, fpWindow.ext_op_r, fpWindow.ext_op_des_txt);
+            this.updateInputTotal(fpWindow.txt_external_outputs, fpWindow.ext_op_r, fpWindow.ext_op_des_txt);
 
             String selectedWeightFactor = this.getSelectedButtonText(fpWindow.ext_op_r);
             int factor = Integer.parseInt(selectedWeightFactor);
@@ -83,18 +84,18 @@ public class FunctionPointListner implements ActionListener, FocusListener {
                 || e.getSource() == fpWindow.ext_inq_r_a
                 || e.getSource() == fpWindow.ext_inq_r_c
         ){
-            this.updateInputTotal(fpWindow.ext_inq_txt, fpWindow.ext_inq_r, fpWindow.ext_inq_des_txt);
+            this.updateInputTotal(fpWindow.txt_external_inquiries, fpWindow.ext_inq_r, fpWindow.ext_inq_des_txt);
 
             String selectedWeightFactor = this.getSelectedButtonText(fpWindow.ext_inq_r);
             int factor = Integer.parseInt(selectedWeightFactor);
-            fpData.setInquryFactor(factor);
+            fpData.setInquiryFactor(factor);
         }
 
         if(e.getSource() == fpWindow.ext_lf_r_s
                 || e.getSource() == fpWindow.ext_lf_r_a
                 || e.getSource() == fpWindow.ext_lf_r_c
         ){
-            this.updateInputTotal(fpWindow.int_lf_txt, fpWindow.ext_lf_r, fpWindow.int_lf_des_txt);
+            this.updateInputTotal(fpWindow.txt_Internal_logical_files, fpWindow.ext_lf_r, fpWindow.int_lf_des_txt);
 
             String selectedWeightFactor = this.getSelectedButtonText(fpWindow.ext_lf_r);
             int factor = Integer.parseInt(selectedWeightFactor);
@@ -105,7 +106,7 @@ public class FunctionPointListner implements ActionListener, FocusListener {
                 || e.getSource() == fpWindow.ext_if_r_a
                 || e.getSource() == fpWindow.ext_if_r_c
         ){
-            this.updateInputTotal(fpWindow.ext_if_txt, fpWindow.ext_if_r, fpWindow.ext_if_des_txt);
+            this.updateInputTotal(fpWindow.txt_external_interface_files, fpWindow.ext_if_r, fpWindow.ext_if_des_txt);
 
             String selectedWeightFactor = this.getSelectedButtonText(fpWindow.ext_if_r);
             int factor = Integer.parseInt(selectedWeightFactor);
@@ -125,63 +126,62 @@ public class FunctionPointListner implements ActionListener, FocusListener {
 
         FunctionPointData fpData = fpWindow.getFpData();
 
-        if(e.getSource() == fpWindow.ext_ip_txt){
-            this.updateInputTotal(fpWindow.ext_ip_txt, fpWindow.ext_ip_r, fpWindow.ext_ip_des_txt);
+        if(e.getSource() == fpWindow.txt_external_inputs){
+            this.updateInputTotal(fpWindow.txt_external_inputs, fpWindow.ext_ip_r, fpWindow.ext_ip_des_txt);
 
-            String strValue = fpWindow.ext_ip_txt.getText();
+            String strValue = fpWindow.txt_external_inputs.getText();
             if(strValue != null && strValue.length() > 0){
                 long value = Long.parseLong(strValue);
-                fpData.setInputCount(value);
+                fpData.setExternalInputCount(value);
             } else {
-                fpData.setInputCount(-1);
+                fpData.setExternalInputCount(-1);
             }
         }
 
-        if(e.getSource() == fpWindow.ext_op_txt){
-            this.updateInputTotal(fpWindow.ext_op_txt, fpWindow.ext_op_r, fpWindow.ext_op_des_txt);
+        if(e.getSource() == fpWindow.txt_external_outputs){
+            this.updateInputTotal(fpWindow.txt_external_outputs, fpWindow.ext_op_r, fpWindow.ext_op_des_txt);
 
-            String strValue = fpWindow.ext_op_txt.getText();
+            String strValue = fpWindow.txt_external_outputs.getText();
             if(strValue != null && strValue.length() > 0){
                 long value = Long.parseLong(strValue);
-                fpData.setOutputCount(value);
+                fpData.setExternalOutputCount(value);
             } else {
-                fpData.setOutputCount(-1);
+                fpData.setExternalOutputCount(-1);
             }
         }
 
-        if(e.getSource() == fpWindow.ext_inq_txt){
-            this.updateInputTotal(fpWindow.ext_inq_txt, fpWindow.ext_inq_r, fpWindow.ext_inq_des_txt);
+        if(e.getSource() == fpWindow.txt_external_inquiries){
+            this.updateInputTotal(fpWindow.txt_external_inquiries, fpWindow.ext_inq_r, fpWindow.ext_inq_des_txt);
 
-            String strValue = fpWindow.ext_inq_txt.getText();
+            String strValue = fpWindow.txt_external_inquiries.getText();
             if(strValue != null && strValue.length() > 0){
                 long value = Long.parseLong(strValue);
-                fpData.setInquryCount(value);
+                fpData.setExternalInquiriesCount(value);
             } else {
-                fpData.setInquryCount(-1);
+                fpData.setExternalInquiriesCount(-1);
             }
         }
 
-        if(e.getSource() == fpWindow.int_lf_txt){
-            this.updateInputTotal(fpWindow.int_lf_txt, fpWindow.ext_lf_r, fpWindow.int_lf_des_txt);
-
-            String strValue = fpWindow.int_lf_txt.getText();
+        if(e.getSource() == fpWindow.txt_Internal_logical_files){
+            this.updateInputTotal(fpWindow.txt_Internal_logical_files, fpWindow.ext_lf_r, fpWindow.int_lf_des_txt);
+            String strValue = fpWindow.txt_Internal_logical_files.getText();
             if(strValue != null && strValue.length() > 0){
                 long value = Long.parseLong(strValue);
-                fpData.setInterfaceFileCount(value);
+                fpData.setInternalLogicalFileCount(value);
             } else {
-                fpData.setInterfaceFileCount(-1);
+                fpData.setInternalLogicalFileCount(-1);
             }
         }
 
-        if(e.getSource() == fpWindow.ext_if_txt){
-            this.updateInputTotal(fpWindow.ext_if_txt, fpWindow.ext_if_r, fpWindow.ext_if_des_txt);
+        if(e.getSource() == fpWindow.txt_external_interface_files){
+            this.updateInputTotal(fpWindow.txt_external_interface_files, fpWindow.ext_if_r, fpWindow.ext_if_des_txt);
 
-            String strValue = fpWindow.ext_if_txt.getText();
+            String strValue = fpWindow.txt_external_interface_files.getText();
             if(strValue != null && strValue.length() > 0){
                 long value = Long.parseLong(strValue);
-                fpData.setInterfaceFileCount(value);
+                fpData.setExternalInterfaceFileCount(value);
             } else {
-                fpData.setInterfaceFileCount(-1);
+                fpData.setExternalInterfaceFileCount(-1);
             }
         }
 

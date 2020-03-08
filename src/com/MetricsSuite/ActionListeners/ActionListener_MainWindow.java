@@ -3,6 +3,7 @@ package com.MetricsSuite.ActionListeners;
 import com.MetricsSuite.*;
 import com.MetricsSuite.Alert.MetricsAlert;
 import com.MetricsSuite.FileChooser.SingleRootFileSystemView;
+import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
 import com.MetricsSuite.Windows.FunctionPointWindow;
 import com.MetricsSuite.Windows.LanguageWindow;
@@ -18,6 +19,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Iterator;
 
 public class ActionListener_MainWindow implements ActionListener {
 
@@ -74,7 +78,14 @@ public class ActionListener_MainWindow implements ActionListener {
             case MetricsConstants.P_MENU_ITEM_METRICS_ENTER_FP_DATA:
                 // TODO: 21/02/20 Use call backs to communicate between View and controller
                 // getMainTabbedPane incorrect approch use callbacks instead
+                ProjectData projectData = ((MainWindow) context).metricsSuite.getProjectData();
+                if(projectData == null){ MetricsAlert.getInstance().showAlert(
+                        (context), MetricsConstants.P_ALERT_CREATE_PROJECT);
+                    return;
+                }else if (projectData !=null){
+//                     && !(projectData.getFpArray().isEmpty())
                 newFunctionPointPane((JFrame) context, ((MainWindow) context).mainTabbedPane);
+                }
                 break;
             default:
         }
@@ -126,10 +137,34 @@ public class ActionListener_MainWindow implements ActionListener {
             projectFilePath = selectedFile.getAbsolutePath();
             System.out.println("Selected file: " + projectFilePath);
             p1 = (ProjectData) readProjectDataFromFile(projectFilePath, MetricsSuite.getInstance().getProjectData());
+            if(p1!=null){
+                ((MainWindow)context).createNewProject();
+                ((JFrame)context).revalidate();
+                ((MainWindow)context).metricsSuite.setProjectData(p1);
+                createUIFromProjectData(p1,context);
+            }
         }
         return true;
     }
-
+    private void createUIFromProjectData(ProjectData projectData, Component context) {
+        // TODO: 07/03/20 UI creation on new thread other than main thread
+        if(!projectData.getFpArray().isEmpty()){
+            ArrayList<FunctionPointData> tempFunctionPointDataArrayList = (ArrayList<FunctionPointData>) projectData.getFpArray();
+            Object [] some_Array = tempFunctionPointDataArrayList.toArray();
+            for(int i=0;i<some_Array.length;i++){
+                newFunctionPointPaneFromData((JFrame) context, ((MainWindow) context).mainTabbedPane, (FunctionPointData) some_Array[i]);
+            }
+            // TODO: 08/03/20 concurrent modification error
+//            Iterator<FunctionPointData> functionPointDataIterator = projectData.getFpArray().iterator();
+//            while (functionPointDataIterator.hasNext()){
+//                System.out.println("Yahoo");
+//                newFunctionPointPaneFromData((JFrame) context, ((MainWindow) context).mainTabbedPane, functionPointDataIterator.next());
+//            }
+//            for(FunctionPointData functionPointData: projectData.getFpArray()){
+//                newFunctionPointPaneFromData((JFrame) context, ((MainWindow) context).mainTabbedPane, functionPointData);
+//            }
+        }
+    }
     /**
      * Reads the file at path selected
      *
@@ -174,7 +209,10 @@ public class ActionListener_MainWindow implements ActionListener {
         }
         return newProject;
     }
-
+    private void newFunctionPointPaneFromData(JFrame parentFrame, JTabbedPane mainTabbedPane, FunctionPointData functionPointData) {
+        addPreviouslySavedFunctionPointTabToMainPane(mainTabbedPane, functionPointData);
+        parentFrame.revalidate();
+    }
     private void newFunctionPointPane(JFrame parentFrame, JTabbedPane mainTabbedPane) {
 
         addEmptyFunctionPointTabToMainPane(mainTabbedPane);
@@ -186,15 +224,46 @@ public class ActionListener_MainWindow implements ActionListener {
 
     private JComponent addEmptyFunctionPointTabToMainPane(JTabbedPane mainPane) {
         ImageIcon icon = createImageIcon(MetricsConstants.PROJECT_IMAGES + MetricsConstants.PROJECT_IMAGE_SUN);
-
-        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context);
+        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,false);
+        //
         JComponent panel = fp.createNewFunctionPointPanel();
-//        JComponent panel = createNewFunctionPointPanel("We have to add custom panel here "+"@Method: addEmptyFunctionPointTabToMainPane \n @ class: ActionListener_MainWindow ");
-
         mainPane.addTab(MetricsConstants.P_TAB_TITLE, null, panel, "Some tool tip");
         return panel;
     }
 
+    private JComponent addPreviouslySavedFunctionPointTabToMainPane(JTabbedPane mainPane, FunctionPointData functionPointData) {
+        ImageIcon icon = createImageIcon(MetricsConstants.PROJECT_IMAGES + MetricsConstants.PROJECT_IMAGE_SUN);
+
+        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,true);
+        JComponent panel = fp.createNewFunctionPointPanel();
+        updateFunctionPointWindowUIFromSavedData(functionPointData, fp);
+        mainPane.addTab(MetricsConstants.P_TAB_TITLE, null, panel, "Some tool tip");
+        return panel;
+    }
+private void updateFunctionPointWindowUIFromSavedData(FunctionPointData functionPointData, FunctionPointWindow functionPointWindow){
+    functionPointWindow.txt_external_inputs.setText(String.valueOf(functionPointData.getExternalInputCount()));
+    functionPointWindow.txt_external_outputs.setText(String.valueOf(functionPointData.getExternalOutputCount()));
+    functionPointWindow.txt_external_inquiries.setText(String.valueOf(functionPointData.getExternalInquiriesCount()));
+    functionPointWindow.txt_Internal_logical_files.setText(String.valueOf(functionPointData.getInternalLogicalFileCount()));
+    functionPointWindow.txt_external_interface_files.setText(String.valueOf(functionPointData.getExternalInterfaceFileCount()));
+
+    functionPointWindow.ext_ip_des_txt.setText(String.valueOf(functionPointData.getInputTotal()));
+    functionPointWindow.ext_op_des_txt.setText(String.valueOf(functionPointData.getOutputTotal()));
+    functionPointWindow.ext_inq_des_txt.setText(String.valueOf(functionPointData.getInquiryTotal()));
+    functionPointWindow.int_lf_des_txt.setText(String.valueOf(functionPointData.getLogicalFileTotal()));
+    functionPointWindow.ext_if_des_txt.setText(String.valueOf(functionPointData.getInterfaceFileTotal()));
+
+    setSelectedFactors(functionPointWindow.ext_ip_r,functionPointData.getInputFactor());
+    setSelectedFactors(functionPointWindow.ext_if_r,functionPointData.getInterfaceFileFactor());
+    setSelectedFactors(functionPointWindow.ext_inq_r,functionPointData.getInquiryFactor());
+    setSelectedFactors(functionPointWindow.ext_lf_r,functionPointData.getLogicalFileFactor());
+    setSelectedFactors(functionPointWindow.ext_op_r,functionPointData.getOutputFactor());
+
+    // TODO: 08/03/20 current_lang_1_des_txt change here
+
+    functionPointWindow.total_count_des_txt.setText(String.valueOf(functionPointData.getTotalCount()));
+    functionPointWindow.compute_fp_des_txt.setText(String.valueOf(functionPointData.getFunctionPointValue()));
+    }
     /**
      * Returns an ImageIcon, or null if the path was invalid.
      */
@@ -210,5 +279,17 @@ public class ActionListener_MainWindow implements ActionListener {
 
     private void exitTheApplication() {
         System.exit(0);
+    }
+
+    private void setSelectedFactors(ButtonGroup buttonGroup, int factor){
+        Enumeration<AbstractButton> button_group_enumerator = buttonGroup.getElements();
+        while(button_group_enumerator.hasMoreElements()){
+            AbstractButton someButton = button_group_enumerator.nextElement();
+            if(someButton.getText().equalsIgnoreCase(String.valueOf(factor))){
+                someButton.setSelected(false);
+                someButton.setSelected(true);
+                return;
+            }
+        }
     }
 }

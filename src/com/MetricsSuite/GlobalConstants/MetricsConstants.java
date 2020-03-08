@@ -58,6 +58,20 @@ public class MetricsConstants {
      * FunctionPanel
      */
     public static final String P_TAB_TITLE = "Function Points";
+    public static final String P_ALERT_CREATE_PROJECT ="Kindly create a new project.";
 
+    public static final String WEIGHTING_FACTORS = "Weighting Factors";
+    public static final String SIMPLE_AVERAGE_COMPLEX = "Simple    Average    Complex";
+    public static final String EXTERNAL_INPUTS = "External Inputs";
+    public static final String EXTERNAL_OUTPUTS = "External Outputs";
+    public static final String EXTERNAL_INQUIRIES = "External Inquiries";
+    public static final String INTERNAL_LOGICAL_FILES = "Internal Logical Files";
+    public static final String EXTERNAL_INTERFACE_FILES = "External Interface Files";
+    public static final String TOTAL_COUNT = "Total Count";
+    public static final String CURRENT_LANGUAGE = "Current language";
+    public static final int head_lbl_X = 300;
+    public static final int head_lbl_Y = 5;
+    public static final int head_lbl_WIDTH = 200;
+    public static final int si_av_cpl_lbl_WIDTH = 200;
 }
 

@@ -4,21 +4,21 @@ import java.io.Serializable;
 
 public class FunctionPointData implements Serializable {
 
-    long inputCount;
-    long outputCount;
-    long inquryCount;
-    long logicalFileCount;
-    long interfaceFileCount;
+    long externalInputCount;
+    long externalOutputCount;
+    long externalInquiriesCount;
+    long internalLogicalFileCount;
+    long externalInterfaceFileCount;
 
     int inputFactor;
     int outputFactor;
-    int inquryFactor;
+    int inquiryFactor;
     int logicalFileFactor;
     int interfaceFileFactor;
 
     long inputTotal;
     long outputTotal;
-    long inquryTotal;
+    long inquiryTotal;
     long logicalFileTotal;
     long interfaceFileTotal;
 
@@ -27,44 +27,44 @@ public class FunctionPointData implements Serializable {
 
     double functionPointValue;
 
-    public long getInputCount() {
-        return inputCount;
+    public long getExternalInputCount() {
+        return externalInputCount;
     }
 
-    public void setInputCount(long inputCount) {
-        this.inputCount = inputCount;
+    public void setExternalInputCount(long externalInputCount) {
+        this.externalInputCount = externalInputCount;
     }
 
-    public long getOutputCount() {
-        return outputCount;
+    public long getExternalOutputCount() {
+        return externalOutputCount;
     }
 
-    public void setOutputCount(long outputCount) {
-        this.outputCount = outputCount;
+    public void setExternalOutputCount(long externalOutputCount) {
+        this.externalOutputCount = externalOutputCount;
     }
 
-    public long getInquryCount() {
-        return inquryCount;
+    public long getExternalInquiriesCount() {
+        return externalInquiriesCount;
     }
 
-    public void setInquryCount(long inquryCount) {
-        this.inquryCount = inquryCount;
+    public void setExternalInquiriesCount(long externalInquiriesCount) {
+        this.externalInquiriesCount = externalInquiriesCount;
     }
 
-    public long getLogicalFileCount() {
-        return logicalFileCount;
+    public long getInternalLogicalFileCount() {
+        return internalLogicalFileCount;
     }
 
-    public void setLogicalFileCount(long logicalFileCount) {
-        this.logicalFileCount = logicalFileCount;
+    public void setInternalLogicalFileCount(long internalLogicalFileCount) {
+        this.internalLogicalFileCount = internalLogicalFileCount;
     }
 
-    public long getInterfaceFileCount() {
-        return interfaceFileCount;
+    public long getExternalInterfaceFileCount() {
+        return externalInterfaceFileCount;
     }
 
-    public void setInterfaceFileCount(long interfaceFileCount) {
-        this.interfaceFileCount = interfaceFileCount;
+    public void setExternalInterfaceFileCount(long externalInterfaceFileCount) {
+        this.externalInterfaceFileCount = externalInterfaceFileCount;
     }
 
     public int getInputFactor() {
@@ -83,12 +83,12 @@ public class FunctionPointData implements Serializable {
         this.outputFactor = outputFactor;
     }
 
-    public int getInquryFactor() {
-        return inquryFactor;
+    public int getInquiryFactor() {
+        return inquiryFactor;
     }
 
-    public void setInquryFactor(int inquryFactor) {
-        this.inquryFactor = inquryFactor;
+    public void setInquiryFactor(int inquiryFactor) {
+        this.inquiryFactor = inquiryFactor;
     }
 
     public int getLogicalFileFactor() {
@@ -123,12 +123,12 @@ public class FunctionPointData implements Serializable {
         this.outputTotal = outputTotal;
     }
 
-    public long getInquryTotal() {
-        return inquryTotal;
+    public long getInquiryTotal() {
+        return inquiryTotal;
     }
 
-    public void setInquryTotal(long inquryTotal) {
-        this.inquryTotal = inquryTotal;
+    public void setInquiryTotal(long inquiryTotal) {
+        this.inquiryTotal = inquiryTotal;
     }
 
     public long getLogicalFileTotal() {

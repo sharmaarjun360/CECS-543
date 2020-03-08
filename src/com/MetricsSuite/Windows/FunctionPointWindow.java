@@ -1,12 +1,14 @@
 package com.MetricsSuite.Windows;
 
 import com.MetricsSuite.ActionListeners.FunctionPointListner;
+import com.MetricsSuite.Alert.MetricsAlert;
+import com.MetricsSuite.GlobalConstants.MetricsConstants;
 import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.Enumeration;
 import java.util.List;
 
 public class FunctionPointWindow {
@@ -15,7 +17,8 @@ public class FunctionPointWindow {
     FunctionPointData fpData;
 
     public JButton compute_fp_btn, val_adjust_btn, compute_code_size_btn, change_lang_btn;
-    public JTextField ext_ip_txt, ext_op_txt, ext_inq_txt, int_lf_txt, ext_if_txt;
+    public JTextField txt_external_inputs, txt_external_outputs, txt_external_inquiries, txt_Internal_logical_files, txt_external_interface_files,txt_total_code_size;
+    // TODO: 08/03/20 change to label if possible
     public JTextField ext_ip_des_txt, ext_op_des_txt, ext_inq_des_txt, int_lf_des_txt, ext_if_des_txt;
     public JTextField total_count_des_txt, val_adj_des_txt, compute_fp_des_txt;
     public ButtonGroup ext_ip_r, ext_op_r, ext_inq_r, ext_lf_r, ext_if_r;
@@ -25,16 +28,21 @@ public class FunctionPointWindow {
     public JRadioButton ext_lf_r_s, ext_lf_r_a, ext_lf_r_c;
     public JRadioButton ext_if_r_s, ext_if_r_a, ext_if_r_c;
 
-    public FunctionPointWindow(MainWindow mainWindow){
+    public FunctionPointWindow(MainWindow mainWindow, boolean isSavedProject){
         this.mainWindow = mainWindow;
-        // TODO: 06/03/20 have a look 
-        this.createNewFunctionPointPanel();
+        // TODO: 06/03/20 have a look
+//        this.createNewFunctionPointPanel();
+        this.createFunctionPointDataObject(isSavedProject);
     }
 
     public FunctionPointData getFpData() {
         return fpData;
     }
 
+    /***
+     * This method Saves Function point window data to function Point, it is called every time an action is performed on Function point window.
+     * @param fpData
+     */
     public void setFpData(FunctionPointData fpData) {
         this.fpData = fpData;
     }
@@ -44,12 +52,16 @@ public class FunctionPointWindow {
      * @return
      */
 
-    private void createFunctionPointDataObject(){
+    private void createFunctionPointDataObject(boolean isSavedProject){
         fpData = new FunctionPointData();
         ProjectData projectData = mainWindow.metricsSuite.getProjectData();
-        List<FunctionPointData> arr = projectData.getFpArray();
-        arr.add(fpData);
-        projectData.setFpArray(arr);
+        if(projectData == null){ MetricsAlert.getInstance().showAlert(
+                this.mainWindow, MetricsConstants.P_ALERT_CREATE_PROJECT);
+        return;
+        }
+        if(!isSavedProject){
+            projectData.getFpArray().add(fpData);
+        }
     }
 
     /**
@@ -60,15 +72,15 @@ public class FunctionPointWindow {
         JPanel panel = new JPanel(false);
 
         //Objects of all label
-        JLabel head_lbl = new JLabel("Weighting Factors");
-        JLabel si_av_cpl_lbl = new JLabel("Simple    Average    Complex");
-        JLabel ext_ip_lbl = new JLabel("External Inputs");
-        JLabel ext_op_lbl = new JLabel("External Outputs");
-        JLabel ext_inq_lbl = new JLabel("External Inquiries");
-        JLabel int_lf_lbl = new JLabel("Internal Logical Files");
-        JLabel ext_if_lbl = new JLabel("External Interface Files");
-        JLabel total_count_lbl = new JLabel("Total Count");
-        JLabel current_lang_lbl = new JLabel("Current language");
+        JLabel head_lbl = new JLabel(MetricsConstants.WEIGHTING_FACTORS);
+        JLabel si_av_cpl_lbl = new JLabel(MetricsConstants.SIMPLE_AVERAGE_COMPLEX);
+        JLabel ext_ip_lbl = new JLabel(MetricsConstants.EXTERNAL_INPUTS);
+        JLabel ext_op_lbl = new JLabel(MetricsConstants.EXTERNAL_OUTPUTS);
+        JLabel ext_inq_lbl = new JLabel(MetricsConstants.EXTERNAL_INQUIRIES);
+        JLabel int_lf_lbl = new JLabel(MetricsConstants.INTERNAL_LOGICAL_FILES);
+        JLabel ext_if_lbl = new JLabel(MetricsConstants.EXTERNAL_INTERFACE_FILES);
+        JLabel total_count_lbl = new JLabel(MetricsConstants.TOTAL_COUNT);
+        JLabel current_lang_lbl = new JLabel(MetricsConstants.CURRENT_LANGUAGE);
 
         // Objects of all buttons
         compute_fp_btn = new JButton("Compute FP");
@@ -147,11 +159,11 @@ public class FunctionPointWindow {
 
 
         //objects of text boxes
-        ext_ip_txt = new JTextField();
-        ext_op_txt = new JTextField();
-        ext_inq_txt = new JTextField();
-        int_lf_txt = new JTextField();
-        ext_if_txt = new JTextField();
+        txt_external_inputs = new JTextField();
+        txt_external_outputs = new JTextField();
+        txt_external_inquiries = new JTextField();
+        txt_Internal_logical_files = new JTextField();
+        txt_external_interface_files = new JTextField();
         ext_ip_des_txt = new JTextField();
         ext_op_des_txt = new JTextField();
         ext_inq_des_txt = new JTextField();
@@ -164,11 +176,11 @@ public class FunctionPointWindow {
         JTextField current_lang_2_des_txt = new JTextField();
 
         // add focus listner
-        ext_ip_txt.addFocusListener(fpListner);
-        ext_op_txt.addFocusListener(fpListner);
-        ext_inq_txt.addFocusListener(fpListner);
-        int_lf_txt.addFocusListener(fpListner);
-        ext_if_txt.addFocusListener(fpListner);
+        txt_external_inputs.addFocusListener(fpListner);
+        txt_external_outputs.addFocusListener(fpListner);
+        txt_external_inquiries.addFocusListener(fpListner);
+        txt_Internal_logical_files.addFocusListener(fpListner);
+        txt_external_interface_files.addFocusListener(fpListner);
 
         // Disable text box
         ext_ip_des_txt.setEditable(false);
@@ -183,9 +195,9 @@ public class FunctionPointWindow {
         current_lang_2_des_txt.setEditable(false);
 
         // Setting location and size of label
-        head_lbl.setBounds(300,5,200,30);
+        head_lbl.setBounds(MetricsConstants.head_lbl_X, MetricsConstants.head_lbl_Y, MetricsConstants.head_lbl_WIDTH,30);
         head_lbl.setFont(new Font("", Font.BOLD, 15));
-        si_av_cpl_lbl.setBounds(275,35,200,20);
+        si_av_cpl_lbl.setBounds(275,35, MetricsConstants.si_av_cpl_lbl_WIDTH,20);
         si_av_cpl_lbl.setFont(new Font("", Font.BOLD, 12));
         ext_ip_lbl.setBounds(10,60,150,20);
         ext_op_lbl.setBounds(10,90,150,20);
@@ -196,11 +208,11 @@ public class FunctionPointWindow {
         current_lang_lbl.setBounds(205,330,150,20);
 
         //setting size and location of textbox
-        ext_ip_txt.setBounds(160,60,50,20);
-        ext_op_txt.setBounds(160,90,50,20);
-        ext_inq_txt.setBounds(160,120,50,20);
-        int_lf_txt.setBounds(160,150,50,20);
-        ext_if_txt.setBounds(160,180,50,20);
+        txt_external_inputs.setBounds(160,60,50,20);
+        txt_external_outputs.setBounds(160,90,50,20);
+        txt_external_inquiries.setBounds(160,120,50,20);
+        txt_Internal_logical_files.setBounds(160,150,50,20);
+        txt_external_interface_files.setBounds(160,180,50,20);
         ext_ip_des_txt.setBounds(460,60,50,20);
         ext_op_des_txt.setBounds(460,90,50,20);
         ext_inq_des_txt.setBounds(460,120,50,20);
@@ -248,11 +260,11 @@ public class FunctionPointWindow {
         panel.add(current_lang_lbl);
 
         //adding text boxes to panel
-        panel.add(ext_ip_txt);
-        panel.add(ext_op_txt);
-        panel.add(ext_inq_txt);
-        panel.add(int_lf_txt);
-        panel.add(ext_if_txt);
+        panel.add(txt_external_inputs);
+        panel.add(txt_external_outputs);
+        panel.add(txt_external_inquiries);
+        panel.add(txt_Internal_logical_files);
+        panel.add(txt_external_interface_files);
         panel.add(ext_ip_des_txt);
         panel.add(ext_op_des_txt);
         panel.add(ext_inq_des_txt);
@@ -290,4 +302,5 @@ public class FunctionPointWindow {
         panel.setLayout(null);
         return panel;
     }
+
 }

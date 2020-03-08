@@ -9,8 +9,7 @@ import java.awt.*;
 
 public class MainWindow extends JFrame {
 
-    MetricsSuite metricsSuite;
-
+    public MetricsSuite metricsSuite;
     public JTabbedPane mainTabbedPane = null;
     public MainWindow(MetricsSuite parent){
         initComponent();
