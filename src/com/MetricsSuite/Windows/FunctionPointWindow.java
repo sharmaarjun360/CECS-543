@@ -5,7 +5,6 @@ import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
 
 import javax.swing.*;
-import javax.swing.text.*;
 import java.awt.*;
 import java.util.List;
 
@@ -27,7 +26,8 @@ public class FunctionPointWindow {
 
     public FunctionPointWindow(MainWindow mainWindow){
         this.mainWindow = mainWindow;
-        // TODO: 06/03/20 have a look 
+        // TODO: 06/03/20 have a look
+        this.createFunctionPointDataObject();
         this.createNewFunctionPointPanel();
     }
 
@@ -160,7 +160,6 @@ public class FunctionPointWindow {
         total_count_des_txt = new JTextField();
         compute_fp_des_txt = new JTextField();
         val_adj_des_txt = new JTextField("0");
-
         JTextField current_lang_1_des_txt = new JTextField("Java");
         JTextField current_lang_2_des_txt = new JTextField();
 
@@ -288,63 +287,7 @@ public class FunctionPointWindow {
         panel.add(compute_code_size_btn);
         panel.add(change_lang_btn);
 
-        //Adding Validation to text box
-
-        PlainDocument doc_ext_ip_txt = (PlainDocument) ext_ip_txt.getDocument();
-        PlainDocument doc_ext_op_txt = (PlainDocument) ext_op_txt.getDocument();
-        PlainDocument doc_ext_inq_txt = (PlainDocument) ext_inq_txt.getDocument();
-        PlainDocument doc_int_lf_txt = (PlainDocument) int_lf_txt.getDocument();
-        PlainDocument doc_ext_if_txt = (PlainDocument) ext_if_txt.getDocument();
-        doc_ext_ip_txt.setDocumentFilter(new MyIntFilter());
-        doc_ext_op_txt.setDocumentFilter(new MyIntFilter());
-        doc_ext_inq_txt.setDocumentFilter(new MyIntFilter());
-        doc_int_lf_txt.setDocumentFilter(new MyIntFilter());
-        doc_ext_if_txt.setDocumentFilter(new MyIntFilter());
-
         panel.setLayout(null);
         return panel;
-    }
-}
-class MyIntFilter extends DocumentFilter {
-    @Override
-    public void insertString(FilterBypass fb, int offset, String string,
-                             AttributeSet attr) throws BadLocationException {
-
-        Document doc = fb.getDocument();
-        StringBuilder sb = new StringBuilder();
-        sb.append(doc.getText(0, doc.getLength()));
-        sb.insert(offset, string);
-
-        if (test(sb.toString())) {
-            super.insertString(fb, offset, string, attr);
-        } else {
-            Toolkit.getDefaultToolkit().beep();
-        }
-    }
-
-    private boolean test(String text) {
-        try {
-            Integer.parseInt(text);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    @Override
-    public void replace(FilterBypass fb, int offset, int length, String text,
-                        AttributeSet attrs) throws BadLocationException {
-
-        Document doc = fb.getDocument();
-        StringBuilder sb = new StringBuilder();
-        sb.append(doc.getText(0, doc.getLength()));
-        sb.replace(offset, offset + length, text);
-
-        if (test(sb.toString())) {
-            super.replace(fb, offset, length, text, attrs);
-        } else {
-            Toolkit.getDefaultToolkit().beep();
-        }
-
     }
 }

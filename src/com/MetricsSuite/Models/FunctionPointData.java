@@ -25,6 +25,8 @@ public class FunctionPointData implements Serializable {
     long totalCount;
     int vafTotal = 0;
 
+    int[] vafValue = new int[14];
+
     double functionPointValue;
 
     public long getInputCount() {
@@ -169,5 +171,13 @@ public class FunctionPointData implements Serializable {
 
     public void setFunctionPointValue(double functionPointValue) {
         this.functionPointValue = functionPointValue;
+    }
+
+    public int[] getVafValue() {
+        return vafValue;
+    }
+
+    public void setVafValue(int[] vafValue) {
+        this.vafValue = vafValue;
     }
 }
