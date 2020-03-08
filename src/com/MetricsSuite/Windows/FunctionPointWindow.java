@@ -176,11 +176,11 @@ public class FunctionPointWindow {
         JTextField current_lang_1_des_txt = new JTextField("Java");
         JTextField current_lang_2_des_txt = new JTextField();
 
-        PlainDocument doc_ext_ip_txt = (PlainDocument) ext_ip_txt.getDocument();
-        PlainDocument doc_ext_op_txt = (PlainDocument) ext_op_txt.getDocument();
-        PlainDocument doc_ext_inq_txt = (PlainDocument) ext_inq_txt.getDocument();
-        PlainDocument doc_int_lf_txt = (PlainDocument) int_lf_txt.getDocument();
-        PlainDocument doc_ext_if_txt = (PlainDocument) ext_if_txt.getDocument();
+        PlainDocument doc_ext_ip_txt = (PlainDocument) txt_external_inputs.getDocument();
+        PlainDocument doc_ext_op_txt = (PlainDocument) txt_external_outputs.getDocument();
+        PlainDocument doc_ext_inq_txt = (PlainDocument) txt_external_inquiries.getDocument();
+        PlainDocument doc_int_lf_txt = (PlainDocument) txt_Internal_logical_files.getDocument();
+        PlainDocument doc_ext_if_txt = (PlainDocument) txt_external_interface_files.getDocument();
         doc_ext_ip_txt.setDocumentFilter(new MyIntFilter());
         doc_ext_op_txt.setDocumentFilter(new MyIntFilter());
         doc_ext_inq_txt.setDocumentFilter(new MyIntFilter());
