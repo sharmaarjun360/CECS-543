@@ -5,7 +5,6 @@ import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.List;
 
@@ -27,7 +26,8 @@ public class FunctionPointWindow {
 
     public FunctionPointWindow(MainWindow mainWindow){
         this.mainWindow = mainWindow;
-        // TODO: 06/03/20 have a look 
+        // TODO: 06/03/20 have a look
+        this.createFunctionPointDataObject();
         this.createNewFunctionPointPanel();
     }
 

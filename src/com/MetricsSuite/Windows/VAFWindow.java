@@ -4,13 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class VAFWindow extends JFrame {
     public JButton done_btn, cancel_btn;
     private Container container = getContentPane();
-    public double vaf, tdi;
+    List<JComboBox<Integer>> comboboxArr = new ArrayList<>();
 
-    public  VAFWindow(){
+    FunctionPointWindow fpWindow;
+
+    Integer[] vafValueOption = {0, 1, 2, 3, 4, 5};
+
+    public  VAFWindow(FunctionPointWindow fpWindow){
+
+        this.fpWindow = fpWindow;
+
         setTitle("Set VAF values");
         container.setLayout(null);
         setVisible(true);
@@ -35,105 +45,6 @@ public class VAFWindow extends JFrame {
         JLabel VAF13_lbl = new JLabel("Is the system design ofr multiple installation in different organizations?");
         JLabel VAF14_lbl = new JLabel("Is the application designed to facilitate change and for ease of use by the user?");
 
-        JComboBox<String> VAF1_cmb = new JComboBox<String>();
-        VAF1_cmb.addItem("0");
-        VAF1_cmb.addItem("1");
-        VAF1_cmb.addItem("2");
-        VAF1_cmb.addItem("3");
-        VAF1_cmb.addItem("4");
-        VAF1_cmb.addItem("5");
-        JComboBox<String> VAF2_cmb = new JComboBox<String>();
-        VAF2_cmb.addItem("0");
-        VAF2_cmb.addItem("1");
-        VAF2_cmb.addItem("2");
-        VAF2_cmb.addItem("3");
-        VAF2_cmb.addItem("4");
-        VAF2_cmb.addItem("5");
-        JComboBox<String> VAF3_cmb = new JComboBox<String>();
-        VAF3_cmb.addItem("0");
-        VAF3_cmb.addItem("1");
-        VAF3_cmb.addItem("2");
-        VAF3_cmb.addItem("3");
-        VAF3_cmb.addItem("4");
-        VAF3_cmb.addItem("5");
-        JComboBox<String> VAF4_cmb = new JComboBox<String>();
-        VAF4_cmb.addItem("0");
-        VAF4_cmb.addItem("1");
-        VAF4_cmb.addItem("2");
-        VAF4_cmb.addItem("3");
-        VAF4_cmb.addItem("4");
-        VAF4_cmb.addItem("5");
-        JComboBox<String> VAF5_cmb = new JComboBox<String>();
-        VAF5_cmb.addItem("0");
-        VAF5_cmb.addItem("1");
-        VAF5_cmb.addItem("2");
-        VAF5_cmb.addItem("3");
-        VAF5_cmb.addItem("4");
-        VAF5_cmb.addItem("5");
-        JComboBox<String> VAF6_cmb = new JComboBox<String>();
-        VAF6_cmb.addItem("0");
-        VAF6_cmb.addItem("1");
-        VAF6_cmb.addItem("2");
-        VAF6_cmb.addItem("3");
-        VAF6_cmb.addItem("4");
-        VAF6_cmb.addItem("5");
-        JComboBox<String> VAF7_cmb = new JComboBox<String>();
-        VAF7_cmb.addItem("0");
-        VAF7_cmb.addItem("1");
-        VAF7_cmb.addItem("2");
-        VAF7_cmb.addItem("3");
-        VAF7_cmb.addItem("4");
-        VAF7_cmb.addItem("5");
-        JComboBox<String> VAF8_cmb = new JComboBox<String>();
-        VAF8_cmb.addItem("0");
-        VAF8_cmb.addItem("1");
-        VAF8_cmb.addItem("2");
-        VAF8_cmb.addItem("3");
-        VAF8_cmb.addItem("4");
-        VAF8_cmb.addItem("5");
-        JComboBox<String> VAF9_cmb = new JComboBox<String>();
-        VAF9_cmb.addItem("0");
-        VAF9_cmb.addItem("1");
-        VAF9_cmb.addItem("2");
-        VAF9_cmb.addItem("3");
-        VAF9_cmb.addItem("4");
-        VAF9_cmb.addItem("5");
-        JComboBox<String> VAF10_cmb = new JComboBox<String>();
-        VAF10_cmb.addItem("0");
-        VAF10_cmb.addItem("1");
-        VAF10_cmb.addItem("2");
-        VAF10_cmb.addItem("3");
-        VAF10_cmb.addItem("4");
-        VAF10_cmb.addItem("5");
-        JComboBox<String> VAF11_cmb = new JComboBox<String>();
-        VAF11_cmb.addItem("0");
-        VAF11_cmb.addItem("1");
-        VAF11_cmb.addItem("2");
-        VAF11_cmb.addItem("3");
-        VAF11_cmb.addItem("4");
-        VAF11_cmb.addItem("5");
-        JComboBox<String> VAF12_cmb = new JComboBox<String>();
-        VAF12_cmb.addItem("0");
-        VAF12_cmb.addItem("1");
-        VAF12_cmb.addItem("2");
-        VAF12_cmb.addItem("3");
-        VAF12_cmb.addItem("4");
-        VAF12_cmb.addItem("5");
-        JComboBox<String> VAF13_cmb = new JComboBox<String>();
-        VAF13_cmb.addItem("0");
-        VAF13_cmb.addItem("1");
-        VAF13_cmb.addItem("2");
-        VAF13_cmb.addItem("3");
-        VAF13_cmb.addItem("4");
-        VAF13_cmb.addItem("5");
-        JComboBox<String> VAF14_cmb = new JComboBox<String>();
-        VAF14_cmb.addItem("0");
-        VAF14_cmb.addItem("1");
-        VAF14_cmb.addItem("2");
-        VAF14_cmb.addItem("3");
-        VAF14_cmb.addItem("4");
-        VAF14_cmb.addItem("5");
-
         heading_lbl.setBounds(5,5,500,20);
         VAF1_lbl.setBounds(5,35,600,20);
         VAF2_lbl.setBounds(5,65,600,20);
@@ -150,20 +61,15 @@ public class VAFWindow extends JFrame {
         VAF13_lbl.setBounds(5,395,600,20);
         VAF14_lbl.setBounds(5,425,600,20);
 
-        VAF1_cmb.setBounds(640,35,60,20);
-        VAF2_cmb.setBounds(640,65,60,20);
-        VAF3_cmb.setBounds(640,95,60,20);
-        VAF4_cmb.setBounds(640,125,60,20);
-        VAF5_cmb.setBounds(640,155,60,20);
-        VAF6_cmb.setBounds(640,185,60,20);
-        VAF7_cmb.setBounds(640,215,60,20);
-        VAF8_cmb.setBounds(640,245,60,20);
-        VAF9_cmb.setBounds(640,275,60,20);
-        VAF10_cmb.setBounds(640,305,60,20);
-        VAF11_cmb.setBounds(640,335,60,20);
-        VAF12_cmb.setBounds(640,365,60,20);
-        VAF13_cmb.setBounds(640,395,60,20);
-        VAF14_cmb.setBounds(640,425,60,20);
+        int[] vafValueArr = fpWindow.getFpData().getVafValue();
+
+        for(int i =0 ; i< 14; i++){
+            JComboBox<Integer> cmb = new JComboBox<Integer>(vafValueOption);
+            cmb.setBounds(640,35 + (i*30),60,20);
+            cmb.setSelectedIndex(vafValueArr[i]);
+            add(cmb);
+            comboboxArr.add(i,cmb);
+        }
 
         done_btn.setBounds(5,490,80,20);
         cancel_btn.setBounds(95,490,80,20);
@@ -184,32 +90,27 @@ public class VAFWindow extends JFrame {
         add(VAF13_lbl);
         add(VAF14_lbl);
 
-        add(VAF1_cmb);
-        add(VAF2_cmb);
-        add(VAF3_cmb);
-        add(VAF4_cmb);
-        add(VAF5_cmb);
-        add(VAF6_cmb);
-        add(VAF7_cmb);
-        add(VAF8_cmb);
-        add(VAF9_cmb);
-        add(VAF10_cmb);
-        add(VAF11_cmb);
-        add(VAF12_cmb);
-        add(VAF13_cmb);
-        add(VAF14_cmb);
-
         add(done_btn);
         add(cancel_btn);
 
         done_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tdi = Integer.parseInt(VAF1_cmb.getSelectedItem().toString())+Integer.parseInt(VAF2_cmb.getSelectedItem().toString())+Integer.parseInt(VAF3_cmb.getSelectedItem().toString())+Integer.parseInt(VAF14_cmb.getSelectedItem().toString())+Integer.parseInt(VAF5_cmb.getSelectedItem().toString())+Integer.parseInt(VAF6_cmb.getSelectedItem().toString())+Integer.parseInt(VAF7_cmb.getSelectedItem().toString())+Integer.parseInt(VAF8_cmb.getSelectedItem().toString())+Integer.parseInt(VAF9_cmb.getSelectedItem().toString())+Integer.parseInt(VAF10_cmb.getSelectedItem().toString())+Integer.parseInt(VAF11_cmb.getSelectedItem().toString())+Integer.parseInt(VAF12_cmb.getSelectedItem().toString())+Integer.parseInt(VAF13_cmb.getSelectedItem().toString())+Integer.parseInt(VAF14_cmb.getSelectedItem().toString());
-                vaf = 0.65 + (tdi/100);
+
+                int[] vafValueArr = fpWindow.getFpData().getVafValue();
+                int vaf = 0;
+
+                for(int i =0; i<14;i++){
+                    vafValueArr[i] = (int) comboboxArr.get(i).getSelectedItem();
+                    vaf += vafValueArr[i];
+                }
+
+                fpWindow.val_adj_des_txt.setText(Integer.toString(vaf));
+                fpWindow.getFpData().setVafTotal(vaf);
                 dispose();
             }
         });
+
         cancel_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
