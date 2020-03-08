@@ -44,7 +44,7 @@ public class FunctionPointListner implements ActionListener, FocusListener {
 
         if(e.getSource() == fpWindow.val_adjust_btn){
             // open VAF window
-            new VAFWindow();
+            new VAFWindow(fpWindow);
         }
 
         if(e.getSource() == fpWindow.compute_code_size_btn){
