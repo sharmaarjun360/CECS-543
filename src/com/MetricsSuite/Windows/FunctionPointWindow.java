@@ -233,10 +233,10 @@ public class FunctionPointWindow {
         int_lf_des_txt.setBounds(460,150,85,20);
         ext_if_des_txt.setBounds(460,180,85,20);
         total_count_des_txt.setBounds(460,210,85,20);
-        compute_fp_des_txt.setBounds(420,250,90,20);
-        val_adj_des_txt.setBounds(460,290,50,20);
-        current_lang_1_des_txt.setBounds(310,330,90,20);
-        current_lang_2_des_txt.setBounds(420,330,90,20);
+        compute_fp_des_txt.setBounds(430,250,115,20);
+        val_adj_des_txt.setBounds(495,290,50,20);
+        current_lang_1_des_txt.setBounds(315,330,100,20);
+        current_lang_2_des_txt.setBounds(430,330,115,20);
 
         //setting size and location of radiobutton
         ext_ip_r_s.setBounds(285,60,50,20);
