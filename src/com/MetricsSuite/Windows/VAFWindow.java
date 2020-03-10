@@ -1,5 +1,6 @@
 package com.MetricsSuite.Windows;
 
+import com.MetricsSuite.GlobalConstants.MetricsConstants;
 import com.MetricsSuite.Models.FunctionPointData;
 
 import javax.swing.*;
@@ -26,7 +27,8 @@ public class VAFWindow extends JFrame {
         setTitle("Set VAF values");
         container.setLayout(null);
         setVisible(true);
-        setSize(720,600);
+        setSize(750,550);
+        setLocation(MetricsConstants.LANGUAGE_WINDOW_LOCATION_X,MetricsConstants.LANGUAGE_WINDOW_LOCATION_Y);
 
         done_btn = new JButton("Done");
         cancel_btn = new JButton("Cancel");
@@ -47,34 +49,34 @@ public class VAFWindow extends JFrame {
         JLabel VAF13_lbl = new JLabel("Is the system design ofr multiple installation in different organizations?");
         JLabel VAF14_lbl = new JLabel("Is the application designed to facilitate change and for ease of use by the user?");
 
-        heading_lbl.setBounds(5,5,500,20);
-        VAF1_lbl.setBounds(5,35,600,20);
-        VAF2_lbl.setBounds(5,65,600,20);
-        VAF3_lbl.setBounds(5,95,600,20);
-        VAF4_lbl.setBounds(5,125,600,20);
-        VAF5_lbl.setBounds(5,155,600,20);
-        VAF6_lbl.setBounds(5,185,600,20);
-        VAF7_lbl.setBounds(5,215,600,20);
-        VAF8_lbl.setBounds(5,245,600,20);
-        VAF9_lbl.setBounds(5,275,600,20);
-        VAF10_lbl.setBounds(5,305,600,20);
-        VAF11_lbl.setBounds(5,335,600,20);
-        VAF12_lbl.setBounds(5,365,600,20);
-        VAF13_lbl.setBounds(5,395,600,20);
-        VAF14_lbl.setBounds(5,425,600,20);
+        heading_lbl.setBounds(15,15,500,20);
+        VAF1_lbl.setBounds(15,45,660,20);
+        VAF2_lbl.setBounds(15,75,660,20);
+        VAF3_lbl.setBounds(15,105,660,20);
+        VAF4_lbl.setBounds(15,135,660,20);
+        VAF5_lbl.setBounds(15,165,660,20);
+        VAF6_lbl.setBounds(15,195,660,20);
+        VAF7_lbl.setBounds(15,225,660,20);
+        VAF8_lbl.setBounds(15,255,660,20);
+        VAF9_lbl.setBounds(15,285,660,20);
+        VAF10_lbl.setBounds(15,315,660,20);
+        VAF11_lbl.setBounds(15,345,660,20);
+        VAF12_lbl.setBounds(15,375,660,20);
+        VAF13_lbl.setBounds(15,405,660,20);
+        VAF14_lbl.setBounds(15,435,660,20);
 
         int[] vafValueArr = fpWindow.getFpData().getVafValue();
 
         for(int i =0 ; i< 14; i++){
             JComboBox<Integer> cmb = new JComboBox<Integer>(vafValueOption);
-            cmb.setBounds(640,35 + (i*30),60,20);
+            cmb.setBounds(680,45 + (i*30),60,20);
             cmb.setSelectedIndex(vafValueArr[i]);
             add(cmb);
             comboboxArr.add(i,cmb);
         }
 
-        done_btn.setBounds(5,490,80,20);
-        cancel_btn.setBounds(95,490,80,20);
+        done_btn.setBounds(15,490,80,20);
+        cancel_btn.setBounds(105,490,80,20);
 
         add(heading_lbl);
         add(VAF1_lbl);
