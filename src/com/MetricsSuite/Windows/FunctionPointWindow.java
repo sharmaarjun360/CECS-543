@@ -9,8 +9,6 @@ import com.MetricsSuite.Models.ProjectData;
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
-import java.util.Enumeration;
-import java.util.List;
 
 public class FunctionPointWindow {
 
@@ -229,12 +227,12 @@ public class FunctionPointWindow {
         txt_external_inquiries.setBounds(160,120,50,20);
         txt_Internal_logical_files.setBounds(160,150,50,20);
         txt_external_interface_files.setBounds(160,180,50,20);
-        ext_ip_des_txt.setBounds(460,60,50,20);
-        ext_op_des_txt.setBounds(460,90,50,20);
-        ext_inq_des_txt.setBounds(460,120,50,20);
-        int_lf_des_txt.setBounds(460,150,50,20);
-        ext_if_des_txt.setBounds(460,180,50,20);
-        total_count_des_txt.setBounds(460,210,50,20);
+        ext_ip_des_txt.setBounds(460,60,85,20);
+        ext_op_des_txt.setBounds(460,90,85,20);
+        ext_inq_des_txt.setBounds(460,120,85,20);
+        int_lf_des_txt.setBounds(460,150,85,20);
+        ext_if_des_txt.setBounds(460,180,85,20);
+        total_count_des_txt.setBounds(460,210,85,20);
         compute_fp_des_txt.setBounds(420,250,90,20);
         val_adj_des_txt.setBounds(460,290,50,20);
         current_lang_1_des_txt.setBounds(310,330,90,20);
