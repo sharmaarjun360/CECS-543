@@ -1,10 +1,10 @@
 package com.MetricsSuite.Windows;
 
+import com.MetricsSuite.Alert.MetricsAlert;
 import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.LanguagePreference;
 import com.MetricsSuite.GlobalConstants.MetricsConstants;
 import com.MetricsSuite.Models.ProjectData;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,6 +39,11 @@ public class LanguageWindow extends JFrame implements ActionListener {
     public LanguageWindow(MainWindow mainWindow){
         isDefaultLanguageWindow = true;
         this.mainWindow = mainWindow;
+        ProjectData projectData = mainWindow.metricsSuite.getProjectData();
+        if(projectData == null){
+            MetricsAlert.getInstance().showAlert(this.mainWindow, MetricsConstants.P_ALERT_CREATE_PROJECT);
+            return;
+        }
         initilizeData();
         container.setLayout(null);
         initComponent();
