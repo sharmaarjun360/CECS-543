@@ -29,8 +29,8 @@ public class FunctionPointData implements Serializable {
 
     long functionPointValue;
 
-    String selectedLanguage;
-    int languageCodeSize;
+    String selectedLanguage = "Java";
+    int languageCodeSize = 55;
     long totalCodeSize;
 
     public long getExternalInputCount() {
