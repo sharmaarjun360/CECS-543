@@ -27,7 +27,11 @@ public class FunctionPointData implements Serializable {
 
     int[] vafValue = new int[14];
 
-    double functionPointValue;
+    long functionPointValue;
+
+    String selectedLanguage = "Java";
+    int languageCodeSize = 55;
+    long totalCodeSize;
 
     public long getExternalInputCount() {
         return externalInputCount;
@@ -165,11 +169,11 @@ public class FunctionPointData implements Serializable {
         this.vafTotal = vafTotal;
     }
 
-    public double getFunctionPointValue() {
+    public long getFunctionPointValue() {
         return functionPointValue;
     }
 
-    public void setFunctionPointValue(double functionPointValue) {
+    public void setFunctionPointValue(long functionPointValue) {
         this.functionPointValue = functionPointValue;
     }
 
@@ -179,5 +183,29 @@ public class FunctionPointData implements Serializable {
 
     public void setVafValue(int[] vafValue) {
         this.vafValue = vafValue;
+    }
+
+    public String getSelectedLanguage() {
+        return selectedLanguage;
+    }
+
+    public void setSelectedLanguage(String selectedLanguage) {
+        this.selectedLanguage = selectedLanguage;
+    }
+
+    public int getLanguageCodeSize() {
+        return languageCodeSize;
+    }
+
+    public void setLanguageCodeSize(int languageCodeSize) {
+        this.languageCodeSize = languageCodeSize;
+    }
+
+    public long getTotalCodeSize() {
+        return totalCodeSize;
+    }
+
+    public void setTotalCodeSize(long totalCodeSize) {
+        this.totalCodeSize = totalCodeSize;
     }
 }

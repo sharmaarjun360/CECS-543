@@ -36,9 +36,12 @@ public class FunctionPointListner implements ActionListener, FocusListener {
                 long countTotal = Long.parseLong(countTotalText);
                 int vafTotal = Integer.parseInt(vafText);
 
-                fpWindow.compute_fp_des_txt.setText(Double.toString(countTotal * (0.65 + (0.01 * vafTotal))));
-                fpData.setFunctionPointValue((countTotal * (0.65 + (0.01 * vafTotal))));
+                long fpValue = Math.round(countTotal * (0.65 + (0.01 * vafTotal)));
+                fpData.setFunctionPointValue(fpValue);
+
+                fpWindow.compute_fp_des_txt.setText(Long.toString(fpValue));
             } else {
+                fpData.setFunctionPointValue(-1);
                 fpWindow.compute_fp_des_txt.setText(null);
                 fpData.setFunctionPointValue((long) 0.0);
             }
@@ -52,11 +55,23 @@ public class FunctionPointListner implements ActionListener, FocusListener {
         if(e.getSource() == fpWindow.compute_code_size_btn){
             // TODO: 07/03/20
             // calculate code size for selected language
+
+            double fpValue = fpData.getFunctionPointValue();
+            int languageCodeSize = fpData.getLanguageCodeSize();
+
+            if(fpValue > 0 && languageCodeSize > 0){
+                long codeSize = fpData.getFunctionPointValue() * fpData.getLanguageCodeSize();
+                fpData.setTotalCodeSize(codeSize);
+                fpWindow.current_lang_2_des_txt.setText(Long.toString(codeSize));
+            } else {
+                fpData.setTotalCodeSize(-1);
+                fpWindow.current_lang_2_des_txt.setText(null);
+            }
         }
 
         if(e.getSource() == fpWindow.change_lang_btn){
             // open language window
-            LanguageWindow languageWindow = new LanguageWindow();
+            LanguageWindow languageWindow = new LanguageWindow(fpWindow);
             languageWindow.setVisible(true);
         }
 

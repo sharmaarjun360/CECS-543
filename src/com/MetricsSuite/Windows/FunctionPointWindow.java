@@ -28,6 +28,7 @@ public class FunctionPointWindow {
     public JRadioButton ext_inq_r_s, ext_inq_r_a, ext_inq_r_c;
     public JRadioButton ext_lf_r_s, ext_lf_r_a, ext_lf_r_c;
     public JRadioButton ext_if_r_s, ext_if_r_a, ext_if_r_c;
+    public JTextField current_lang_1_des_txt, current_lang_2_des_txt;
 
     public FunctionPointWindow(MainWindow mainWindow, boolean isSavedProject){
         this.mainWindow = mainWindow;
@@ -173,8 +174,8 @@ public class FunctionPointWindow {
         total_count_des_txt = new JTextField();
         compute_fp_des_txt = new JTextField();
         val_adj_des_txt = new JTextField("0");
-        JTextField current_lang_1_des_txt = new JTextField("Java");
-        JTextField current_lang_2_des_txt = new JTextField();
+        current_lang_1_des_txt = new JTextField("Java");
+        current_lang_2_des_txt = new JTextField();
 
         PlainDocument doc_ext_ip_txt = (PlainDocument) txt_external_inputs.getDocument();
         PlainDocument doc_ext_op_txt = (PlainDocument) txt_external_outputs.getDocument();
