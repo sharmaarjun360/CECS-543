@@ -248,8 +248,7 @@ public class ActionListener_MainWindow implements ActionListener {
         functionPointWindow.txt_external_inquiries.setText(String.valueOf(functionPointData.getExternalInquiriesCount()));
         functionPointWindow.txt_Internal_logical_files.setText(String.valueOf(functionPointData.getInternalLogicalFileCount()));
         functionPointWindow.txt_external_interface_files.setText(String.valueOf(functionPointData.getExternalInterfaceFileCount()));
-
-<<<<<<< HEAD
+        
     functionPointWindow.total_count_des_txt.setText(String.valueOf(functionPointData.getTotalCount()));
     functionPointWindow.compute_fp_des_txt.setText(String.valueOf(functionPointData.getFunctionPointValue()));
 
@@ -259,25 +258,16 @@ public class ActionListener_MainWindow implements ActionListener {
     setSelectedFactors(functionPointWindow.ext_lf_r,functionPointData.getLogicalFileFactor());
     setSelectedFactors(functionPointWindow.ext_op_r,functionPointData.getOutputFactor());
 
-    // TODO: 08/03/20 current_lang_1_des_txt change here
-=======
         functionPointWindow.ext_ip_des_txt.setText(String.valueOf(functionPointData.getInputTotal()));
         functionPointWindow.ext_op_des_txt.setText(String.valueOf(functionPointData.getOutputTotal()));
         functionPointWindow.ext_inq_des_txt.setText(String.valueOf(functionPointData.getInquiryTotal()));
         functionPointWindow.int_lf_des_txt.setText(String.valueOf(functionPointData.getLogicalFileTotal()));
         functionPointWindow.ext_if_des_txt.setText(String.valueOf(functionPointData.getInterfaceFileTotal()));
 
-        setSelectedFactors(functionPointWindow.ext_ip_r,functionPointData.getInputFactor());
-        setSelectedFactors(functionPointWindow.ext_if_r,functionPointData.getInterfaceFileFactor());
-        setSelectedFactors(functionPointWindow.ext_inq_r,functionPointData.getInquiryFactor());
-        setSelectedFactors(functionPointWindow.ext_lf_r,functionPointData.getLogicalFileFactor());
-        setSelectedFactors(functionPointWindow.ext_op_r,functionPointData.getOutputFactor());
+
 
         // TODO: 08/03/20 current_lang_1_des_txt change here
 
-        functionPointWindow.total_count_des_txt.setText(String.valueOf(functionPointData.getTotalCount()));
-        functionPointWindow.compute_fp_des_txt.setText(String.valueOf(functionPointData.getFunctionPointValue()));
->>>>>>> 1db2497f160c652521bac308c6360f6e5d70387b
     }
     /**
      * Returns an ImageIcon, or null if the path was invalid.
