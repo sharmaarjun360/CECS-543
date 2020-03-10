@@ -1,6 +1,7 @@
 package com.MetricsSuite.Windows;
 
 import com.MetricsSuite.Alert.MetricsAlert;
+import com.MetricsSuite.MetricsSuite;
 import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.LanguagePreference;
 import com.MetricsSuite.GlobalConstants.MetricsConstants;
@@ -16,7 +17,7 @@ import java.util.List;
 public class LanguageWindow extends JFrame implements ActionListener {
 
     FunctionPointWindow fpWindow;
-    MainWindow mainWindow;
+    MetricsSuite metricsSuite;
     boolean isDefaultLanguageWindow;
     private Container container = getContentPane();
     private JLabel mainLabel;
@@ -38,12 +39,7 @@ public class LanguageWindow extends JFrame implements ActionListener {
 
     public LanguageWindow(MainWindow mainWindow){
         isDefaultLanguageWindow = true;
-        this.mainWindow = mainWindow;
-        ProjectData projectData = mainWindow.metricsSuite.getProjectData();
-        if(projectData == null){
-            MetricsAlert.getInstance().showAlert(this.mainWindow, MetricsConstants.P_ALERT_CREATE_PROJECT);
-            return;
-        }
+        this.metricsSuite = mainWindow.metricsSuite;
         initilizeData();
         container.setLayout(null);
         initComponent();
@@ -96,7 +92,7 @@ public class LanguageWindow extends JFrame implements ActionListener {
 
         String selectedLanguage = null;
         if(isDefaultLanguageWindow){
-            selectedLanguage = mainWindow.metricsSuite.getProjectData().getSelectedLanguage();
+            selectedLanguage = metricsSuite.getSelectedLanguage();
         } else {
             selectedLanguage = fpWindow.getFpData().getSelectedLanguage();
         }
@@ -125,15 +121,13 @@ public class LanguageWindow extends JFrame implements ActionListener {
         if(e.getSource() == doneButton){
 
             if(isDefaultLanguageWindow){
-                ProjectData projectData = this.mainWindow.metricsSuite.getProjectData();
+
                 for(int i =0; i<lChechboxArr.size();i++){
                     if(lChechboxArr.get(i).isSelected()){
 
                         LanguagePreference preference = this.language[i];
-                        projectData.setSelectedLanguage(preference.getName());
-                        projectData.setLanguageCodeSize(preference.getAverageCodeSize());
-
-                        this.mainWindow.metricsSuite.setProjectData(projectData);
+                        metricsSuite.setSelectedLanguage(preference.getName());
+                        metricsSuite.setLanguageCodeSize(preference.getAverageCodeSize());
                         dispose();
                         return;
                     }

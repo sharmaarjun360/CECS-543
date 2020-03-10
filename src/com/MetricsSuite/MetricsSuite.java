@@ -8,6 +8,10 @@ public class MetricsSuite {
     private static MetricsSuite metricsSuiteInstance = null;
 
     private ProjectData projectData;
+
+    String selectedLanguage;
+    int languageCodeSize;
+
     public ProjectData getProjectData() {
         return projectData;
     }
@@ -15,8 +19,25 @@ public class MetricsSuite {
         this.projectData = projectData;
     }
 
-    private MetricsSuite() {
+    public String getSelectedLanguage() {
+        return selectedLanguage;
+    }
 
+    public void setSelectedLanguage(String selectedLanguage) {
+        this.selectedLanguage = selectedLanguage;
+    }
+
+    public int getLanguageCodeSize() {
+        return languageCodeSize;
+    }
+
+    public void setLanguageCodeSize(int languageCodeSize) {
+        this.languageCodeSize = languageCodeSize;
+    }
+
+    private MetricsSuite() {
+        this.selectedLanguage = "Java";
+        this.languageCodeSize = 55;
     }
     public static MetricsSuite getInstance(){
         if(metricsSuiteInstance == null){

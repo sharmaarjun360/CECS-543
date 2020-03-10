@@ -67,7 +67,10 @@ public class ActionListener_MainWindow implements ActionListener {
                 break;
             case MetricsConstants.P_MENU_ITEM_FILE_SAVE:
                 try {
-                    saveProject(MetricsSuite.getInstance().getProjectData());
+                    boolean isSaved = saveProject(MetricsSuite.getInstance().getProjectData());
+                    if(isSaved){
+                        MetricsAlert.getInstance().showAlert(context,"Project Saved Successfully.");
+                    }
                 } catch (IOException ioError) {
                     ioError.printStackTrace();
                 } catch (MetricsError metricsError) {
@@ -103,6 +106,7 @@ public class ActionListener_MainWindow implements ActionListener {
      */
     private boolean saveProject(ProjectData projectData) throws MetricsError, IOException {
         if (projectData == null) {
+//            MetricsAlert.getInstance().showAlert(context,"Project is null.");
             throw new MetricsError(MetricsError.ERROR_CODE.ERROR_NULL_PROJECT);
         }
         String projectName = projectData.getProjectName();

@@ -60,7 +60,7 @@ public class FunctionPointWindow {
             return;
         }
         if(!isSavedProject){
-            this.fpData = new FunctionPointData(projectData.getSelectedLanguage(), projectData.getLanguageCodeSize());
+            this.fpData = new FunctionPointData(mainWindow.metricsSuite.getSelectedLanguage(), mainWindow.metricsSuite.getLanguageCodeSize());
             projectData.getFpArray().add(this.fpData);
         } else {
             this.fpData = fpData;
