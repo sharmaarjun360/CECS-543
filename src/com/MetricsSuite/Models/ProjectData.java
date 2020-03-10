@@ -11,10 +11,15 @@ public class ProjectData implements Serializable {
     private String creator;
     private String comments;
 
+    String selectedLanguage;
+    int languageCodeSize;
+
     private List<FunctionPointData> fpArray;
 
     public ProjectData(){
         fpArray = new ArrayList<>();
+        this.selectedLanguage = "Java";
+        this.languageCodeSize = 55;
     }
 
     public String getProjectName() {
@@ -55,5 +60,21 @@ public class ProjectData implements Serializable {
 
     public void setFpArray(List<FunctionPointData> fpArray) {
         this.fpArray = fpArray;
+    }
+
+    public String getSelectedLanguage() {
+        return selectedLanguage;
+    }
+
+    public void setSelectedLanguage(String selectedLanguage) {
+        this.selectedLanguage = selectedLanguage;
+    }
+
+    public int getLanguageCodeSize() {
+        return languageCodeSize;
+    }
+
+    public void setLanguageCodeSize(int languageCodeSize) {
+        this.languageCodeSize = languageCodeSize;
     }
 }

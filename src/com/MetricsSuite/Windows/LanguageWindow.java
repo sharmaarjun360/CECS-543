@@ -3,6 +3,8 @@ package com.MetricsSuite.Windows;
 import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.LanguagePreference;
 import com.MetricsSuite.GlobalConstants.MetricsConstants;
+import com.MetricsSuite.Models.ProjectData;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +16,8 @@ import java.util.List;
 public class LanguageWindow extends JFrame implements ActionListener {
 
     FunctionPointWindow fpWindow;
+    MainWindow mainWindow;
+    boolean isDefaultLanguageWindow;
     private Container container = getContentPane();
     private JLabel mainLabel;
     List<JCheckBox> lChechboxArr = new ArrayList<>();
@@ -22,7 +26,19 @@ public class LanguageWindow extends JFrame implements ActionListener {
     LanguagePreference[] language = new LanguagePreference[12];
 
     public LanguageWindow(FunctionPointWindow fpWindow){
+        isDefaultLanguageWindow = false;
         this.fpWindow = fpWindow;
+        initilizeData();
+        container.setLayout(null);
+        initComponent();
+        setSize(MetricsConstants.LANGUAGE_WINDOW_WIDTH,MetricsConstants.LANGUAGE_WINDOW_HEIGHT);
+        setLocation(MetricsConstants.LANGUAGE_WINDOW_LOCATION_X,MetricsConstants.LANGUAGE_WINDOW_LOCATION_Y);
+        setTitle("Language");
+    }
+
+    public LanguageWindow(MainWindow mainWindow){
+        isDefaultLanguageWindow = true;
+        this.mainWindow = mainWindow;
         initilizeData();
         container.setLayout(null);
         initComponent();
@@ -73,9 +89,14 @@ public class LanguageWindow extends JFrame implements ActionListener {
 
         ButtonGroup group = new ButtonGroup();
 
-        FunctionPointData fpData = fpWindow.getFpData();
+        String selectedLanguage = null;
+        if(isDefaultLanguageWindow){
+            selectedLanguage = mainWindow.metricsSuite.getProjectData().getSelectedLanguage();
+        } else {
+            selectedLanguage = fpWindow.getFpData().getSelectedLanguage();
+        }
+        System.out.println(selectedLanguage);
 
-        String selectedLanguage = fpData.getSelectedLanguage();
         for (int i=0; i< language.length;i++){
 
             JCheckBox lCheckbox = new JCheckBox(language[i].getName());
@@ -97,17 +118,34 @@ public class LanguageWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == doneButton){
-            for(int i =0; i<lChechboxArr.size();i++){
-                if(lChechboxArr.get(i).isSelected()){
 
-                    LanguagePreference preference = this.language[i];
-                    FunctionPointData fpData = fpWindow.getFpData();
-                    fpData.setSelectedLanguage(preference.getName());
-                    fpData.setLanguageCodeSize(preference.getAverageCodeSize());
-                    fpWindow.current_lang_1_des_txt.setText(preference.getName());
-                    fpWindow.setFpData(fpData);
-                    dispose();
-                    return;
+            if(isDefaultLanguageWindow){
+                ProjectData projectData = this.mainWindow.metricsSuite.getProjectData();
+                for(int i =0; i<lChechboxArr.size();i++){
+                    if(lChechboxArr.get(i).isSelected()){
+
+                        LanguagePreference preference = this.language[i];
+                        projectData.setSelectedLanguage(preference.getName());
+                        projectData.setLanguageCodeSize(preference.getAverageCodeSize());
+
+                        this.mainWindow.metricsSuite.setProjectData(projectData);
+                        dispose();
+                        return;
+                    }
+                }
+            } else {
+                FunctionPointData fpData = fpWindow.getFpData();
+                for(int i =0; i<lChechboxArr.size();i++){
+                    if(lChechboxArr.get(i).isSelected()){
+
+                        LanguagePreference preference = this.language[i];
+                        fpData.setSelectedLanguage(preference.getName());
+                        fpData.setLanguageCodeSize(preference.getAverageCodeSize());
+                        fpWindow.current_lang_1_des_txt.setText(preference.getName());
+                        fpWindow.setFpData(fpData);
+                        dispose();
+                        return;
+                    }
                 }
             }
         }

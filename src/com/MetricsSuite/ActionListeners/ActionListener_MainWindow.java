@@ -193,7 +193,7 @@ public class ActionListener_MainWindow implements ActionListener {
             activeSubWindow.dispose();
             activeSubWindow = null;
         }
-        LanguageWindow languageWindow = new LanguageWindow(null);
+        LanguageWindow languageWindow = new LanguageWindow((MainWindow) this.context);
         languageWindow.setVisible(true);
         activeSubWindow = languageWindow;
         return languageWindow;

@@ -62,7 +62,7 @@ public class FunctionPointWindow {
             return;
         }
         if(!isSavedProject){
-            this.fpData = new FunctionPointData();
+            this.fpData = new FunctionPointData(projectData.getSelectedLanguage(), projectData.getLanguageCodeSize());
             projectData.getFpArray().add(this.fpData);
         } else {
             this.fpData = fpData;
@@ -177,7 +177,7 @@ public class FunctionPointWindow {
         total_count_des_txt = new JTextField();
         compute_fp_des_txt = new JTextField();
         val_adj_des_txt = new JTextField("0");
-        current_lang_1_des_txt = new JTextField("Java");
+        current_lang_1_des_txt = new JTextField(fpData.getSelectedLanguage());
         current_lang_2_des_txt = new JTextField();
 
         PlainDocument doc_ext_ip_txt = (PlainDocument) txt_external_inputs.getDocument();
