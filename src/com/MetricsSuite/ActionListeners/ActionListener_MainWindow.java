@@ -253,6 +253,9 @@ private void updateFunctionPointWindowUIFromSavedData(FunctionPointData function
     functionPointWindow.int_lf_des_txt.setText(String.valueOf(functionPointData.getLogicalFileTotal()));
     functionPointWindow.ext_if_des_txt.setText(String.valueOf(functionPointData.getInterfaceFileTotal()));
 
+    functionPointWindow.total_count_des_txt.setText(String.valueOf(functionPointData.getTotalCount()));
+    functionPointWindow.compute_fp_des_txt.setText(String.valueOf(functionPointData.getFunctionPointValue()));
+
     setSelectedFactors(functionPointWindow.ext_ip_r,functionPointData.getInputFactor());
     setSelectedFactors(functionPointWindow.ext_if_r,functionPointData.getInterfaceFileFactor());
     setSelectedFactors(functionPointWindow.ext_inq_r,functionPointData.getInquiryFactor());
@@ -260,9 +263,6 @@ private void updateFunctionPointWindowUIFromSavedData(FunctionPointData function
     setSelectedFactors(functionPointWindow.ext_op_r,functionPointData.getOutputFactor());
 
     // TODO: 08/03/20 current_lang_1_des_txt change here
-
-    functionPointWindow.total_count_des_txt.setText(String.valueOf(functionPointData.getTotalCount()));
-    functionPointWindow.compute_fp_des_txt.setText(String.valueOf(functionPointData.getFunctionPointValue()));
     }
     /**
      * Returns an ImageIcon, or null if the path was invalid.

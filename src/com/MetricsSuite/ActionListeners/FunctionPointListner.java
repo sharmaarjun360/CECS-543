@@ -37,8 +37,10 @@ public class FunctionPointListner implements ActionListener, FocusListener {
                 int vafTotal = Integer.parseInt(vafText);
 
                 fpWindow.compute_fp_des_txt.setText(Double.toString(countTotal * (0.65 + (0.01 * vafTotal))));
+                fpData.setFunctionPointValue((countTotal * (0.65 + (0.01 * vafTotal))));
             } else {
                 fpWindow.compute_fp_des_txt.setText(null);
+                fpData.setFunctionPointValue((long) 0.0);
             }
         }
 
@@ -226,9 +228,22 @@ public class FunctionPointListner implements ActionListener, FocusListener {
             long logicalFilesTotalValue = Long.parseLong(logicalFilesTotal);
             long interfaceFilesTotalValue = Long.parseLong(interfaceFilesTotal);
 
+
             fpWindow.total_count_des_txt.setText(Long.toString(inputsTotalValue+outputsTotalValue+inquiriesTotalValue+logicalFilesTotalValue+interfaceFilesTotalValue));
+            fpData.setTotalCount(inputsTotalValue+outputsTotalValue+inquiriesTotalValue+logicalFilesTotalValue+interfaceFilesTotalValue);
+            fpData.setInputTotal(inputsTotalValue);
+            fpData.setOutputTotal(outputsTotalValue);
+            fpData.setInquiryTotal(inquiriesTotalValue);
+            fpData.setInterfaceFileTotal(interfaceFilesTotalValue);
+            fpData.setLogicalFileTotal(logicalFilesTotalValue);
         } else {
             fpWindow.total_count_des_txt.setText(null);
+            fpData.setTotalCount((long)0.0);
+            fpData.setInputTotal((long)0.0);
+            fpData.setOutputTotal((long)0.0);
+            fpData.setInquiryTotal((long)0.0);
+            fpData.setInterfaceFileTotal((long)0.0);
+            fpData.setLogicalFileTotal((long)0.0);
         }
 
         fpWindow.setFpData(fpData);
