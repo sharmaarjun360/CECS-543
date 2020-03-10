@@ -19,7 +19,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Iterator;
 
@@ -223,8 +225,7 @@ public class ActionListener_MainWindow implements ActionListener {
     }
 
     private JComponent addEmptyFunctionPointTabToMainPane(JTabbedPane mainPane) {
-        ImageIcon icon = createImageIcon(MetricsConstants.PROJECT_IMAGES + MetricsConstants.PROJECT_IMAGE_SUN);
-        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,false);
+        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,false, null);
         //
         JComponent panel = fp.createNewFunctionPointPanel();
         mainPane.addTab(MetricsConstants.P_TAB_TITLE, null, panel, "Some tool tip");
@@ -233,9 +234,8 @@ public class ActionListener_MainWindow implements ActionListener {
     }
 
     private JComponent addPreviouslySavedFunctionPointTabToMainPane(JTabbedPane mainPane, FunctionPointData functionPointData) {
-        ImageIcon icon = createImageIcon(MetricsConstants.PROJECT_IMAGES + MetricsConstants.PROJECT_IMAGE_SUN);
 
-        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,true);
+        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,true, functionPointData);
         JComponent panel = fp.createNewFunctionPointPanel();
         updateFunctionPointWindowUIFromSavedData(functionPointData, fp);
         mainPane.addTab(MetricsConstants.P_TAB_TITLE, null, panel, "Some tool tip");
@@ -249,14 +249,14 @@ public class ActionListener_MainWindow implements ActionListener {
         functionPointWindow.txt_Internal_logical_files.setText(String.valueOf(functionPointData.getInternalLogicalFileCount()));
         functionPointWindow.txt_external_interface_files.setText(String.valueOf(functionPointData.getExternalInterfaceFileCount()));
         
-    functionPointWindow.total_count_des_txt.setText(String.valueOf(functionPointData.getTotalCount()));
-    functionPointWindow.compute_fp_des_txt.setText(String.valueOf(functionPointData.getFunctionPointValue()));
+        functionPointWindow.total_count_des_txt.setText(String.valueOf(functionPointData.getTotalCount()));
+        functionPointWindow.compute_fp_des_txt.setText(String.valueOf(functionPointData.getFunctionPointValue()));
 
-    setSelectedFactors(functionPointWindow.ext_ip_r,functionPointData.getInputFactor());
-    setSelectedFactors(functionPointWindow.ext_if_r,functionPointData.getInterfaceFileFactor());
-    setSelectedFactors(functionPointWindow.ext_inq_r,functionPointData.getInquiryFactor());
-    setSelectedFactors(functionPointWindow.ext_lf_r,functionPointData.getLogicalFileFactor());
-    setSelectedFactors(functionPointWindow.ext_op_r,functionPointData.getOutputFactor());
+        setSelectedFactors(functionPointWindow.ext_ip_r,functionPointData.getInputFactor());
+        setSelectedFactors(functionPointWindow.ext_if_r,functionPointData.getInterfaceFileFactor());
+        setSelectedFactors(functionPointWindow.ext_inq_r,functionPointData.getInquiryFactor());
+        setSelectedFactors(functionPointWindow.ext_lf_r,functionPointData.getLogicalFileFactor());
+        setSelectedFactors(functionPointWindow.ext_op_r,functionPointData.getOutputFactor());
 
         functionPointWindow.ext_ip_des_txt.setText(String.valueOf(functionPointData.getInputTotal()));
         functionPointWindow.ext_op_des_txt.setText(String.valueOf(functionPointData.getOutputTotal()));
@@ -267,6 +267,9 @@ public class ActionListener_MainWindow implements ActionListener {
 
 
         // TODO: 08/03/20 current_lang_1_des_txt change here
+        functionPointWindow.val_adj_des_txt.setText(Long.toString(functionPointData.getVafTotal()));
+        functionPointWindow.current_lang_1_des_txt.setText(functionPointData.getSelectedLanguage());
+        functionPointWindow.current_lang_2_des_txt.setText(Long.toString(functionPointData.getTotalCodeSize()));
 
     }
     /**

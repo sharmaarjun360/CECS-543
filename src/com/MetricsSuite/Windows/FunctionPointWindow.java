@@ -30,11 +30,11 @@ public class FunctionPointWindow {
     public JRadioButton ext_if_r_s, ext_if_r_a, ext_if_r_c;
     public JTextField current_lang_1_des_txt, current_lang_2_des_txt;
 
-    public FunctionPointWindow(MainWindow mainWindow, boolean isSavedProject){
+    public FunctionPointWindow(MainWindow mainWindow, boolean isSavedProject, FunctionPointData fpData){
         this.mainWindow = mainWindow;
         // TODO: 06/03/20 have a look
 //        this.createNewFunctionPointPanel();
-        this.createFunctionPointDataObject(isSavedProject);
+        this.createFunctionPointDataObject(isSavedProject, fpData);
     }
 
     public FunctionPointData getFpData() {
@@ -54,15 +54,18 @@ public class FunctionPointWindow {
      * @return
      */
 
-    private void createFunctionPointDataObject(boolean isSavedProject){
-        fpData = new FunctionPointData();
+    private void createFunctionPointDataObject(boolean isSavedProject, FunctionPointData fpData){
+
         ProjectData projectData = mainWindow.metricsSuite.getProjectData();
-        if(projectData == null){ MetricsAlert.getInstance().showAlert(
-                this.mainWindow, MetricsConstants.P_ALERT_CREATE_PROJECT);
-        return;
+        if(projectData == null){
+            MetricsAlert.getInstance().showAlert(this.mainWindow, MetricsConstants.P_ALERT_CREATE_PROJECT);
+            return;
         }
         if(!isSavedProject){
-            projectData.getFpArray().add(fpData);
+            this.fpData = new FunctionPointData();
+            projectData.getFpArray().add(this.fpData);
+        } else {
+            this.fpData = fpData;
         }
     }
 

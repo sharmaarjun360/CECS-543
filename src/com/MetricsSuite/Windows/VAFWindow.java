@@ -1,5 +1,7 @@
 package com.MetricsSuite.Windows;
 
+import com.MetricsSuite.Models.FunctionPointData;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -97,7 +99,9 @@ public class VAFWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int[] vafValueArr = fpWindow.getFpData().getVafValue();
+                FunctionPointData fpData = fpWindow.getFpData();
+
+                int[] vafValueArr = fpData.getVafValue();
                 int vaf = 0;
 
                 for(int i =0; i<14;i++){
@@ -106,7 +110,10 @@ public class VAFWindow extends JFrame {
                 }
 
                 fpWindow.val_adj_des_txt.setText(Integer.toString(vaf));
-                fpWindow.getFpData().setVafTotal(vaf);
+                fpData.setVafTotal(vaf);
+                fpData.setVafValue(vafValueArr);
+
+                fpWindow.setFpData(fpData);
                 dispose();
             }
         });

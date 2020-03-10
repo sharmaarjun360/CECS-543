@@ -75,9 +75,9 @@ public class LanguageWindow extends JFrame implements ActionListener {
 
         FunctionPointData fpData = fpWindow.getFpData();
 
+        String selectedLanguage = fpData.getSelectedLanguage();
         for (int i=0; i< language.length;i++){
 
-            String selectedLanguage = fpData.getSelectedLanguage();
             JCheckBox lCheckbox = new JCheckBox(language[i].getName());
             if(selectedLanguage!= null && selectedLanguage.equals(language[i].getName())){
                 lCheckbox.setSelected(true);
@@ -107,6 +107,7 @@ public class LanguageWindow extends JFrame implements ActionListener {
                     fpWindow.current_lang_1_des_txt.setText(preference.getName());
                     fpWindow.setFpData(fpData);
                     dispose();
+                    return;
                 }
             }
         }
