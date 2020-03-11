@@ -1,16 +1,13 @@
 package com.MetricsSuite.ActionListeners;
 
-import com.MetricsSuite.*;
 import com.MetricsSuite.Alert.MetricsAlert;
+import com.MetricsSuite.Error.MetricsError;
 import com.MetricsSuite.FileChooser.SingleRootFileSystemView;
+import com.MetricsSuite.GlobalConstants.MetricsConstants;
+import com.MetricsSuite.MetricsSuite;
 import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
-import com.MetricsSuite.Windows.FunctionPointWindow;
-import com.MetricsSuite.Windows.LanguageWindow;
-import com.MetricsSuite.Windows.MainWindow;
-import com.MetricsSuite.Windows.NewProjectWindow;
-import com.MetricsSuite.Error.MetricsError;
-import com.MetricsSuite.GlobalConstants.MetricsConstants;
+import com.MetricsSuite.Windows.*;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -19,11 +16,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
-import java.util.Iterator;
 
 public class ActionListener_MainWindow implements ActionListener {
 
@@ -92,6 +86,14 @@ public class ActionListener_MainWindow implements ActionListener {
                 newFunctionPointPane((JFrame) context, ((MainWindow) context).mainTabbedPane);
                 }
                 break;
+            case MetricsConstants.P_MENU_ITEM_METRICS_ENTER_SMI_DATA:
+                ProjectData projectData1 = ((MainWindow) context).metricsSuite.getProjectData();
+                if(projectData1 == null){ MetricsAlert.getInstance().showAlert(
+                        (context), MetricsConstants.P_ALERT_CREATE_PROJECT);
+                    return;
+                }else if (projectData1 !=null){
+                    newSMIPane((JFrame) context, ((MainWindow) context).mainTabbedPane);
+                }
             default:
         }
     }
@@ -275,6 +277,20 @@ public class ActionListener_MainWindow implements ActionListener {
         functionPointWindow.current_lang_1_des_txt.setText(functionPointData.getSelectedLanguage());
         functionPointWindow.current_lang_2_des_txt.setText(Long.toString(functionPointData.getTotalCodeSize()));
 
+    }
+
+    private void newSMIPane(JFrame parentFrame, JTabbedPane mainTabbedPane) {
+
+        addEmptySMITabToMainPane(mainTabbedPane);
+        parentFrame.revalidate();
+    }
+    private JComponent addEmptySMITabToMainPane(JTabbedPane mainPane) {
+        SMIWindow smi = new SMIWindow();
+        //
+        JComponent panel = smi.createNewSMIPanel();
+        mainPane.addTab(MetricsConstants.P_SMI_TAB_TITLE, null, panel, "Some tool tip");
+        mainPane.setSelectedIndex(mainPane.getTabCount() - 1);
+        return panel;
     }
     /**
      * Returns an ImageIcon, or null if the path was invalid.
