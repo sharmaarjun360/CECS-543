@@ -27,7 +27,7 @@ public class SMIWindow  extends JFrame{
         JButton compute_index_btn = new JButton("Compute Index");
 
         SMI_heading.setBounds(200,5,200,20);
-        scrollPane.setBounds(40,50,500,350);
+        scrollPane.setBounds(20,50,540,360);
         compute_index_btn.setBounds(180, 450, 130,20);
         add_row_btn.setBounds(20, 450, 130,20);
 
