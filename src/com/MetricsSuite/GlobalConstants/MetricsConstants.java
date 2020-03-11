@@ -40,6 +40,8 @@ public class MetricsConstants {
     public static final String P_MENU_ITEM_PREFERENCES_LANGUAGE = "Language";
     public static final String P_MENU_ITEM_METRICS_FUNCTION_POINT = "Function Points";
     public static final String P_MENU_ITEM_METRICS_ENTER_FP_DATA = "Enter FP DATA";
+    public static final String P_MENU_ITEM_METRICS_SMI = "SMI";
+    public static final String P_MENU_ITEM_METRICS_ENTER_SMI_DATA = "Enter SMI DATA";
     /**
      * Language Window Dimension
      */
@@ -73,5 +75,10 @@ public class MetricsConstants {
     public static final int head_lbl_Y = 5;
     public static final int head_lbl_WIDTH = 200;
     public static final int si_av_cpl_lbl_WIDTH = 200;
+
+    /**
+     * SMIPanel
+     */
+    public  static final String P_SMI_TAB_TITLE = "SMI TAB";
 }
 
