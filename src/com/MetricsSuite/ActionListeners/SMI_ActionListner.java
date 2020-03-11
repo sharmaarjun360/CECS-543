@@ -17,6 +17,7 @@ public class SMI_ActionListner implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource() == smiWindow.add_row_btn){
+            // fix this
             smiWindow.model.addRow(new Object[] { " ", " ", " ", " ", " " });
         }
 
