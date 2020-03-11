@@ -39,8 +39,8 @@ public class MainWindow extends JFrame {
     private void addMenuBar(JFrame context){
 
         JMenuBar menubar = new JMenuBar();
-        JMenu file, edit, preferences, metrics, fp, help;
-        JMenuItem fpData;
+        JMenu file, edit, preferences, metrics, fp, help, smi;
+        JMenuItem fpData, smiData;
         context.setJMenuBar(menubar);
 
         file = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_FILE);
@@ -61,6 +61,12 @@ public class MainWindow extends JFrame {
         fpData = new JMenuItem(MetricsConstants.P_MENU_ITEM_METRICS_ENTER_FP_DATA);
         fp.add(fpData);
         fpData.addActionListener(ActionListener_MainWindow.getInstance(context));
+
+        smi = new JMenu(MetricsConstants.P_MENU_ITEM_METRICS_SMI);
+        metrics.add(smi);
+        smiData = new JMenuItem(MetricsConstants.P_MENU_ITEM_METRICS_ENTER_SMI_DATA);
+        smi.add(smiData);
+        smiData.addActionListener(ActionListener_MainWindow.getInstance(context));
     }
 
     /**
