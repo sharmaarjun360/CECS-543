@@ -11,6 +11,7 @@ public class MainWindow extends JFrame {
 
     public MetricsSuite metricsSuite;
     public JTabbedPane mainTabbedPane = null;
+    private JMenu metrics;
     public MainWindow(MetricsSuite parent){
         initComponent();
         setTitle(MetricsConstants.PROJECT_TITLE);
@@ -30,6 +31,9 @@ public class MainWindow extends JFrame {
 //        addJTREE(this);
         mainTabbedPane = addTabbedPane(this);
     }
+    private void enableMetricsMenu(boolean enable){
+        metrics.setEnabled(enable);
+    }
     private JTabbedPane addTabbedPane(JFrame parentFrame) {
         JTabbedPane tabbedPane = new JTabbedPane();
         parentFrame.add(tabbedPane, BorderLayout.CENTER);
@@ -39,7 +43,7 @@ public class MainWindow extends JFrame {
     private void addMenuBar(JFrame context){
 
         JMenuBar menubar = new JMenuBar();
-        JMenu file, edit, preferences, metrics, fp, help, smi;
+        JMenu file, edit, preferences, fp, help, smi;
         JMenuItem fpData, smiData;
         context.setJMenuBar(menubar);
 
@@ -58,6 +62,8 @@ public class MainWindow extends JFrame {
 
         fp = new JMenu(MetricsConstants.P_MENU_ITEM_METRICS_FUNCTION_POINT);
         metrics.add(fp);
+        this.enableMetricsMenu(false);
+
         fpData = new JMenuItem(MetricsConstants.P_MENU_ITEM_METRICS_ENTER_FP_DATA);
         fp.add(fpData);
         fpData.addActionListener(ActionListener_MainWindow.getInstance(context));
@@ -96,6 +102,7 @@ public class MainWindow extends JFrame {
 
     public void createNewProject(){
         this.mainTabbedPane.removeAll();
+        this.enableMetricsMenu(true);
     }
 
 }
