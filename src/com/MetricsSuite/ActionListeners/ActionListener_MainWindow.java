@@ -7,6 +7,7 @@ import com.MetricsSuite.GlobalConstants.MetricsConstants;
 import com.MetricsSuite.MetricsSuite;
 import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
+import com.MetricsSuite.Models.SMIData;
 import com.MetricsSuite.Windows.*;
 
 import javax.swing.*;
@@ -92,7 +93,7 @@ public class ActionListener_MainWindow implements ActionListener {
                         (context), MetricsConstants.P_ALERT_CREATE_PROJECT);
                     return;
                 }else if (projectData1 !=null){
-                    newSMIPane((JFrame) context, ((MainWindow) context).mainTabbedPane);
+                    addSMIPane(false, null);
                 }
             default:
         }
@@ -171,6 +172,11 @@ public class ActionListener_MainWindow implements ActionListener {
 //            for(FunctionPointData functionPointData: projectData.getFpArray()){
 //                newFunctionPointPaneFromData((JFrame) context, ((MainWindow) context).mainTabbedPane, functionPointData);
 //            }
+        }
+
+        if(projectData.getSmiData() != null){
+            System.out.println("Project has SMI Tab");
+            addSMIPane(true, projectData.getSmiData());
         }
     }
     /**
@@ -279,30 +285,19 @@ public class ActionListener_MainWindow implements ActionListener {
 
     }
 
-    private void newSMIPane(JFrame parentFrame, JTabbedPane mainTabbedPane) {
+    private void addSMIPane(boolean isSavedProject, SMIData smiData){
+        MainWindow mainWindow = (MainWindow) context;
+        SMIWindow smiWindow = new SMIWindow(mainWindow, true, smiData);
 
-        addEmptySMITabToMainPane(mainTabbedPane);
-        parentFrame.revalidate();
-    }
-    private JComponent addEmptySMITabToMainPane(JTabbedPane mainPane) {
-        SMIWindow smi = new SMIWindow();
-        //
-        JComponent panel = smi.createNewSMIPanel();
-        mainPane.addTab(MetricsConstants.P_SMI_TAB_TITLE, null, panel, "Some tool tip");
-        mainPane.setSelectedIndex(mainPane.getTabCount() - 1);
-        return panel;
-    }
-    /**
-     * Returns an ImageIcon, or null if the path was invalid.
-     */
-    protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = MetricsSuite.class.getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
+        JComponent panel = smiWindow.createNewSMIPanel();
+        if(isSavedProject){
+            smiWindow.updateSMITable();
         }
+
+        mainWindow.mainTabbedPane.addTab(MetricsConstants.P_SMI_TAB_TITLE, null, panel, "SMI");
+        mainWindow.mainTabbedPane.setSelectedIndex(mainWindow.mainTabbedPane.getTabCount() - 1);
+
+        mainWindow.revalidate();
     }
 
     private void exitTheApplication() {

@@ -13,6 +13,8 @@ public class ProjectData implements Serializable {
 
     private List<FunctionPointData> fpArray;
 
+    private SMIData smiData;
+
     public ProjectData(){
         fpArray = new ArrayList<>();
     }
@@ -57,4 +59,11 @@ public class ProjectData implements Serializable {
         this.fpArray = fpArray;
     }
 
+    public SMIData getSmiData() {
+        return smiData;
+    }
+
+    public void setSmiData(SMIData smiData) {
+        this.smiData = smiData;
+    }
 }
