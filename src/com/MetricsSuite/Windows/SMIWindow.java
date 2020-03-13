@@ -31,10 +31,10 @@ public class SMIWindow {
         add_row_btn = new JButton("Add Row");
         compute_index_btn = new JButton("Compute Index");
 
-        SMI_heading.setBounds(200,5,200,20);
-        scrollPane.setBounds(20,50,540,360);
-        compute_index_btn.setBounds(180, 450, 130,20);
-        add_row_btn.setBounds(20, 450, 130,20);
+        SMI_heading.setBounds(200,10,200,20);
+        scrollPane.setBounds(20,45,540,370);
+        compute_index_btn.setBounds(180, 450, 130,30);
+        add_row_btn.setBounds(20, 450, 130,30);
 
         panel.add(SMI_heading);
         panel.add(scrollPane);
