@@ -40,23 +40,19 @@ public class SMIActionListner implements ActionListener{
 
 
             for(int i = 0; i< rowCount; i++){
-                System.out.println("\nFor row = "+i);
                 str = model.getValueAt(i,1).toString().trim();
-                System.out.println("cell1 value: "+str);
                 if(str == null || str.length() == 0){
                     continue;
                 }
                 cell1 = Integer.parseInt(str);
 
                 str = model.getValueAt(i,2).toString().trim();
-                System.out.println("cell2 value: "+str);
                 if(str == null || str.length() == 0){
                     continue;
                 }
                 cell2 = Integer.parseInt(str);
 
                 str = model.getValueAt(i,3).toString().trim();
-                System.out.println("cell3 value: "+str);
                 if(str == null || str.length() == 0){
                     continue;
                 }
@@ -74,7 +70,6 @@ public class SMIActionListner implements ActionListener{
                 }
             }
 
-            System.out.println(rows.toString());
             smiData.setRowList(rows);
             smiWindow.setSmiData(smiData);
         }

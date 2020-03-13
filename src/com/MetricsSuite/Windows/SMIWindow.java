@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SMIWindow {
@@ -104,9 +105,10 @@ public class SMIWindow {
         }
 
         for (SMIRowData data: rows) {
-            System.out.println(data.toString());
             model.addRow(new Object[]{data.getSmi(), data.getModuleAdded(), data.getModuleChanged(), data.getModuleDeleted(), data.getTotalModules()});
         }
+
+        smiData.setRowList(new ArrayList<>());
 
     }
 }

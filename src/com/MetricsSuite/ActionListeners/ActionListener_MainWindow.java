@@ -175,7 +175,6 @@ public class ActionListener_MainWindow implements ActionListener {
         }
 
         if(projectData.getSmiData() != null){
-            System.out.println("Project has SMI Tab");
             addSMIPane(true, projectData.getSmiData());
         }
     }
