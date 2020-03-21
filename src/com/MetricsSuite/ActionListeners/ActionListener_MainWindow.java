@@ -25,7 +25,6 @@ public class ActionListener_MainWindow implements ActionListener {
     private static ActionListener_MainWindow actionListener_MainWindow_Instance = null;
     private Component context;
     private static JFrame activeSubWindow = null;
-    private int flag = 0;
 
     private ActionListener_MainWindow(Component context) {
         this.context = context;
@@ -94,14 +93,7 @@ public class ActionListener_MainWindow implements ActionListener {
                         (context), MetricsConstants.P_ALERT_CREATE_PROJECT);
                     return;
                 }else if (projectData1 !=null){
-                    if (flag < 1) {
                         addSMIPane(false, null);
-                        flag = flag +1;
-                    }
-                    else{
-                        MetricsAlert.getInstance().showAlert(
-                                (context), MetricsConstants.P_ALERT_CREATE_SMITab);
-                    }
                 }
             default:
         }
