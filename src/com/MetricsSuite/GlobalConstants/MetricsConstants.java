@@ -61,6 +61,7 @@ public class MetricsConstants {
      */
     public static final String P_TAB_TITLE = "Function Points";
     public static final String P_ALERT_CREATE_PROJECT ="Kindly create a new project.";
+    public static final String P_ALERT_CREATE_SMITab = "Only one SMI tab per project";
 
     public static final String WEIGHTING_FACTORS = "Weighting Factors";
     public static final String SIMPLE_AVERAGE_COMPLEX = "Simple    Average    Complex";
