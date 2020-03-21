@@ -305,6 +305,7 @@ public class ActionListener_MainWindow implements ActionListener {
         mainWindow.mainTabbedPane.setSelectedIndex(mainWindow.mainTabbedPane.getTabCount() - 1);
 
         mainWindow.revalidate();
+        mainWindow.enableSMIMenu(false);
     }
 
     private void exitTheApplication() {
