@@ -286,7 +286,7 @@ public class ActionListener_MainWindow implements ActionListener {
 
     private void addSMIPane(boolean isSavedProject, SMIData smiData){
         MainWindow mainWindow = (MainWindow) context;
-        SMIWindow smiWindow = new SMIWindow(mainWindow, true, smiData);
+        SMIWindow smiWindow = new SMIWindow(mainWindow, isSavedProject, smiData);
 
         JComponent panel = smiWindow.createNewSMIPanel();
         if(isSavedProject){
