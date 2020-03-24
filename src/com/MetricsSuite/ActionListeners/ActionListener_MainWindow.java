@@ -176,6 +176,7 @@ public class ActionListener_MainWindow implements ActionListener {
 
         if(projectData.getSmiData() != null){
             addSMIPane(true, projectData.getSmiData());
+            ((MainWindow)this.context).enableSMIMenu(false);
         }
     }
     /**
