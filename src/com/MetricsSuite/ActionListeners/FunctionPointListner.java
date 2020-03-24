@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.text.NumberFormat;
 import java.util.Enumeration;
 
 public class FunctionPointListner implements ActionListener, FocusListener {
@@ -62,7 +63,10 @@ public class FunctionPointListner implements ActionListener, FocusListener {
             if(fpValue > 0 && languageCodeSize > 0){
                 long codeSize = fpData.getFunctionPointValue() * fpData.getLanguageCodeSize();
                 fpData.setTotalCodeSize(codeSize);
-                fpWindow.current_lang_2_des_txt.setText(Long.toString(codeSize));
+                NumberFormat nf = NumberFormat.getInstance();
+                nf.setGroupingUsed(true);
+
+                fpWindow.current_lang_2_des_txt.setText(nf.format(codeSize));
             } else {
                 fpData.setTotalCodeSize(-1);
                 fpWindow.current_lang_2_des_txt.setText(null);

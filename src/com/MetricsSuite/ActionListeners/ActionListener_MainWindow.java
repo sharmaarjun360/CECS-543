@@ -17,6 +17,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -287,7 +288,9 @@ public class ActionListener_MainWindow implements ActionListener {
         // TODO: 08/03/20 current_lang_1_des_txt change here
         functionPointWindow.val_adj_des_txt.setText(Long.toString(functionPointData.getVafTotal()));
         functionPointWindow.current_lang_1_des_txt.setText(functionPointData.getSelectedLanguage());
-        functionPointWindow.current_lang_2_des_txt.setText(Long.toString(functionPointData.getTotalCodeSize()));
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setGroupingUsed(true);
+        functionPointWindow.current_lang_2_des_txt.setText(nf.format(functionPointData.getTotalCodeSize()));
 
     }
 
