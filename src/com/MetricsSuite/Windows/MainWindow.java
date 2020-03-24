@@ -106,6 +106,7 @@ public class MainWindow extends JFrame {
     public void createNewProject(){
         this.mainTabbedPane.removeAll();
         this.enableMetricsMenu(true);
+        this.enableSMIMenu(true);
     }
 
 }
