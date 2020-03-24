@@ -80,7 +80,7 @@ public class MetricsConstants {
     /**
      * SMIPanel
      */
-    public  static final String P_SMI_TAB_TITLE = "SMI TAB";
+    public  static final String P_SMI_TAB_TITLE = "SMI";
 
     public static final int FUNCTION_POINT_NAME_WINDOW_WIDTH = 300;
     public static final int FUNCTION_POINT_NAME_WINDOW_HEIGHT = 150;
