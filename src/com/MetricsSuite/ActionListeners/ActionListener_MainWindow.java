@@ -9,7 +9,6 @@ import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
 import com.MetricsSuite.Models.SMIData;
 import com.MetricsSuite.Windows.*;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
