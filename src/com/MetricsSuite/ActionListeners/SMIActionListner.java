@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SMIActionListner implements ActionListener{
@@ -36,7 +37,7 @@ public class SMIActionListner implements ActionListener{
             double smi;
             String str;
             SMIData smiData = smiWindow.getSmiData();
-            List<SMIRowData> rows = smiData.getRowList();
+            List<SMIRowData> rows = new ArrayList<>();
 
 
             for(int i = 0; i< rowCount; i++){
