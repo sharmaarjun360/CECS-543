@@ -9,6 +9,7 @@ import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
 import com.MetricsSuite.Models.SMIData;
 import com.MetricsSuite.Windows.*;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -76,17 +77,23 @@ public class ActionListener_MainWindow implements ActionListener {
                 openLanguageWindow();
                 break;
             case MetricsConstants.P_MENU_ITEM_METRICS_ENTER_FP_DATA:
+
+                // open window to ask for function point tab name
+                FunctionPointNameWindow fpNameWindow = new FunctionPointNameWindow((MainWindow) context);
+                fpNameWindow.setVisible(true);
+                break;
+
                 // TODO: 21/02/20 Use call backs to communicate between View and controller
                 // getMainTabbedPane incorrect approch use callbacks instead
-                ProjectData projectData = ((MainWindow) context).metricsSuite.getProjectData();
-                if(projectData == null){ MetricsAlert.getInstance().showAlert(
-                        (context), MetricsConstants.P_ALERT_CREATE_PROJECT);
-                    return;
-                }else if (projectData !=null){
-//                     && !(projectData.getFpArray().isEmpty())
-                newFunctionPointPane((JFrame) context, ((MainWindow) context).mainTabbedPane);
-                }
-                break;
+//                ProjectData projectData = ((MainWindow) context).metricsSuite.getProjectData();
+//                if(projectData == null){ MetricsAlert.getInstance().showAlert(
+//                        (context), MetricsConstants.P_ALERT_CREATE_PROJECT);
+//                    return;
+//                }else if (projectData !=null){
+////                     && !(projectData.getFpArray().isEmpty())
+//                newFunctionPointPane((JFrame) context, ((MainWindow) context).mainTabbedPane);
+//                }
+//                break;
             case MetricsConstants.P_MENU_ITEM_METRICS_ENTER_SMI_DATA:
                 ProjectData projectData1 = ((MainWindow) context).metricsSuite.getProjectData();
                 if(projectData1 == null){ MetricsAlert.getInstance().showAlert(
@@ -227,30 +234,30 @@ public class ActionListener_MainWindow implements ActionListener {
         addPreviouslySavedFunctionPointTabToMainPane(mainTabbedPane, functionPointData);
         parentFrame.revalidate();
     }
-    private void newFunctionPointPane(JFrame parentFrame, JTabbedPane mainTabbedPane) {
+//    private void newFunctionPointPane(JFrame parentFrame, JTabbedPane mainTabbedPane) {
+//
+//        addEmptyFunctionPointTabToMainPane(mainTabbedPane);
+////        mainPane.setSize(context.getWidth(),context.getHeight());
+//        parentFrame.revalidate();
+////        parentFrame.pack();
+////        mainPane.setBounds(200,50,200,200);
+//    }
 
-        addEmptyFunctionPointTabToMainPane(mainTabbedPane);
-//        mainPane.setSize(context.getWidth(),context.getHeight());
-        parentFrame.revalidate();
-//        parentFrame.pack();
-//        mainPane.setBounds(200,50,200,200);
-    }
-
-    private JComponent addEmptyFunctionPointTabToMainPane(JTabbedPane mainPane) {
-        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,false, null);
-        //
-        JComponent panel = fp.createNewFunctionPointPanel();
-        mainPane.addTab(MetricsConstants.P_TAB_TITLE, null, panel, "Some tool tip");
-        mainPane.setSelectedIndex(mainPane.getTabCount() - 1);
-        return panel;
-    }
+//    private JComponent addEmptyFunctionPointTabToMainPane(JTabbedPane mainPane) {
+//        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,false, null);
+//        //
+//        JComponent panel = fp.createNewFunctionPointPanel();
+//        mainPane.addTab(MetricsConstants.P_TAB_TITLE, null, panel, "Some tool tip");
+//        mainPane.setSelectedIndex(mainPane.getTabCount() - 1);
+//        return panel;
+//    }
 
     private JComponent addPreviouslySavedFunctionPointTabToMainPane(JTabbedPane mainPane, FunctionPointData functionPointData) {
 
-        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,true, functionPointData);
+        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,true, functionPointData, functionPointData.getTabName());
         JComponent panel = fp.createNewFunctionPointPanel();
         updateFunctionPointWindowUIFromSavedData(functionPointData, fp);
-        mainPane.addTab(MetricsConstants.P_TAB_TITLE, null, panel, "Some tool tip");
+        mainPane.addTab(functionPointData.getTabName(), null, panel, functionPointData.getTabName());
         return panel;
     }
 

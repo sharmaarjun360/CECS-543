@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class FunctionPointData implements Serializable {
 
+    String tabName;
+
     long externalInputCount;
     long externalOutputCount;
     long externalInquiriesCount;
@@ -33,9 +35,18 @@ public class FunctionPointData implements Serializable {
     int languageCodeSize;
     long totalCodeSize;
 
-    public FunctionPointData(String selectedLanguage, int codeSize){
+    public FunctionPointData(String tabeName, String selectedLanguage, int codeSize){
+        this.tabName = tabeName;
         this.selectedLanguage = selectedLanguage;
         this.languageCodeSize = codeSize;
+    }
+
+    public String getTabName() {
+        return tabName;
+    }
+
+    public void setTabName(String tabName) {
+        this.tabName = tabName;
     }
 
     public long getExternalInputCount() {
