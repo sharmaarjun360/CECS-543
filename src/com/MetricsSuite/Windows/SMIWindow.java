@@ -53,12 +53,7 @@ public class SMIWindow {
             // make column non-editable
             public boolean isCellEditable(int rowIndex, int columnIndex)
             {
-                switch (columnIndex){
-                    case 1:
-                    case 2:
-                    case 3:
-                        return true;
-                }
+                if(rowIndex == this.getRowCount()-1) return true;
                 return false;
             }
         };
@@ -107,8 +102,6 @@ public class SMIWindow {
         for (SMIRowData data: rows) {
             model.addRow(new Object[]{data.getSmi(), data.getModuleAdded(), data.getModuleChanged(), data.getModuleDeleted(), data.getTotalModules()});
         }
-
         smiData.setRowList(new ArrayList<>());
-
     }
 }

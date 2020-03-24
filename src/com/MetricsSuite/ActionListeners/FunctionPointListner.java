@@ -272,7 +272,6 @@ public class FunctionPointListner implements ActionListener, FocusListener {
                 return button.getText();
             }
         }
-
         return null;
     }
 }
