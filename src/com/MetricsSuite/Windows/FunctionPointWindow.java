@@ -9,6 +9,8 @@ import com.MetricsSuite.Models.ProjectData;
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
+import java.text.NumberFormat;
+import java.util.Enumeration;
 
 public class FunctionPointWindow {
 
@@ -315,6 +317,53 @@ public class FunctionPointWindow {
 
         panel.setLayout(null);
         return panel;
+    }
+
+    public void updateFunctionPointWindow(){
+        FunctionPointData functionPointData = this.getFpData();
+
+        txt_external_inputs.setText(String.valueOf(functionPointData.getExternalInputCount()));
+        txt_external_outputs.setText(String.valueOf(functionPointData.getExternalOutputCount()));
+        txt_external_inquiries.setText(String.valueOf(functionPointData.getExternalInquiriesCount()));
+        txt_Internal_logical_files.setText(String.valueOf(functionPointData.getInternalLogicalFileCount()));
+        txt_external_interface_files.setText(String.valueOf(functionPointData.getExternalInterfaceFileCount()));
+
+        total_count_des_txt.setText(String.valueOf(functionPointData.getTotalCount()));
+        compute_fp_des_txt.setText(String.valueOf(functionPointData.getFunctionPointValue()));
+
+        setSelectedFactors(ext_ip_r,functionPointData.getInputFactor());
+        setSelectedFactors(ext_if_r,functionPointData.getInterfaceFileFactor());
+        setSelectedFactors(ext_inq_r,functionPointData.getInquiryFactor());
+        setSelectedFactors(ext_lf_r,functionPointData.getLogicalFileFactor());
+        setSelectedFactors(ext_op_r,functionPointData.getOutputFactor());
+
+        ext_ip_des_txt.setText(String.valueOf(functionPointData.getInputTotal()));
+        ext_op_des_txt.setText(String.valueOf(functionPointData.getOutputTotal()));
+        ext_inq_des_txt.setText(String.valueOf(functionPointData.getInquiryTotal()));
+        int_lf_des_txt.setText(String.valueOf(functionPointData.getLogicalFileTotal()));
+        ext_if_des_txt.setText(String.valueOf(functionPointData.getInterfaceFileTotal()));
+
+
+
+        // TODO: 08/03/20 current_lang_1_des_txt change here
+        val_adj_des_txt.setText(Long.toString(functionPointData.getVafTotal()));
+        current_lang_1_des_txt.setText(functionPointData.getSelectedLanguage());
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setGroupingUsed(true);
+        current_lang_2_des_txt.setText(nf.format(functionPointData.getTotalCodeSize()));
+
+    }
+
+    private void setSelectedFactors(ButtonGroup buttonGroup, int factor){
+        Enumeration<AbstractButton> button_group_enumerator = buttonGroup.getElements();
+        while(button_group_enumerator.hasMoreElements()){
+            AbstractButton someButton = button_group_enumerator.nextElement();
+            if(someButton.getText().equalsIgnoreCase(String.valueOf(factor))){
+                someButton.setSelected(false);
+                someButton.setSelected(true);
+                return;
+            }
+        }
     }
 
 }

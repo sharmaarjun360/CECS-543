@@ -17,9 +17,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Enumeration;
 
 public class ActionListener_MainWindow implements ActionListener {
 
@@ -82,18 +80,6 @@ public class ActionListener_MainWindow implements ActionListener {
                 FunctionPointNameWindow fpNameWindow = new FunctionPointNameWindow((MainWindow) context);
                 fpNameWindow.setVisible(true);
                 break;
-
-                // TODO: 21/02/20 Use call backs to communicate between View and controller
-                // getMainTabbedPane incorrect approch use callbacks instead
-//                ProjectData projectData = ((MainWindow) context).metricsSuite.getProjectData();
-//                if(projectData == null){ MetricsAlert.getInstance().showAlert(
-//                        (context), MetricsConstants.P_ALERT_CREATE_PROJECT);
-//                    return;
-//                }else if (projectData !=null){
-////                     && !(projectData.getFpArray().isEmpty())
-//                newFunctionPointPane((JFrame) context, ((MainWindow) context).mainTabbedPane);
-//                }
-//                break;
             case MetricsConstants.P_MENU_ITEM_METRICS_ENTER_SMI_DATA:
                 ProjectData projectData1 = ((MainWindow) context).metricsSuite.getProjectData();
                 if(projectData1 == null){ MetricsAlert.getInstance().showAlert(
@@ -104,6 +90,19 @@ public class ActionListener_MainWindow implements ActionListener {
                 }
             default:
         }
+    }
+
+    private JFrame newProjectWindow(Component context) {
+        NewProjectWindow newProject = null;
+        if (context instanceof MainWindow) {
+            if (activeSubWindow != null) {
+                activeSubWindow.dispose();
+                activeSubWindow = null;
+            }
+            newProject = new NewProjectWindow((MainWindow) context);
+            newProject.setVisible(true);
+        }
+        return newProject;
     }
 
     /**
@@ -162,30 +161,6 @@ public class ActionListener_MainWindow implements ActionListener {
         }
         return true;
     }
-    private void createUIFromProjectData(ProjectData projectData, Component context) {
-        // TODO: 07/03/20 UI creation on new thread other than main thread
-        if(!projectData.getFpArray().isEmpty()){
-            ArrayList<FunctionPointData> tempFunctionPointDataArrayList = (ArrayList<FunctionPointData>) projectData.getFpArray();
-            Object [] some_Array = tempFunctionPointDataArrayList.toArray();
-            for(int i=0;i<some_Array.length;i++){
-                newFunctionPointPaneFromData((JFrame) context, ((MainWindow) context).mainTabbedPane, (FunctionPointData) some_Array[i]);
-            }
-            // TODO: 08/03/20 concurrent modification error
-//            Iterator<FunctionPointData> functionPointDataIterator = projectData.getFpArray().iterator();
-//            while (functionPointDataIterator.hasNext()){
-//                System.out.println("Yahoo");
-//                newFunctionPointPaneFromData((JFrame) context, ((MainWindow) context).mainTabbedPane, functionPointDataIterator.next());
-//            }
-//            for(FunctionPointData functionPointData: projectData.getFpArray()){
-//                newFunctionPointPaneFromData((JFrame) context, ((MainWindow) context).mainTabbedPane, functionPointData);
-//            }
-        }
-
-        if(projectData.getSmiData() != null){
-            addSMIPane(true, projectData.getSmiData());
-            ((MainWindow)this.context).enableSMIMenu(false);
-        }
-    }
     /**
      * Reads the file at path selected
      *
@@ -207,91 +182,28 @@ public class ActionListener_MainWindow implements ActionListener {
         }
     }
 
-    private JFrame openLanguageWindow() {
-        if (activeSubWindow != null) {
-            activeSubWindow.dispose();
-            activeSubWindow = null;
-        }
-        LanguageWindow languageWindow = new LanguageWindow((MainWindow) this.context);
-        languageWindow.setVisible(true);
-        activeSubWindow = languageWindow;
-        return languageWindow;
-    }
-
-    private JFrame newProjectWindow(Component context) {
-        NewProjectWindow newProject = null;
-        if (context instanceof MainWindow) {
-            if (activeSubWindow != null) {
-                activeSubWindow.dispose();
-                activeSubWindow = null;
+    private void createUIFromProjectData(ProjectData projectData, Component context) {
+        // TODO: 07/03/20 UI creation on new thread other than main thread
+        if(!projectData.getFpArray().isEmpty()){
+            ArrayList<FunctionPointData> tempFunctionPointDataArrayList = (ArrayList<FunctionPointData>) projectData.getFpArray();
+            Object [] some_Array = tempFunctionPointDataArrayList.toArray();
+            for(int i=0;i<some_Array.length;i++){
+                newFunctionPointPaneFromData((JFrame) context, ((MainWindow) context).mainTabbedPane, (FunctionPointData) some_Array[i]);
             }
-            newProject = new NewProjectWindow((MainWindow) context);
-            newProject.setVisible(true);
         }
-        return newProject;
+
+        if(projectData.getSmiData() != null){
+            addSMIPane(true, projectData.getSmiData());
+            ((MainWindow)this.context).enableSMIMenu(false);
+        }
     }
+
     private void newFunctionPointPaneFromData(JFrame parentFrame, JTabbedPane mainTabbedPane, FunctionPointData functionPointData) {
-        addPreviouslySavedFunctionPointTabToMainPane(mainTabbedPane, functionPointData);
-        parentFrame.revalidate();
-    }
-//    private void newFunctionPointPane(JFrame parentFrame, JTabbedPane mainTabbedPane) {
-//
-//        addEmptyFunctionPointTabToMainPane(mainTabbedPane);
-////        mainPane.setSize(context.getWidth(),context.getHeight());
-//        parentFrame.revalidate();
-////        parentFrame.pack();
-////        mainPane.setBounds(200,50,200,200);
-//    }
-
-//    private JComponent addEmptyFunctionPointTabToMainPane(JTabbedPane mainPane) {
-//        FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,false, null);
-//        //
-//        JComponent panel = fp.createNewFunctionPointPanel();
-//        mainPane.addTab(MetricsConstants.P_TAB_TITLE, null, panel, "Some tool tip");
-//        mainPane.setSelectedIndex(mainPane.getTabCount() - 1);
-//        return panel;
-//    }
-
-    private JComponent addPreviouslySavedFunctionPointTabToMainPane(JTabbedPane mainPane, FunctionPointData functionPointData) {
-
         FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,true, functionPointData, functionPointData.getTabName());
         JComponent panel = fp.createNewFunctionPointPanel();
-        updateFunctionPointWindowUIFromSavedData(functionPointData, fp);
-        mainPane.addTab(functionPointData.getTabName(), null, panel, functionPointData.getTabName());
-        return panel;
-    }
-
-    private void updateFunctionPointWindowUIFromSavedData(FunctionPointData functionPointData, FunctionPointWindow functionPointWindow){
-        functionPointWindow.txt_external_inputs.setText(String.valueOf(functionPointData.getExternalInputCount()));
-        functionPointWindow.txt_external_outputs.setText(String.valueOf(functionPointData.getExternalOutputCount()));
-        functionPointWindow.txt_external_inquiries.setText(String.valueOf(functionPointData.getExternalInquiriesCount()));
-        functionPointWindow.txt_Internal_logical_files.setText(String.valueOf(functionPointData.getInternalLogicalFileCount()));
-        functionPointWindow.txt_external_interface_files.setText(String.valueOf(functionPointData.getExternalInterfaceFileCount()));
-        
-        functionPointWindow.total_count_des_txt.setText(String.valueOf(functionPointData.getTotalCount()));
-        functionPointWindow.compute_fp_des_txt.setText(String.valueOf(functionPointData.getFunctionPointValue()));
-
-        setSelectedFactors(functionPointWindow.ext_ip_r,functionPointData.getInputFactor());
-        setSelectedFactors(functionPointWindow.ext_if_r,functionPointData.getInterfaceFileFactor());
-        setSelectedFactors(functionPointWindow.ext_inq_r,functionPointData.getInquiryFactor());
-        setSelectedFactors(functionPointWindow.ext_lf_r,functionPointData.getLogicalFileFactor());
-        setSelectedFactors(functionPointWindow.ext_op_r,functionPointData.getOutputFactor());
-
-        functionPointWindow.ext_ip_des_txt.setText(String.valueOf(functionPointData.getInputTotal()));
-        functionPointWindow.ext_op_des_txt.setText(String.valueOf(functionPointData.getOutputTotal()));
-        functionPointWindow.ext_inq_des_txt.setText(String.valueOf(functionPointData.getInquiryTotal()));
-        functionPointWindow.int_lf_des_txt.setText(String.valueOf(functionPointData.getLogicalFileTotal()));
-        functionPointWindow.ext_if_des_txt.setText(String.valueOf(functionPointData.getInterfaceFileTotal()));
-
-
-
-        // TODO: 08/03/20 current_lang_1_des_txt change here
-        functionPointWindow.val_adj_des_txt.setText(Long.toString(functionPointData.getVafTotal()));
-        functionPointWindow.current_lang_1_des_txt.setText(functionPointData.getSelectedLanguage());
-        NumberFormat nf = NumberFormat.getInstance();
-        nf.setGroupingUsed(true);
-        functionPointWindow.current_lang_2_des_txt.setText(nf.format(functionPointData.getTotalCodeSize()));
-
+        fp.updateFunctionPointWindow();
+        mainTabbedPane.addTab(functionPointData.getTabName(), null, panel, functionPointData.getTabName());
+        parentFrame.revalidate();
     }
 
     private void addSMIPane(boolean isSavedProject, SMIData smiData){
@@ -310,19 +222,18 @@ public class ActionListener_MainWindow implements ActionListener {
         mainWindow.enableSMIMenu(false);
     }
 
-    private void exitTheApplication() {
-        System.exit(0);
+    private JFrame openLanguageWindow() {
+        if (activeSubWindow != null) {
+            activeSubWindow.dispose();
+            activeSubWindow = null;
+        }
+        LanguageWindow languageWindow = new LanguageWindow((MainWindow) this.context);
+        languageWindow.setVisible(true);
+        activeSubWindow = languageWindow;
+        return languageWindow;
     }
 
-    private void setSelectedFactors(ButtonGroup buttonGroup, int factor){
-        Enumeration<AbstractButton> button_group_enumerator = buttonGroup.getElements();
-        while(button_group_enumerator.hasMoreElements()){
-            AbstractButton someButton = button_group_enumerator.nextElement();
-            if(someButton.getText().equalsIgnoreCase(String.valueOf(factor))){
-                someButton.setSelected(false);
-                someButton.setSelected(true);
-                return;
-            }
-        }
+    private void exitTheApplication() {
+        System.exit(0);
     }
 }
