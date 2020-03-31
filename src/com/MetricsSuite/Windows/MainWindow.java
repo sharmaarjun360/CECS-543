@@ -46,7 +46,7 @@ public class MainWindow extends JFrame {
     private void addMenuBar(JFrame context){
 
         JMenuBar menubar = new JMenuBar();
-        JMenu file, edit, preferences, fp, help;
+        JMenu file, edit, preferences, fp, help,project_code;
         JMenuItem fpData, smiData;
         context.setJMenuBar(menubar);
 
@@ -55,6 +55,7 @@ public class MainWindow extends JFrame {
         preferences = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_PREFERENCES);
         metrics = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_METRICS);
         help = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_HELP);
+        project_code = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_PROJECT_CODE);
 
         addMenuItemToMenu(file,MetricsConstants.P_MENU_ITEM_FILE_NEW);
         addMenuItemToMenu(file,MetricsConstants.P_MENU_ITEM_FILE_OPEN);
@@ -76,6 +77,9 @@ public class MainWindow extends JFrame {
         smiData = new JMenuItem(MetricsConstants.P_MENU_ITEM_METRICS_ENTER_SMI_DATA);
         smi.add(smiData);
         smiData.addActionListener(ActionListener_MainWindow.getInstance(context));
+
+        addMenuItemToMenu(project_code,MetricsConstants.P_MENU_ITEM_PROJECT_CODE_ADD_CODE);
+        addMenuItemToMenu(project_code,MetricsConstants.P_MENU_ITEM_METRICS_PROJECT_CODE_STATISTICS);
     }
 
     /**
