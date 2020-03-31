@@ -30,6 +30,7 @@ public class MetricsConstants {
     public static final String P_MAIN_WINDOW_MENU_PREFERENCES = "Preferences";
     public static final String P_MAIN_WINDOW_MENU_METRICS = "Metrics";
     public static final String P_MAIN_WINDOW_MENU_HELP = "Help";
+    public static final String P_MAIN_WINDOW_MENU_PROJECT_CODE = "Project Code";
     /**
      * Main Window Menu Items
      */
@@ -42,6 +43,9 @@ public class MetricsConstants {
     public static final String P_MENU_ITEM_METRICS_ENTER_FP_DATA = "Enter FP DATA";
     public static final String P_MENU_ITEM_METRICS_SMI = "SMI";
     public static final String P_MENU_ITEM_METRICS_ENTER_SMI_DATA = "Enter SMI DATA";
+    public static final String P_MENU_ITEM_PROJECT_CODE_ADD_CODE = "Add Code";
+    public static final String P_MENU_ITEM_METRICS_PROJECT_CODE_STATISTICS = "Project Code Statistics";
+
     /**
      * Language Window Dimension
      */
