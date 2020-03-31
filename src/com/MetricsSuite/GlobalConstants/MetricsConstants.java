@@ -33,6 +33,7 @@ public class MetricsConstants {
     /**
      * Main Window Menu Items
      */
+    public static final String P_JTREE_EMPTY = "<...>";
     public static final String P_MENU_ITEM_FILE_NEW = "New";
     public static final String P_MENU_ITEM_FILE_OPEN = "Open";
     public static final String P_MENU_ITEM_FILE_SAVE = "Save";
@@ -49,6 +50,11 @@ public class MetricsConstants {
     public static final int  LANGUAGE_WINDOW_HEIGHT = 420;
     public static final int LANGUAGE_WINDOW_LOCATION_X = 300;
     public static final int LANGUAGE_WINDOW_LOCATION_Y = 200;
+    /**
+     * JTree
+     */
+    public static final int JTREE_WINDOW_WIDTH = 100;
+    public static final int  JTREE_WINDOW_HEIGHT = 360;
     /**
      * New Project Window Dimension
      */

@@ -9,17 +9,22 @@ import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
 import com.MetricsSuite.Models.SMIData;
 import com.MetricsSuite.Windows.*;
+import com.sun.tools.javadoc.Main;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.*;
 import java.util.ArrayList;
 
-public class ActionListener_MainWindow implements ActionListener {
+public class ActionListener_MainWindow implements ActionListener, MouseListener {
 
     private static ActionListener_MainWindow actionListener_MainWindow_Instance = null;
     private Component context;
@@ -153,9 +158,9 @@ public class ActionListener_MainWindow implements ActionListener {
             System.out.println("Selected file: " + projectFilePath);
             p1 = (ProjectData) readProjectDataFromFile(projectFilePath, MetricsSuite.getInstance().getProjectData());
             if(p1!=null){
+                ((MainWindow)context).metricsSuite.setProjectData(p1);
                 ((MainWindow)context).createNewProject();
                 ((JFrame)context).revalidate();
-                ((MainWindow)context).metricsSuite.setProjectData(p1);
                 createUIFromProjectData(p1,context);
             }
         }
@@ -217,9 +222,9 @@ public class ActionListener_MainWindow implements ActionListener {
 
         mainWindow.mainTabbedPane.addTab(MetricsConstants.P_SMI_TAB_TITLE, null, panel, "SMI");
         mainWindow.mainTabbedPane.setSelectedIndex(mainWindow.mainTabbedPane.getTabCount() - 1);
-
         mainWindow.revalidate();
         mainWindow.enableSMIMenu(false);
+        mainWindow.updateTree(MetricsSuite.getInstance().getProjectData());
     }
 
     private JFrame openLanguageWindow() {
@@ -235,5 +240,161 @@ public class ActionListener_MainWindow implements ActionListener {
 
     private void exitTheApplication() {
         System.exit(0);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        if(e.isPopupTrigger()) {
+            //This Class is also adds right click popup when object is created.
+            final TreePopup treePopup = new TreePopup(e);
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+            if(e.isPopupTrigger()) {
+                //This Class is also adds right click popup when object is created.
+                final TreePopup treePopup = new TreePopup(e);
+            }
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    /***
+     * This Class is also adds right click popup when object is created.
+     */
+    class TreePopup extends JPopupMenu {
+        private int x ;
+        private int y ;
+        private JTree tree;
+        private TreePath path;
+        private void initialize(MouseEvent e){
+            x = e.getX();
+            y = e.getY();
+            tree = (JTree) e.getSource();
+            path = tree.getPathForLocation(x, y);
+        }
+        private void setUpRightClickMenuOptions(){
+            final String[] selectedNode = new String[1];
+            JMenuItem open = new JMenuItem("Open");
+            JMenuItem close = new JMenuItem("Close");
+            JMenuItem delete = new JMenuItem("Delete");
+            JTabbedPane tabbedPane = ((MainWindow)context).mainTabbedPane;
+            int count = tabbedPane.getTabCount();
+            open.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent ae) {
+                    System.out.println("Open "+path);
+                    selectedNode[0] = path.getLastPathComponent()+"";
+                    for (int i=0; i<count; i++) {
+                        if(selectedNode[0].equalsIgnoreCase(tabbedPane.getTitleAt(i))){
+                            tabbedPane.setSelectedIndex(i);
+                            break;
+                        }
+                    tabbedPane.revalidate();
+                    }
+                }
+            });
+            close.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent ae) {
+                    System.out.println("Close "+path);
+                    selectedNode[0] = path.getLastPathComponent()+"";
+//                    for (int i=0; i<count; i++) {
+//                        if(selectedNode[0].equalsIgnoreCase(tabbedPane.getTitleAt(i))){
+//                            tabbedPane.removeTabAt(i);
+//                            break;
+//                        }
+//                        tabbedPane.revalidate();
+//                    }
+                }
+            });
+            delete.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent ae) {
+                    System.out.println("Delete "+path);
+                    selectedNode[0] = path.getLastPathComponent()+"";
+                    int resultSelection = MetricsAlert.getInstance().showConfirmAlert(context,"Are you sure, you wan't to delete?");
+        if (resultSelection == JOptionPane.YES_OPTION) {
+
+                    for (int i=0; i<count; i++) {
+                        if(selectedNode[0].equalsIgnoreCase(tabbedPane.getTitleAt(i))){
+                            tabbedPane.removeTabAt(i);
+                            ArrayList<FunctionPointData> fpArray = (ArrayList<FunctionPointData>) MetricsSuite.getInstance().getProjectData().getFpArray();
+                            for(int j = 0 ; j< fpArray.size(); j++) {
+
+                                if(fpArray.get(i).getTabName().equalsIgnoreCase(selectedNode[0])){
+                                    MetricsSuite.getInstance().getProjectData().getFpArray().remove(fpArray.remove(i));
+                                    ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
+                                    ((MainWindow)context).revalidate();
+                                return;
+                                }
+                            }
+                            if(MetricsSuite.getInstance().getProjectData().getSmiData()!=null) {
+                                MetricsSuite.getInstance().getProjectData().setSmiData(null);
+                                ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
+                                ((MainWindow)context).enableSMIMenu(true);
+                                ((MainWindow)context).revalidate();
+                                return;
+                            }else{
+
+                            }
+                            //else if(MetricsSuite.getInstance().getProjectData().getNewTabs().contains(selectedNode[0])){
+//
+//                            }
+                            break;
+                        }
+                    }
+//                    ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
+//                    ((MainWindow)context).revalidate();
+                }
+                }
+            });
+            add(open);
+            add(new JSeparator());
+            add(close);
+            add(new JSeparator());
+            add(delete);
+        }
+        private void setUpRightClick(){
+            if (path == null)
+                return;
+
+            DefaultMutableTreeNode rightClickedNode = (DefaultMutableTreeNode) path
+                    .getLastPathComponent();
+
+            TreePath[] selectionPaths = tree.getSelectionPaths();
+
+            boolean isSelected = false;
+            if (selectionPaths != null) {
+                for (TreePath selectionPath : selectionPaths) {
+                    if (selectionPath.equals(path)) {
+                        isSelected = true;
+                    }
+                }
+            }
+            if (!isSelected) {
+                tree.setSelectionPath(path);
+            }
+
+            if (rightClickedNode.isLeaf()) {
+                show(tree, x, y);
+            }
+        }
+        public TreePopup(MouseEvent e) {
+            initialize(e);
+            setUpRightClickMenuOptions();
+            setUpRightClick();
+        }
     }
 }

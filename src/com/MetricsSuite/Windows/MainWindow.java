@@ -3,14 +3,22 @@ package com.MetricsSuite.Windows;
 import com.MetricsSuite.ActionListeners.ActionListener_MainWindow;
 import com.MetricsSuite.MetricsSuite;
 import com.MetricsSuite.GlobalConstants.MetricsConstants;
+import com.MetricsSuite.Models.FunctionPointData;
+import com.MetricsSuite.Models.ProjectData;
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
+import javax.swing.tree.TreeSelectionModel;
 import java.awt.*;
+import java.util.HashMap;
 
 
 public class MainWindow extends JFrame {
 
     public MetricsSuite metricsSuite;
     public JTabbedPane mainTabbedPane = null;
+    public JScrollPane mainScrollPane = null;
     private JMenu metrics,smi;
     public MainWindow(MetricsSuite parent){
         initComponent();
@@ -27,8 +35,7 @@ public class MainWindow extends JFrame {
     public void initComponent(){
         addMenuBar(this);
         // TODO: 21/02/20 For Iteration 02 refer read me #1:
-//        frame.add(new JScrollPane(tree), BorderLayout.WEST);
-//        addJTREE(this);
+        mainScrollPane = addJTree(this, createJTree(MetricsConstants.P_JTREE_EMPTY),false);
         mainTabbedPane = addTabbedPane(this);
     }
     private void enableMetricsMenu(boolean enable){
@@ -37,6 +44,18 @@ public class MainWindow extends JFrame {
     public void enableSMIMenu(boolean enable){
         smi.setEnabled(enable);
     }
+
+    private JScrollPane addJTree(JFrame parentFrame, JTree jTree, boolean addMouseListener) {
+        JScrollPane tempScrollPane = new JScrollPane(jTree);
+        tempScrollPane.setPreferredSize(new Dimension(MetricsConstants.JTREE_WINDOW_WIDTH, MetricsConstants.JTREE_WINDOW_HEIGHT));
+        tempScrollPane.setMaximumSize(new Dimension(MetricsConstants.JTREE_WINDOW_WIDTH, MetricsConstants.JTREE_WINDOW_HEIGHT));
+        parentFrame.add(tempScrollPane, BorderLayout.WEST);
+        if(addMouseListener){
+        jTree.addMouseListener(ActionListener_MainWindow.getInstance(this));
+        }
+        return tempScrollPane;
+    }
+
     private JTabbedPane addTabbedPane(JFrame parentFrame) {
         JTabbedPane tabbedPane = new JTabbedPane();
         parentFrame.add(tabbedPane, BorderLayout.CENTER);
@@ -107,6 +126,52 @@ public class MainWindow extends JFrame {
         this.mainTabbedPane.removeAll();
         this.enableMetricsMenu(true);
         this.enableSMIMenu(true);
+        this.revalidate();
+        this.updateTree(MetricsSuite.getInstance().getProjectData());
     }
 
+    public void updateTree(ProjectData projectData ) {
+        HashMap<String,String> map = new HashMap<>();
+        JTree tree = null;
+        boolean addRightClickListener = false;
+        if(projectData!=null){
+            tree = createJTree(projectData.getProjectName());
+        }else{
+            tree = createJTree(MetricsConstants.P_JTREE_EMPTY);
+        }
+
+        if(projectData.getFpArray()!=null && projectData.getFpArray().size() > 0){
+            addRightClickListener = true;
+            for (FunctionPointData fpData:
+                    projectData.getFpArray()) {
+                map.put("FP-"+fpData.getTabName()+fpData.getTabName().hashCode(),fpData.getTabName());
+            }}
+        if(projectData.getSmiData()!=null){
+            addRightClickListener = true;
+            map.put("SMI","SMI");
+        }
+        DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) tree.getModel()
+                .getRoot();
+
+        for (String value:
+             map.values()) {
+            DefaultMutableTreeNode child = new DefaultMutableTreeNode(value);
+            model.insertNodeInto(child, root, root.getChildCount());
+            tree.scrollPathToVisible(new TreePath(child.getPath()));
+        }
+
+        this.mainScrollPane.removeAll();
+        this.remove(mainScrollPane);
+        mainScrollPane = addJTree(this, tree,addRightClickListener);
+        this.revalidate();
+    }
+    private JTree createJTree(String rootName){
+            //create the root node
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode(rootName);
+       JTree tree =  new JTree(root);
+        tree.getSelectionModel().setSelectionMode
+                (TreeSelectionModel.SINGLE_TREE_SELECTION);
+            return tree;
+    }
 }

@@ -1,9 +1,8 @@
 package com.MetricsSuite.Windows;
 
-import com.MetricsSuite.ActionListeners.NewProjectActionListener;
 import com.MetricsSuite.Alert.MetricsAlert;
 import com.MetricsSuite.GlobalConstants.MetricsConstants;
-import com.MetricsSuite.Models.FunctionPointData;
+import com.MetricsSuite.MetricsSuite;
 
 import javax.swing.*;
 import java.awt.*;
@@ -77,7 +76,7 @@ public class FunctionPointNameWindow extends JFrame {
                 JComponent panel = fp.createNewFunctionPointPanel();
                 self.mainWindow.mainTabbedPane.addTab(name, null, panel, name);
                 self.mainWindow.mainTabbedPane.setSelectedIndex(self.mainWindow.mainTabbedPane.getTabCount() - 1);
-                self.mainWindow.revalidate();
+                self.mainWindow.updateTree(MetricsSuite.getInstance().getProjectData());
                 self.setVisible(false);
                 self.dispose();
             }
