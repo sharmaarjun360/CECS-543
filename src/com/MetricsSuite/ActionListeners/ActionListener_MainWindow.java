@@ -298,26 +298,50 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                 public void actionPerformed(ActionEvent ae) {
                     System.out.println("Open "+path);
                     selectedNode[0] = path.getLastPathComponent()+"";
-                    for (int i=0; i<count; i++) {
+                    int i;
+                    for (i=0; i<count; i++) {
                         if(selectedNode[0].equalsIgnoreCase(tabbedPane.getTitleAt(i))){
                             tabbedPane.setSelectedIndex(i);
                             break;
                         }
-                    tabbedPane.revalidate();
                     }
+                    if(i==count){
+                        ArrayList<FunctionPointData> fpArray = (ArrayList<FunctionPointData>) MetricsSuite.getInstance().getProjectData().getFpArray();
+                        for(int j = 0 ; j< fpArray.size(); j++) {
+
+                            if(fpArray.get(j).getTabName().equalsIgnoreCase(selectedNode[0])){
+                                FunctionPointData fpToRefresh = fpArray.get(j);
+                                MetricsSuite.getInstance().getProjectData().getFpArray().remove(fpArray.remove(j));
+                                newFunctionPointPaneFromData((MainWindow) context,((MainWindow) context).mainTabbedPane,fpToRefresh);
+                                MetricsSuite.getInstance().getProjectData().getFpArray().add(fpToRefresh);
+                                fpToRefresh = null;
+                                ((MainWindow) context).mainTabbedPane.setSelectedIndex(count);
+                                ((MainWindow)context).revalidate();
+                                return;
+                            }
+                        }
+                        if(MetricsSuite.getInstance().getProjectData().getSmiData()!=null && selectedNode[0].equalsIgnoreCase("SMI")) {
+                            addSMIPane(true, MetricsSuite.getInstance().getProjectData().getSmiData());
+                            ((MainWindow)context).revalidate();
+                            return;
+                        }else{
+
+                        }
+                    }
+                    tabbedPane.revalidate();
                 }
             });
             close.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
                     System.out.println("Close "+path);
                     selectedNode[0] = path.getLastPathComponent()+"";
-//                    for (int i=0; i<count; i++) {
-//                        if(selectedNode[0].equalsIgnoreCase(tabbedPane.getTitleAt(i))){
-//                            tabbedPane.removeTabAt(i);
-//                            break;
-//                        }
-//                        tabbedPane.revalidate();
-//                    }
+                    for (int i=0; i<count; i++) {
+                        if(selectedNode[0].equalsIgnoreCase(tabbedPane.getTitleAt(i))){
+                            tabbedPane.removeTabAt(i);
+                            tabbedPane.revalidate();
+                            break;
+                        }
+                    }
                 }
             });
             delete.addActionListener(new ActionListener() {
@@ -335,6 +359,7 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
 
                                 if(fpArray.get(i).getTabName().equalsIgnoreCase(selectedNode[0])){
                                     MetricsSuite.getInstance().getProjectData().getFpArray().remove(fpArray.remove(i));
+
                                     ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
                                     ((MainWindow)context).revalidate();
                                 return;
@@ -355,8 +380,6 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                             break;
                         }
                     }
-//                    ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
-//                    ((MainWindow)context).revalidate();
                 }
                 }
             });
