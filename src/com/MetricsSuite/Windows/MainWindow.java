@@ -19,7 +19,7 @@ public class MainWindow extends JFrame {
     public MetricsSuite metricsSuite;
     public JTabbedPane mainTabbedPane = null;
     public JScrollPane mainScrollPane = null;
-    private JMenu metrics,smi;
+    private JMenu metrics,smi,project_code;
     public MainWindow(MetricsSuite parent){
         initComponent();
         setTitle(MetricsConstants.PROJECT_TITLE);
@@ -65,7 +65,7 @@ public class MainWindow extends JFrame {
     private void addMenuBar(JFrame context){
 
         JMenuBar menubar = new JMenuBar();
-        JMenu file, edit, preferences, fp, help,project_code;
+        JMenu file, edit, preferences, fp, help;
         JMenuItem fpData, smiData;
         context.setJMenuBar(menubar);
 
@@ -75,6 +75,7 @@ public class MainWindow extends JFrame {
         metrics = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_METRICS);
         help = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_HELP);
         project_code = addMenuToMenuBar(menubar,MetricsConstants.P_MAIN_WINDOW_MENU_PROJECT_CODE);
+        project_code.setEnabled(false);
 
         addMenuItemToMenu(file,MetricsConstants.P_MENU_ITEM_FILE_NEW);
         addMenuItemToMenu(file,MetricsConstants.P_MENU_ITEM_FILE_OPEN);
@@ -130,6 +131,7 @@ public class MainWindow extends JFrame {
         this.mainTabbedPane.removeAll();
         this.enableMetricsMenu(true);
         this.enableSMIMenu(true);
+        project_code.setEnabled(true);
         this.revalidate();
         this.updateTree(MetricsSuite.getInstance().getProjectData());
     }
