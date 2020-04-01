@@ -154,7 +154,14 @@ public class MainWindow extends JFrame {
             }}
         if(projectData.getSmiData()!=null){
             addRightClickListener = true;
-            map.put("SMI","SMI");
+            map.put("SMI-","SMI");
+        }
+        if(projectData.getCodeFilesArray()!=null && projectData.getCodeFilesArray().size() > 0){
+            addRightClickListener = true;
+            for (String codeFile:
+                    projectData.getCodeFilesArray()) {
+                map.put("CF-" +codeFile.hashCode(),codeFile);
+            }
         }
         DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
         DefaultMutableTreeNode root = (DefaultMutableTreeNode) tree.getModel()

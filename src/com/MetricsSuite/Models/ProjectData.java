@@ -13,10 +13,13 @@ public class ProjectData implements Serializable {
 
     private List<FunctionPointData> fpArray;
 
+    private ArrayList<String> codeFilesArray;
+
     private SMIData smiData;
 
     public ProjectData(){
         fpArray = new ArrayList<>();
+        codeFilesArray = new ArrayList<>();
     }
 
     public String getProjectName() {
@@ -65,5 +68,12 @@ public class ProjectData implements Serializable {
 
     public void setSmiData(SMIData smiData) {
         this.smiData = smiData;
+    }
+    public ArrayList<String> getCodeFilesArray() {
+        return codeFilesArray;
+    }
+
+    public void setCodeFilesArray(ArrayList<String> codeFilesArray) {
+        this.codeFilesArray = codeFilesArray;
     }
 }

@@ -2,8 +2,6 @@ package com.MetricsSuite.Alert;
 
 import javax.swing.*;
 import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 public class MetricsAlert {
 

@@ -12,6 +12,7 @@ public class MetricsConstants {
     public static final String PROJECT_DATA_PATH = ROOT_PROJECT_PATH + "/projectData/";
     public static final String PROJECT_EXTENSION = ".ms";
     public static final String PROJECT_FILE_TYPE = "ms";
+    public static final String PROJECT_FILE_TYPES = ".java etc";
     public static final String PROJECT_IMAGES = "resources/images/";
     public static final String PROJECT_IMAGE_SUN = "Sun.png";
 

@@ -94,9 +94,14 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                 }
                 break;
             case MetricsConstants.P_MENU_ITEM_PROJECT_CODE_ADD_CODE:
-                JFileChooser j = new JFileChooser();
-                j.setMultiSelectionEnabled(true);
-                j.showSaveDialog(null);
+                File[] selectedFiles  = openCodeFiles(context);
+                if(selectedFiles!=null) {
+                    for (File selectedFile :
+                            selectedFiles) {
+                        MetricsSuite.getInstance().getProjectData().getCodeFilesArray().add(selectedFile.getName());
+                    }
+                    ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
+                }
                 break;
             default:
         }
@@ -170,6 +175,21 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
             }
         }
         return true;
+    }
+    private File[] openCodeFiles(Component context) {
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(MetricsConstants.PROJECT_FILE_TYPES, MetricsConstants.PROJECT_FILE_TYPE,"java");
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(filter);
+        fileChooser.setMultiSelectionEnabled(true);
+        File[] selectedFiles = null;
+        int fileChooserOption = fileChooser.showOpenDialog(context);
+        ProjectData p1 = null;
+        if (fileChooserOption == JFileChooser.APPROVE_OPTION) {
+            selectedFiles = fileChooser.getSelectedFiles();
+            //Add code call method to add Open code TAB here todo
+        }
+        return selectedFiles;
     }
     /**
      * Reads the file at path selected
@@ -330,7 +350,7 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                             ((MainWindow)context).revalidate();
                             return;
                         }else{
-
+                            //code Files open tab todo
                         }
                     }
                     tabbedPane.revalidate();
