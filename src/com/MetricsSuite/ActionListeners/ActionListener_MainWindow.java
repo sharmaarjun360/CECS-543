@@ -9,7 +9,6 @@ import com.MetricsSuite.Models.FunctionPointData;
 import com.MetricsSuite.Models.ProjectData;
 import com.MetricsSuite.Models.SMIData;
 import com.MetricsSuite.Windows.*;
-import com.sun.tools.javadoc.Main;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -93,6 +92,12 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                 }else if (projectData1 !=null){
                         addSMIPane(false, null);
                 }
+                break;
+            case MetricsConstants.P_MENU_ITEM_PROJECT_CODE_ADD_CODE:
+                JFileChooser j = new JFileChooser();
+                j.setMultiSelectionEnabled(true);
+                j.showSaveDialog(null);
+                break;
             default:
         }
     }
