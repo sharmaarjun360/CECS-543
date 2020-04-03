@@ -244,12 +244,23 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
         if(isSavedProject){
             smiWindow.updateSMITable();
         }
-
         mainWindow.mainTabbedPane.addTab(MetricsConstants.P_SMI_TAB_TITLE, null, panel, "SMI");
         mainWindow.mainTabbedPane.setSelectedIndex(mainWindow.mainTabbedPane.getTabCount() - 1);
         mainWindow.revalidate();
         mainWindow.enableSMIMenu(false);
         mainWindow.updateTree(MetricsSuite.getInstance().getProjectData());
+    }
+
+    private void addCodeWindowPane(boolean isSavedProject, TreePath file){
+
+            String filename = file.toString();
+            MainWindow mainWindow = (MainWindow) context;
+            CodeWindow codeWindow = new CodeWindow();
+            JComponent panel = codeWindow.createNewDataPanel();
+            mainWindow.mainTabbedPane.addTab(filename.substring(filename.indexOf(' ') + 1, filename.length() - 1), null, panel, "Code");
+            mainWindow.mainTabbedPane.setSelectedIndex(mainWindow.mainTabbedPane.getTabCount() - 1);
+            mainWindow.revalidate();
+            mainWindow.updateTree(MetricsSuite.getInstance().getProjectData());
     }
 
     private JFrame openLanguageWindow() {
@@ -304,6 +315,7 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
     class TreePopup extends JPopupMenu {
         private int x ;
         private int y ;
+        public int counttab;
         private JTree tree;
         private TreePath path;
         private void initialize(MouseEvent e){
@@ -351,6 +363,7 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                             return;
                         }else{
                             //code Files open tab todo
+                            addCodeWindowPane(false,path);
                         }
                     }
                     tabbedPane.revalidate();
