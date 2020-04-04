@@ -11,6 +11,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 import java.awt.*;
+import java.io.File;
 import java.util.HashMap;
 
 
@@ -20,6 +21,7 @@ public class MainWindow extends JFrame {
     public JTabbedPane mainTabbedPane = null;
     public JScrollPane mainScrollPane = null;
     private JMenu metrics,smi,project_code;
+    private JMenuItem addProjectCode, projectCodeStatistics;
     public MainWindow(MetricsSuite parent){
         initComponent();
         setTitle(MetricsConstants.PROJECT_TITLE);
@@ -43,6 +45,11 @@ public class MainWindow extends JFrame {
     }
     public void enableSMIMenu(boolean enable){
         smi.setEnabled(enable);
+    }
+
+    public void toggleProjectCode(boolean enable){
+        projectCodeStatistics.setEnabled(enable);
+        addProjectCode.setEnabled(!enable);
     }
 
     private JScrollPane addJTree(JFrame parentFrame, JTree jTree, boolean addMouseListener) {
@@ -98,8 +105,9 @@ public class MainWindow extends JFrame {
         smi.add(smiData);
         smiData.addActionListener(ActionListener_MainWindow.getInstance(context));
 
-        addMenuItemToMenu(project_code,MetricsConstants.P_MENU_ITEM_PROJECT_CODE_ADD_CODE);
-        addMenuItemToMenu(project_code,MetricsConstants.P_MENU_ITEM_METRICS_PROJECT_CODE_STATISTICS);
+        addProjectCode = addMenuItemToMenu(project_code,MetricsConstants.P_MENU_ITEM_PROJECT_CODE_ADD_CODE);
+        projectCodeStatistics = addMenuItemToMenu(project_code,MetricsConstants.P_MENU_ITEM_METRICS_PROJECT_CODE_STATISTICS);
+        toggleProjectCode(false);
     }
 
     /**
@@ -158,9 +166,9 @@ public class MainWindow extends JFrame {
         }
         if(projectData.getCodeFilesArray()!=null && projectData.getCodeFilesArray().size() > 0){
             addRightClickListener = true;
-            for (String codeFile:
+            for (File codeFile:
                     projectData.getCodeFilesArray()) {
-                map.put("CF-" +codeFile.hashCode(),codeFile);
+                map.put("CF-" +codeFile.getName().hashCode(),codeFile.getName());
             }
         }
         DefaultTreeModel model = (DefaultTreeModel) tree.getModel();

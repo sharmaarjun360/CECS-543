@@ -22,12 +22,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ActionListener_MainWindow implements ActionListener, MouseListener {
 
     private static ActionListener_MainWindow actionListener_MainWindow_Instance = null;
     private Component context;
     private static JFrame activeSubWindow = null;
+    private JFileChooser projectCodeFileChooser;
 
     private ActionListener_MainWindow(Component context) {
         this.context = context;
@@ -96,13 +98,30 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
             case MetricsConstants.P_MENU_ITEM_PROJECT_CODE_ADD_CODE:
                 File[] selectedFiles  = openCodeFiles(context);
                 if(selectedFiles!=null) {
-                    for (File selectedFile :
-                            selectedFiles) {
-                        MetricsSuite.getInstance().getProjectData().getCodeFilesArray().add(selectedFile.getName());
-                    }
-                    ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
+                    // TODO: show success message
+                    ((MainWindow)context).toggleProjectCode(true);
                 }
                 break;
+            case MetricsConstants.P_MENU_ITEM_METRICS_PROJECT_CODE_STATISTICS:
+
+                if(this.projectCodeFileChooser != null){
+                    File[] files = this.projectCodeFileChooser.getSelectedFiles();
+
+                    if(files == null){
+                        // TODO: show failure message
+                    }
+
+                    for (File selectedFile :
+                            files) {
+                        MetricsSuite.getInstance().getProjectData().getCodeFilesArray().add(selectedFile);
+                        addCodeWindowPane(false, selectedFile);
+                    }
+                    ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
+
+                    this.projectCodeFileChooser = null;
+                    ((MainWindow)context).toggleProjectCode(false);
+                }
+
             default:
         }
     }
@@ -189,6 +208,7 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
             selectedFiles = fileChooser.getSelectedFiles();
             //Add code call method to add Open code TAB here todo
         }
+        this.projectCodeFileChooser = fileChooser;
         return selectedFiles;
     }
     /**
@@ -251,13 +271,13 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
         mainWindow.updateTree(MetricsSuite.getInstance().getProjectData());
     }
 
-    private void addCodeWindowPane(boolean isSavedProject, TreePath file){
+    private void addCodeWindowPane(boolean isSavedProject, File file){
 
-            String filename = file.toString();
+            String filename = file.getName();
             MainWindow mainWindow = (MainWindow) context;
-            CodeWindow codeWindow = new CodeWindow();
+            CodeWindow codeWindow = new CodeWindow(file);
             JComponent panel = codeWindow.createNewDataPanel();
-            mainWindow.mainTabbedPane.addTab(filename.substring(filename.indexOf(' ') + 1, filename.length() - 1), null, panel, "Code");
+            mainWindow.mainTabbedPane.addTab(filename, null, panel, filename);
             mainWindow.mainTabbedPane.setSelectedIndex(mainWindow.mainTabbedPane.getTabCount() - 1);
             mainWindow.revalidate();
             mainWindow.updateTree(MetricsSuite.getInstance().getProjectData());
@@ -353,7 +373,7 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                                 MetricsSuite.getInstance().getProjectData().getFpArray().add(fpToRefresh);
                                 fpToRefresh = null;
                                 ((MainWindow) context).mainTabbedPane.setSelectedIndex(count);
-                                ((MainWindow)context).revalidate();
+                                context.revalidate();
                                 return;
                             }
                         }
@@ -363,7 +383,14 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                             return;
                         }else{
                             //code Files open tab todo
-                            addCodeWindowPane(false,path);
+                            List<File> codeFiles = MetricsSuite.getInstance().getProjectData().getCodeFilesArray();
+
+                            for (int j = 0; j < codeFiles.size(); j++){
+                                File selectedFile = codeFiles.get(j);
+                                if(selectedFile.getName().equalsIgnoreCase(selectedNode[0])){
+                                    addCodeWindowPane(false, selectedFile);
+                                }
+                            }
                         }
                     }
                     tabbedPane.revalidate();

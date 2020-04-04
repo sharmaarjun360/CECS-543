@@ -1,5 +1,6 @@
 package com.MetricsSuite.Models;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public class ProjectData implements Serializable {
 
     private List<FunctionPointData> fpArray;
 
-    private ArrayList<String> codeFilesArray;
+    private ArrayList<File> codeFilesArray;
 
     private SMIData smiData;
 
@@ -69,11 +70,11 @@ public class ProjectData implements Serializable {
     public void setSmiData(SMIData smiData) {
         this.smiData = smiData;
     }
-    public ArrayList<String> getCodeFilesArray() {
+    public ArrayList<File> getCodeFilesArray() {
         return codeFilesArray;
     }
 
-    public void setCodeFilesArray(ArrayList<String> codeFilesArray) {
+    public void setCodeFilesArray(ArrayList<File> codeFilesArray) {
         this.codeFilesArray = codeFilesArray;
     }
 }
