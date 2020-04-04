@@ -30,6 +30,7 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
     private Component context;
     private static JFrame activeSubWindow = null;
     private JFileChooser projectCodeFileChooser;
+    //public Set<String> tabName = new HashSet<String>();
 
     private ActionListener_MainWindow(Component context) {
         this.context = context;
@@ -158,6 +159,9 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
             projectDir.mkdir();
         }
         File projectFile = new File(projectDir.getPath() + "/" + projectName + MetricsConstants.PROJECT_EXTENSION);
+
+        List<File> codeFiles = MetricsSuite.getInstance().getProjectData().getCodeFilesArray();
+        projectData.setCodeFilesArray((ArrayList<File>) codeFiles);
         FileOutputStream outFile;
         outFile = new FileOutputStream(projectFile);
         ObjectOutputStream outObject = new ObjectOutputStream(outFile);
@@ -246,8 +250,16 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
             addSMIPane(true, projectData.getSmiData());
             ((MainWindow)this.context).enableSMIMenu(false);
         }
-    }
+        if(!projectData.getCodeFilesArray().isEmpty()){
+            ArrayList<File> aFL = projectData.getCodeFilesArray();
+            int i=0;
+            for (int j = 0; j < aFL.size(); j++){
+                File selectedFile = aFL.get(j);
+                    addCodeWindowPane(false, selectedFile);
+            }
 
+        }
+    }
     private void newFunctionPointPaneFromData(JFrame parentFrame, JTabbedPane mainTabbedPane, FunctionPointData functionPointData) {
         FunctionPointWindow fp = new FunctionPointWindow((MainWindow) context,true, functionPointData, functionPointData.getTabName());
         JComponent panel = fp.createNewFunctionPointPanel();
@@ -281,6 +293,17 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
             mainWindow.mainTabbedPane.setSelectedIndex(mainWindow.mainTabbedPane.getTabCount() - 1);
             mainWindow.revalidate();
             mainWindow.updateTree(MetricsSuite.getInstance().getProjectData());
+    }
+
+    private void generateCodeWindowPane(boolean isSavedProject, String file){
+
+        MainWindow mainWindow = (MainWindow) context;
+        CodeWindow codeWindow = new CodeWindow(new File(file));
+        JComponent panel = codeWindow.createNewDataPanel();
+        mainWindow.mainTabbedPane.addTab(file, null, panel, file);
+        mainWindow.mainTabbedPane.setSelectedIndex(mainWindow.mainTabbedPane.getTabCount() - 1);
+        mainWindow.revalidate();
+        mainWindow.updateTree(MetricsSuite.getInstance().getProjectData());
     }
 
     private JFrame openLanguageWindow() {
