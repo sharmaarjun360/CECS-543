@@ -19,7 +19,7 @@ public class MetricsConstants {
     /**
      * Main Window Dimension
      */
-    public static final int MAIN_WINDOW_WIDTH = 650;
+    public static final int MAIN_WINDOW_WIDTH = 700;
     public static final int  MAIN_WINDOW_HEIGHT = 600;
     public static final int MAIN_WINDOW_LOCATION_X = 200;
     public static final int MAIN_WINDOW_LOCATION_Y = 100;
