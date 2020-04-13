@@ -6,6 +6,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.tree.TreePath;
 import java.io.File;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class CodeWindow extends JFrame {
 
@@ -33,12 +35,13 @@ public class CodeWindow extends JFrame {
        // panel.setBorder(new EmptyBorder(20,10,0,0));
 
 
-
+        DecimalFormat df = new DecimalFormat("#.###");
+        df.setRoundingMode(RoundingMode.CEILING);
         JLabel fileMeta = new JLabel("<html>File name: "+this.selectedFile.getName() +
                 "<br>File length in bytes: "+statistics.getFileSize() +
                 "<br>File white space: "+statistics.getWs() +
                 "<br>File comment space in bytes: "+ statistics.getCommentSpace() +
-                "<br>Comment percentage of file: "+ statistics.getCommentPercentage()+"%</html>");
+                "<br>Comment percentage of file: "+ df.format(statistics.getCommentPercentage())+"%</html>");
         secondaryPanel.add(fileMeta);
 
         JLabel label = new JLabel("Halstead metrics: ");
@@ -51,10 +54,12 @@ public class CodeWindow extends JFrame {
                 "<br>Total operands: "+statistics.getTotalOperands() +
                 "<br>Program length (N) = " + statistics.getProgramLength() +
                 "<br>Program vocabulary (n) = " + statistics.getProgramVocabulary() +
-                "<br>Volumn = " + statistics.getVolumn() +
-                "<br>Difficulty = " + statistics.getDifficulty() +
-                "<br>Effort = " + statistics.getEffort() +
-                "<br>Bugs expected = " + statistics.getBugs() +
+                "<br>Volumn = " + df.format(statistics.getVolumn()) +
+                "<br>Difficulty = " + df.format(statistics.getDifficulty()) +
+                "<br>Effort = " + df.format(statistics.getEffort()) +
+                "  Time = " + df.format(statistics.getTime()) +
+                " (" + df.format(statistics.getTime()/60) +" minutes or " + df.format(statistics.getTime()/3600) + " hours or ? person months" + ")" +
+                "<br>Bugs expected = " + df.format(statistics.getBugs()) +
                 "</html>"
         );
         halsteadMetricsValue.setBorder(new EmptyBorder(0,10,30,0));

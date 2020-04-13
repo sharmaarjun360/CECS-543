@@ -124,7 +124,7 @@ public class ProjectStatistics {
             this.fileSize = this.file.length();
             this.ws = lexer.ws;
             this.commentSpace = lexer.commentcount;
-            this.commentPercentage = (this.commentSpace*100/this.fileSize);
+            this.commentPercentage = ((float)this.commentSpace*100/this.fileSize);
 
             this.uniqueOperators = JavaMetrics.uniqueKeywords.size() + JavaMetrics.uniqueSpecial.size();
             this.uniqueOperands =JavaMetrics.uniqueIdentifiers.size() + JavaMetrics.uniqueConstants.size();
@@ -135,7 +135,7 @@ public class ProjectStatistics {
             this.programLength = this.totalOperands+this.totalOperators;
             this.programVocabulary = this.uniqueOperands+this.uniqueOperators;
             this.volumn = programLength * (Math.log(programVocabulary)/Math.log(2));
-            this.difficulty = (this.uniqueOperators/2)*(this.totalOperands/this.uniqueOperands);
+            this.difficulty = ((float)this.uniqueOperators/2)*((float)this.totalOperands/this.uniqueOperands);
             this.effort = difficulty*volumn;
             this.time = effort/18;
             this.bugs = volumn/3000;
