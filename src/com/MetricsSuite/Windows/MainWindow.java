@@ -49,7 +49,7 @@ public class MainWindow extends JFrame {
 
     public void toggleProjectCode(boolean enable){
         projectCodeStatistics.setEnabled(enable);
-        addProjectCode.setEnabled(!enable);
+//        addProjectCode.setEnabled(!enable);
     }
 
     private JScrollPane addJTree(JFrame parentFrame, JTree jTree, boolean addMouseListener) {

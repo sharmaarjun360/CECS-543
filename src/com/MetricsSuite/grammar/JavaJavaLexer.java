@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/dhara/Documents/543/Project/JavaJava.g 2020-04-02 16:27:42
+// $ANTLR 3.4 /Users/dhara/Documents/543/Project/JavaJava.g 2020-04-12 18:54:57
 
 package com.MetricsSuite.grammar;
 
@@ -125,6 +125,7 @@ public class JavaJavaLexer extends Lexer {
 
     	public int ws = 0;
     	public int commentcount = 0;
+    	public int commentline = 0;
     	
     	
     	public int constantcount = 0;
@@ -153,8 +154,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:17:7: ( '!' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:17:9: '!'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:18:7: ( '!' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:18:9: '!'
             {
             match('!'); 
 
@@ -174,8 +175,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:18:7: ( '!=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:18:9: '!='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:19:7: ( '!=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:19:9: '!='
             {
             match("!="); 
 
@@ -197,8 +198,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:19:7: ( '%' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:19:9: '%'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:20:7: ( '%' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:20:9: '%'
             {
             match('%'); 
 
@@ -218,8 +219,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:20:7: ( '%=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:20:9: '%='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:21:7: ( '%=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:21:9: '%='
             {
             match("%="); 
 
@@ -241,8 +242,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:21:7: ( '&&' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:21:9: '&&'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:22:7: ( '&&' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:22:9: '&&'
             {
             match("&&"); 
 
@@ -264,8 +265,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:22:7: ( '&' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:22:9: '&'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:23:7: ( '&' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:23:9: '&'
             {
             match('&'); 
 
@@ -285,8 +286,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:23:7: ( '&=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:23:9: '&='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:24:7: ( '&=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:24:9: '&='
             {
             match("&="); 
 
@@ -308,8 +309,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:24:7: ( '(' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:24:9: '('
+            // /Users/dhara/Documents/543/Project/JavaJava.g:25:7: ( '(' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:25:9: '('
             {
             match('('); 
 
@@ -329,8 +330,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:25:7: ( ')' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:25:9: ')'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:26:7: ( ')' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:26:9: ')'
             {
             match(')'); 
 
@@ -350,8 +351,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:26:7: ( '*' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:26:9: '*'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:27:7: ( '*' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:27:9: '*'
             {
             match('*'); 
 
@@ -371,8 +372,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:27:7: ( '*=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:27:9: '*='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:28:7: ( '*=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:28:9: '*='
             {
             match("*="); 
 
@@ -394,8 +395,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:28:7: ( '+' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:28:9: '+'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:29:7: ( '+' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:29:9: '+'
             {
             match('+'); 
 
@@ -415,8 +416,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:29:7: ( '++' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:29:9: '++'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:30:7: ( '++' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:30:9: '++'
             {
             match("++"); 
 
@@ -438,8 +439,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:30:7: ( '+=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:30:9: '+='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:31:7: ( '+=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:31:9: '+='
             {
             match("+="); 
 
@@ -461,8 +462,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:31:7: ( ',' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:31:9: ','
+            // /Users/dhara/Documents/543/Project/JavaJava.g:32:7: ( ',' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:32:9: ','
             {
             match(','); 
 
@@ -482,8 +483,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:32:7: ( '-' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:32:9: '-'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:33:7: ( '-' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:33:9: '-'
             {
             match('-'); 
 
@@ -503,8 +504,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:33:7: ( '--' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:33:9: '--'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:34:7: ( '--' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:34:9: '--'
             {
             match("--"); 
 
@@ -526,8 +527,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:34:7: ( '-=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:34:9: '-='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:35:7: ( '-=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:35:9: '-='
             {
             match("-="); 
 
@@ -549,8 +550,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:35:7: ( '.' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:35:9: '.'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:36:7: ( '.' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:36:9: '.'
             {
             match('.'); 
 
@@ -570,8 +571,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:36:7: ( '...' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:36:9: '...'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:37:7: ( '...' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:37:9: '...'
             {
             match("..."); 
 
@@ -593,8 +594,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:37:7: ( '/' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:37:9: '/'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:38:7: ( '/' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:38:9: '/'
             {
             match('/'); 
 
@@ -614,8 +615,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:38:7: ( '/=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:38:9: '/='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:39:7: ( '/=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:39:9: '/='
             {
             match("/="); 
 
@@ -637,8 +638,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:39:7: ( ':' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:39:9: ':'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:40:7: ( ':' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:40:9: ':'
             {
             match(':'); 
 
@@ -658,8 +659,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:40:7: ( ';' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:40:9: ';'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:41:7: ( ';' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:41:9: ';'
             {
             match(';'); 
 
@@ -679,8 +680,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:41:7: ( '<' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:41:9: '<'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:42:7: ( '<' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:42:9: '<'
             {
             match('<'); 
 
@@ -700,8 +701,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:42:7: ( '=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:42:9: '='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:43:7: ( '=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:43:9: '='
             {
             match('='); 
 
@@ -721,8 +722,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:43:7: ( '==' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:43:9: '=='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:44:7: ( '==' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:44:9: '=='
             {
             match("=="); 
 
@@ -744,8 +745,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:44:7: ( '>' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:44:9: '>'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:45:7: ( '>' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:45:9: '>'
             {
             match('>'); 
 
@@ -765,8 +766,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:45:7: ( '?' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:45:9: '?'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:46:7: ( '?' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:46:9: '?'
             {
             match('?'); 
 
@@ -786,8 +787,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:46:7: ( '@' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:46:9: '@'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:47:7: ( '@' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:47:9: '@'
             {
             match('@'); 
 
@@ -807,8 +808,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:47:7: ( '[' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:47:9: '['
+            // /Users/dhara/Documents/543/Project/JavaJava.g:48:7: ( '[' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:48:9: '['
             {
             match('['); 
 
@@ -828,8 +829,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:48:7: ( ']' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:48:9: ']'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:49:7: ( ']' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:49:9: ']'
             {
             match(']'); 
 
@@ -849,8 +850,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:49:7: ( '^' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:49:9: '^'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:50:7: ( '^' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:50:9: '^'
             {
             match('^'); 
 
@@ -870,8 +871,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:50:7: ( '^=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:50:9: '^='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:51:7: ( '^=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:51:9: '^='
             {
             match("^="); 
 
@@ -893,8 +894,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:51:7: ( 'abstract' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:51:9: 'abstract'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:52:7: ( 'abstract' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:52:9: 'abstract'
             {
             match("abstract"); 
 
@@ -916,8 +917,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:52:7: ( 'boolean' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:52:9: 'boolean'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:53:7: ( 'boolean' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:53:9: 'boolean'
             {
             match("boolean"); 
 
@@ -939,8 +940,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:53:7: ( 'break' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:53:9: 'break'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:54:7: ( 'break' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:54:9: 'break'
             {
             match("break"); 
 
@@ -962,8 +963,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:54:7: ( 'byte' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:54:9: 'byte'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:55:7: ( 'byte' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:55:9: 'byte'
             {
             match("byte"); 
 
@@ -985,8 +986,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:55:7: ( 'case' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:55:9: 'case'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:56:7: ( 'case' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:56:9: 'case'
             {
             match("case"); 
 
@@ -1008,8 +1009,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:56:7: ( 'catch' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:56:9: 'catch'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:57:7: ( 'catch' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:57:9: 'catch'
             {
             match("catch"); 
 
@@ -1031,8 +1032,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:57:7: ( 'char' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:57:9: 'char'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:58:7: ( 'char' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:58:9: 'char'
             {
             match("char"); 
 
@@ -1054,8 +1055,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:58:7: ( 'class' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:58:9: 'class'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:59:7: ( 'class' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:59:9: 'class'
             {
             match("class"); 
 
@@ -1077,8 +1078,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:59:7: ( 'continue' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:59:9: 'continue'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:60:7: ( 'continue' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:60:9: 'continue'
             {
             match("continue"); 
 
@@ -1100,8 +1101,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:60:7: ( 'default' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:60:9: 'default'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:61:7: ( 'default' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:61:9: 'default'
             {
             match("default"); 
 
@@ -1123,8 +1124,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:61:7: ( 'do' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:61:9: 'do'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:62:7: ( 'do' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:62:9: 'do'
             {
             match("do"); 
 
@@ -1146,8 +1147,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:62:7: ( 'double' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:62:9: 'double'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:63:7: ( 'double' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:63:9: 'double'
             {
             match("double"); 
 
@@ -1169,8 +1170,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:63:7: ( 'else' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:63:9: 'else'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:64:7: ( 'else' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:64:9: 'else'
             {
             match("else"); 
 
@@ -1192,8 +1193,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:64:7: ( 'extends' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:64:9: 'extends'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:65:7: ( 'extends' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:65:9: 'extends'
             {
             match("extends"); 
 
@@ -1215,8 +1216,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:65:7: ( 'false' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:65:9: 'false'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:66:7: ( 'false' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:66:9: 'false'
             {
             match("false"); 
 
@@ -1238,8 +1239,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:66:7: ( 'final' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:66:9: 'final'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:67:7: ( 'final' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:67:9: 'final'
             {
             match("final"); 
 
@@ -1261,8 +1262,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__75;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:67:7: ( 'finally' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:67:9: 'finally'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:68:7: ( 'finally' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:68:9: 'finally'
             {
             match("finally"); 
 
@@ -1284,8 +1285,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__76;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:68:7: ( 'float' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:68:9: 'float'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:69:7: ( 'float' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:69:9: 'float'
             {
             match("float"); 
 
@@ -1307,8 +1308,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__77;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:69:7: ( 'for' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:69:9: 'for'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:70:7: ( 'for' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:70:9: 'for'
             {
             match("for"); 
 
@@ -1330,8 +1331,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__78;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:70:7: ( 'if' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:70:9: 'if'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:71:7: ( 'if' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:71:9: 'if'
             {
             match("if"); 
 
@@ -1353,8 +1354,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__79;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:71:7: ( 'implements' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:71:9: 'implements'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:72:7: ( 'implements' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:72:9: 'implements'
             {
             match("implements"); 
 
@@ -1376,8 +1377,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__80;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:72:7: ( 'import' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:72:9: 'import'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:73:7: ( 'import' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:73:9: 'import'
             {
             match("import"); 
 
@@ -1399,8 +1400,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__81;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:73:7: ( 'instanceof' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:73:9: 'instanceof'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:74:7: ( 'instanceof' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:74:9: 'instanceof'
             {
             match("instanceof"); 
 
@@ -1422,8 +1423,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__82;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:74:7: ( 'int' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:74:9: 'int'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:75:7: ( 'int' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:75:9: 'int'
             {
             match("int"); 
 
@@ -1445,8 +1446,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__83;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:75:7: ( 'interface' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:75:9: 'interface'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:76:7: ( 'interface' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:76:9: 'interface'
             {
             match("interface"); 
 
@@ -1468,8 +1469,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__84;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:76:7: ( 'long' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:76:9: 'long'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:77:7: ( 'long' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:77:9: 'long'
             {
             match("long"); 
 
@@ -1491,8 +1492,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__85;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:77:7: ( 'native' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:77:9: 'native'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:78:7: ( 'native' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:78:9: 'native'
             {
             match("native"); 
 
@@ -1514,8 +1515,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__86;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:78:7: ( 'new' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:78:9: 'new'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:79:7: ( 'new' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:79:9: 'new'
             {
             match("new"); 
 
@@ -1537,8 +1538,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__87;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:79:7: ( 'null' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:79:9: 'null'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:80:7: ( 'null' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:80:9: 'null'
             {
             match("null"); 
 
@@ -1560,8 +1561,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__88;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:80:7: ( 'package' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:80:9: 'package'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:81:7: ( 'package' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:81:9: 'package'
             {
             match("package"); 
 
@@ -1583,8 +1584,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__89;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:81:7: ( 'private' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:81:9: 'private'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:82:7: ( 'private' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:82:9: 'private'
             {
             match("private"); 
 
@@ -1606,8 +1607,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__90;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:82:7: ( 'protected' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:82:9: 'protected'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:83:7: ( 'protected' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:83:9: 'protected'
             {
             match("protected"); 
 
@@ -1629,8 +1630,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__91;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:83:7: ( 'public' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:83:9: 'public'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:84:7: ( 'public' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:84:9: 'public'
             {
             match("public"); 
 
@@ -1652,8 +1653,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__92;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:84:7: ( 'return' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:84:9: 'return'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:85:7: ( 'return' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:85:9: 'return'
             {
             match("return"); 
 
@@ -1675,8 +1676,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__93;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:85:7: ( 'short' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:85:9: 'short'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:86:7: ( 'short' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:86:9: 'short'
             {
             match("short"); 
 
@@ -1698,8 +1699,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__94;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:86:7: ( 'static' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:86:9: 'static'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:87:7: ( 'static' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:87:9: 'static'
             {
             match("static"); 
 
@@ -1721,8 +1722,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__95;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:87:7: ( 'strictfp' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:87:9: 'strictfp'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:88:7: ( 'strictfp' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:88:9: 'strictfp'
             {
             match("strictfp"); 
 
@@ -1744,8 +1745,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__96;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:88:7: ( 'super' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:88:9: 'super'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:89:7: ( 'super' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:89:9: 'super'
             {
             match("super"); 
 
@@ -1767,8 +1768,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__97;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:89:7: ( 'switch' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:89:9: 'switch'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:90:7: ( 'switch' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:90:9: 'switch'
             {
             match("switch"); 
 
@@ -1790,8 +1791,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__98;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:90:7: ( 'synchronized' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:90:9: 'synchronized'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:91:7: ( 'synchronized' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:91:9: 'synchronized'
             {
             match("synchronized"); 
 
@@ -1813,8 +1814,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__99;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:91:7: ( 'this' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:91:9: 'this'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:92:7: ( 'this' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:92:9: 'this'
             {
             match("this"); 
 
@@ -1836,8 +1837,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__100;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:92:8: ( 'throw' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:92:10: 'throw'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:93:8: ( 'throw' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:93:10: 'throw'
             {
             match("throw"); 
 
@@ -1859,8 +1860,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__101;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:93:8: ( 'throws' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:93:10: 'throws'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:94:8: ( 'throws' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:94:10: 'throws'
             {
             match("throws"); 
 
@@ -1882,8 +1883,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__102;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:94:8: ( 'transient' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:94:10: 'transient'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:95:8: ( 'transient' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:95:10: 'transient'
             {
             match("transient"); 
 
@@ -1905,8 +1906,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__103;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:95:8: ( 'true' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:95:10: 'true'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:96:8: ( 'true' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:96:10: 'true'
             {
             match("true"); 
 
@@ -1928,8 +1929,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__104;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:96:8: ( 'try' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:96:10: 'try'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:97:8: ( 'try' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:97:10: 'try'
             {
             match("try"); 
 
@@ -1951,8 +1952,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__105;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:97:8: ( 'void' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:97:10: 'void'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:98:8: ( 'void' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:98:10: 'void'
             {
             match("void"); 
 
@@ -1974,8 +1975,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__106;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:98:8: ( 'volatile' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:98:10: 'volatile'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:99:8: ( 'volatile' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:99:10: 'volatile'
             {
             match("volatile"); 
 
@@ -1997,8 +1998,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__107;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:99:8: ( 'while' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:99:10: 'while'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:100:8: ( 'while' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:100:10: 'while'
             {
             match("while"); 
 
@@ -2020,8 +2021,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__108;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:100:8: ( '{' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:100:10: '{'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:101:8: ( '{' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:101:10: '{'
             {
             match('{'); 
 
@@ -2041,8 +2042,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__109;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:101:8: ( '|' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:101:10: '|'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:102:8: ( '|' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:102:10: '|'
             {
             match('|'); 
 
@@ -2062,8 +2063,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__110;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:102:8: ( '|=' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:102:10: '|='
+            // /Users/dhara/Documents/543/Project/JavaJava.g:103:8: ( '|=' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:103:10: '|='
             {
             match("|="); 
 
@@ -2085,8 +2086,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__111;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:103:8: ( '||' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:103:10: '||'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:104:8: ( '||' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:104:10: '||'
             {
             match("||"); 
 
@@ -2108,8 +2109,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__112;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:104:8: ( '}' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:104:10: '}'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:105:8: ( '}' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:105:10: '}'
             {
             match('}'); 
 
@@ -2129,8 +2130,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = T__113;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:105:8: ( '~' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:105:10: '~'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:106:8: ( '~' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:106:10: '~'
             {
             match('~'); 
 
@@ -2150,8 +2151,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = HexLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:833:12: ( '0' ( 'x' | 'X' ) ( HexDigit )+ ( IntegerTypeSuffix )? )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:833:14: '0' ( 'x' | 'X' ) ( HexDigit )+ ( IntegerTypeSuffix )?
+            // /Users/dhara/Documents/543/Project/JavaJava.g:843:12: ( '0' ( 'x' | 'X' ) ( HexDigit )+ ( IntegerTypeSuffix )? )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:843:14: '0' ( 'x' | 'X' ) ( HexDigit )+ ( IntegerTypeSuffix )?
             {
             match('0'); 
 
@@ -2165,7 +2166,7 @@ public class JavaJavaLexer extends Lexer {
             }
 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:833:28: ( HexDigit )+
+            // /Users/dhara/Documents/543/Project/JavaJava.g:843:28: ( HexDigit )+
             int cnt1=0;
             loop1:
             do {
@@ -2204,7 +2205,7 @@ public class JavaJavaLexer extends Lexer {
             } while (true);
 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:833:38: ( IntegerTypeSuffix )?
+            // /Users/dhara/Documents/543/Project/JavaJava.g:843:38: ( IntegerTypeSuffix )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -2249,10 +2250,10 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = DecimalLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:835:16: ( ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( IntegerTypeSuffix )? )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:835:18: ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( IntegerTypeSuffix )?
+            // /Users/dhara/Documents/543/Project/JavaJava.g:845:16: ( ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( IntegerTypeSuffix )? )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:845:18: ( '0' | '1' .. '9' ( '0' .. '9' )* ) ( IntegerTypeSuffix )?
             {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:835:18: ( '0' | '1' .. '9' ( '0' .. '9' )* )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:845:18: ( '0' | '1' .. '9' ( '0' .. '9' )* )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -2271,18 +2272,18 @@ public class JavaJavaLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:835:19: '0'
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:845:19: '0'
                     {
                     match('0'); 
 
                     }
                     break;
                 case 2 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:835:25: '1' .. '9' ( '0' .. '9' )*
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:845:25: '1' .. '9' ( '0' .. '9' )*
                     {
                     matchRange('1','9'); 
 
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:835:34: ( '0' .. '9' )*
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:845:34: ( '0' .. '9' )*
                     loop3:
                     do {
                         int alt3=2;
@@ -2322,7 +2323,7 @@ public class JavaJavaLexer extends Lexer {
             }
 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:835:45: ( IntegerTypeSuffix )?
+            // /Users/dhara/Documents/543/Project/JavaJava.g:845:45: ( IntegerTypeSuffix )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -2367,12 +2368,12 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = OctalLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:837:14: ( '0' ( '0' .. '7' )+ ( IntegerTypeSuffix )? )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:837:16: '0' ( '0' .. '7' )+ ( IntegerTypeSuffix )?
+            // /Users/dhara/Documents/543/Project/JavaJava.g:847:14: ( '0' ( '0' .. '7' )+ ( IntegerTypeSuffix )? )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:847:16: '0' ( '0' .. '7' )+ ( IntegerTypeSuffix )?
             {
             match('0'); 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:837:20: ( '0' .. '7' )+
+            // /Users/dhara/Documents/543/Project/JavaJava.g:847:20: ( '0' .. '7' )+
             int cnt6=0;
             loop6:
             do {
@@ -2411,7 +2412,7 @@ public class JavaJavaLexer extends Lexer {
             } while (true);
 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:837:32: ( IntegerTypeSuffix )?
+            // /Users/dhara/Documents/543/Project/JavaJava.g:847:32: ( IntegerTypeSuffix )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -2454,7 +2455,7 @@ public class JavaJavaLexer extends Lexer {
     // $ANTLR start "HexDigit"
     public final void mHexDigit() throws RecognitionException {
         try {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:841:10: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:851:10: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
             // /Users/dhara/Documents/543/Project/JavaJava.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
@@ -2480,7 +2481,7 @@ public class JavaJavaLexer extends Lexer {
     // $ANTLR start "IntegerTypeSuffix"
     public final void mIntegerTypeSuffix() throws RecognitionException {
         try {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:844:19: ( ( 'l' | 'L' ) )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:854:19: ( ( 'l' | 'L' ) )
             // /Users/dhara/Documents/543/Project/JavaJava.g:
             {
             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
@@ -2508,14 +2509,14 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = FloatingPointLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:846:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )? | '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )? | ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )? | ( '0' .. '9' )+ FloatTypeSuffix )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:856:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )? | '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )? | ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )? | ( '0' .. '9' )+ FloatTypeSuffix )
             int alt18=4;
             alt18 = dfa18.predict(input);
             switch (alt18) {
                 case 1 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:846:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )?
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:856:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )?
                     {
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:846:9: ( '0' .. '9' )+
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:856:9: ( '0' .. '9' )+
                     int cnt8=0;
                     loop8:
                     do {
@@ -2556,7 +2557,7 @@ public class JavaJavaLexer extends Lexer {
 
                     match('.'); 
 
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:846:26: ( '0' .. '9' )*
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:856:26: ( '0' .. '9' )*
                     loop9:
                     do {
                         int alt9=2;
@@ -2590,7 +2591,7 @@ public class JavaJavaLexer extends Lexer {
                     } while (true);
 
 
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:846:38: ( Exponent )?
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:856:38: ( Exponent )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -2599,7 +2600,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // /Users/dhara/Documents/543/Project/JavaJava.g:846:38: Exponent
+                            // /Users/dhara/Documents/543/Project/JavaJava.g:856:38: Exponent
                             {
                             mExponent(); 
 
@@ -2610,7 +2611,7 @@ public class JavaJavaLexer extends Lexer {
                     }
 
 
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:846:48: ( FloatTypeSuffix )?
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:856:48: ( FloatTypeSuffix )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -2642,11 +2643,11 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:847:9: '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )?
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:857:9: '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )?
                     {
                     match('.'); 
 
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:847:13: ( '0' .. '9' )+
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:857:13: ( '0' .. '9' )+
                     int cnt12=0;
                     loop12:
                     do {
@@ -2685,7 +2686,7 @@ public class JavaJavaLexer extends Lexer {
                     } while (true);
 
 
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:847:25: ( Exponent )?
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:857:25: ( Exponent )?
                     int alt13=2;
                     int LA13_0 = input.LA(1);
 
@@ -2694,7 +2695,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     switch (alt13) {
                         case 1 :
-                            // /Users/dhara/Documents/543/Project/JavaJava.g:847:25: Exponent
+                            // /Users/dhara/Documents/543/Project/JavaJava.g:857:25: Exponent
                             {
                             mExponent(); 
 
@@ -2705,7 +2706,7 @@ public class JavaJavaLexer extends Lexer {
                     }
 
 
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:847:35: ( FloatTypeSuffix )?
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:857:35: ( FloatTypeSuffix )?
                     int alt14=2;
                     int LA14_0 = input.LA(1);
 
@@ -2737,9 +2738,9 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:848:9: ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )?
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:858:9: ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )?
                     {
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:848:9: ( '0' .. '9' )+
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:858:9: ( '0' .. '9' )+
                     int cnt15=0;
                     loop15:
                     do {
@@ -2781,7 +2782,7 @@ public class JavaJavaLexer extends Lexer {
                     mExponent(); 
 
 
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:848:30: ( FloatTypeSuffix )?
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:858:30: ( FloatTypeSuffix )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2813,9 +2814,9 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:849:9: ( '0' .. '9' )+ FloatTypeSuffix
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:859:9: ( '0' .. '9' )+ FloatTypeSuffix
                     {
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:849:9: ( '0' .. '9' )+
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:859:9: ( '0' .. '9' )+
                     int cnt17=0;
                     loop17:
                     do {
@@ -2875,8 +2876,8 @@ public class JavaJavaLexer extends Lexer {
     // $ANTLR start "Exponent"
     public final void mExponent() throws RecognitionException {
         try {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:854:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:854:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+            // /Users/dhara/Documents/543/Project/JavaJava.g:864:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:864:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -2888,7 +2889,7 @@ public class JavaJavaLexer extends Lexer {
             }
 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:854:22: ( '+' | '-' )?
+            // /Users/dhara/Documents/543/Project/JavaJava.g:864:22: ( '+' | '-' )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -2915,7 +2916,7 @@ public class JavaJavaLexer extends Lexer {
             }
 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:854:33: ( '0' .. '9' )+
+            // /Users/dhara/Documents/543/Project/JavaJava.g:864:33: ( '0' .. '9' )+
             int cnt20=0;
             loop20:
             do {
@@ -2967,7 +2968,7 @@ public class JavaJavaLexer extends Lexer {
     // $ANTLR start "FloatTypeSuffix"
     public final void mFloatTypeSuffix() throws RecognitionException {
         try {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:857:17: ( ( 'f' | 'F' | 'd' | 'D' ) )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:867:17: ( ( 'f' | 'F' | 'd' | 'D' ) )
             // /Users/dhara/Documents/543/Project/JavaJava.g:
             {
             if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='d'||input.LA(1)=='f' ) {
@@ -2995,12 +2996,12 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = CharacterLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:859:5: ( '\\'' ( EscapeSequence |~ ( '\\'' | '\\\\' ) ) '\\'' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:859:9: '\\'' ( EscapeSequence |~ ( '\\'' | '\\\\' ) ) '\\''
+            // /Users/dhara/Documents/543/Project/JavaJava.g:869:5: ( '\\'' ( EscapeSequence |~ ( '\\'' | '\\\\' ) ) '\\'' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:869:9: '\\'' ( EscapeSequence |~ ( '\\'' | '\\\\' ) ) '\\''
             {
             match('\''); 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:859:14: ( EscapeSequence |~ ( '\\'' | '\\\\' ) )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:869:14: ( EscapeSequence |~ ( '\\'' | '\\\\' ) )
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -3019,7 +3020,7 @@ public class JavaJavaLexer extends Lexer {
             }
             switch (alt21) {
                 case 1 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:859:16: EscapeSequence
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:869:16: EscapeSequence
                     {
                     mEscapeSequence(); 
 
@@ -3027,7 +3028,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:859:33: ~ ( '\\'' | '\\\\' )
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:869:33: ~ ( '\\'' | '\\\\' )
                     {
                     if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
                         input.consume();
@@ -3065,12 +3066,12 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = StringLiteral;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:863:5: ( '\"' ( EscapeSequence |~ ( '\\\\' | '\"' ) )* '\"' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:863:8: '\"' ( EscapeSequence |~ ( '\\\\' | '\"' ) )* '\"'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:873:5: ( '\"' ( EscapeSequence |~ ( '\\\\' | '\"' ) )* '\"' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:873:8: '\"' ( EscapeSequence |~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:863:12: ( EscapeSequence |~ ( '\\\\' | '\"' ) )*
+            // /Users/dhara/Documents/543/Project/JavaJava.g:873:12: ( EscapeSequence |~ ( '\\\\' | '\"' ) )*
             loop22:
             do {
                 int alt22=3;
@@ -3086,7 +3087,7 @@ public class JavaJavaLexer extends Lexer {
 
                 switch (alt22) {
             	case 1 :
-            	    // /Users/dhara/Documents/543/Project/JavaJava.g:863:14: EscapeSequence
+            	    // /Users/dhara/Documents/543/Project/JavaJava.g:873:14: EscapeSequence
             	    {
             	    mEscapeSequence(); 
 
@@ -3094,7 +3095,7 @@ public class JavaJavaLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // /Users/dhara/Documents/543/Project/JavaJava.g:863:31: ~ ( '\\\\' | '\"' )
+            	    // /Users/dhara/Documents/543/Project/JavaJava.g:873:31: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
@@ -3133,7 +3134,7 @@ public class JavaJavaLexer extends Lexer {
     // $ANTLR start "EscapeSequence"
     public final void mEscapeSequence() throws RecognitionException {
         try {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:869:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UnicodeEscape | OctalEscape )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:879:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UnicodeEscape | OctalEscape )
             int alt23=3;
             int LA23_0 = input.LA(1);
 
@@ -3186,7 +3187,7 @@ public class JavaJavaLexer extends Lexer {
             }
             switch (alt23) {
                 case 1 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:869:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:879:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     {
                     match('\\'); 
 
@@ -3203,7 +3204,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:870:9: UnicodeEscape
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:880:9: UnicodeEscape
                     {
                     mUnicodeEscape(); 
 
@@ -3211,7 +3212,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:871:9: OctalEscape
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:881:9: OctalEscape
                     {
                     mOctalEscape(); 
 
@@ -3231,7 +3232,7 @@ public class JavaJavaLexer extends Lexer {
     // $ANTLR start "OctalEscape"
     public final void mOctalEscape() throws RecognitionException {
         try {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:876:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:886:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
             int alt24=3;
             int LA24_0 = input.LA(1);
 
@@ -3282,7 +3283,7 @@ public class JavaJavaLexer extends Lexer {
             }
             switch (alt24) {
                 case 1 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:876:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:886:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -3319,7 +3320,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:877:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:887:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -3346,7 +3347,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:878:9: '\\\\' ( '0' .. '7' )
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:888:9: '\\\\' ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -3375,8 +3376,8 @@ public class JavaJavaLexer extends Lexer {
     // $ANTLR start "UnicodeEscape"
     public final void mUnicodeEscape() throws RecognitionException {
         try {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:883:5: ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:883:9: '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit
+            // /Users/dhara/Documents/543/Project/JavaJava.g:893:5: ( '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:893:9: '\\\\' 'u' HexDigit HexDigit HexDigit HexDigit
             {
             match('\\'); 
 
@@ -3409,8 +3410,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = ENUM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:885:5: ( 'enum' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:885:9: 'enum'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:895:5: ( 'enum' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:895:9: 'enum'
             {
             match("enum"); 
 
@@ -3432,8 +3433,8 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = ASSERT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:889:5: ( 'assert' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:889:9: 'assert'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:899:5: ( 'assert' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:899:9: 'assert'
             {
             match("assert"); 
 
@@ -3455,13 +3456,13 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = Identifier;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:893:5: ( Letter ( Letter | JavaIDDigit )* )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:893:8: Letter ( Letter | JavaIDDigit )*
+            // /Users/dhara/Documents/543/Project/JavaJava.g:903:5: ( Letter ( Letter | JavaIDDigit )* )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:903:8: Letter ( Letter | JavaIDDigit )*
             {
             mLetter(); 
 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:893:15: ( Letter | JavaIDDigit )*
+            // /Users/dhara/Documents/543/Project/JavaJava.g:903:15: ( Letter | JavaIDDigit )*
             loop25:
             do {
                 int alt25=2;
@@ -3509,7 +3510,7 @@ public class JavaJavaLexer extends Lexer {
     // $ANTLR start "Letter"
     public final void mLetter() throws RecognitionException {
         try {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:905:5: ( '\\u0024' | '\\u0041' .. '\\u005a' | '\\u005f' | '\\u0061' .. '\\u007a' | '\\u00c0' .. '\\u00d6' | '\\u00d8' .. '\\u00f6' | '\\u00f8' .. '\\u00ff' | '\\u0100' .. '\\u1fff' | '\\u3040' .. '\\u318f' | '\\u3300' .. '\\u337f' | '\\u3400' .. '\\u3d2d' | '\\u4e00' .. '\\u9fff' | '\\uf900' .. '\\ufaff' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:915:5: ( '\\u0024' | '\\u0041' .. '\\u005a' | '\\u005f' | '\\u0061' .. '\\u007a' | '\\u00c0' .. '\\u00d6' | '\\u00d8' .. '\\u00f6' | '\\u00f8' .. '\\u00ff' | '\\u0100' .. '\\u1fff' | '\\u3040' .. '\\u318f' | '\\u3300' .. '\\u337f' | '\\u3400' .. '\\u3d2d' | '\\u4e00' .. '\\u9fff' | '\\uf900' .. '\\ufaff' )
             // /Users/dhara/Documents/543/Project/JavaJava.g:
             {
             if ( input.LA(1)=='$'||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||(input.LA(1) >= '\u00C0' && input.LA(1) <= '\u00D6')||(input.LA(1) >= '\u00D8' && input.LA(1) <= '\u00F6')||(input.LA(1) >= '\u00F8' && input.LA(1) <= '\u1FFF')||(input.LA(1) >= '\u3040' && input.LA(1) <= '\u318F')||(input.LA(1) >= '\u3300' && input.LA(1) <= '\u337F')||(input.LA(1) >= '\u3400' && input.LA(1) <= '\u3D2D')||(input.LA(1) >= '\u4E00' && input.LA(1) <= '\u9FFF')||(input.LA(1) >= '\uF900' && input.LA(1) <= '\uFAFF') ) {
@@ -3535,7 +3536,7 @@ public class JavaJavaLexer extends Lexer {
     // $ANTLR start "JavaIDDigit"
     public final void mJavaIDDigit() throws RecognitionException {
         try {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:919:5: ( '\\u0030' .. '\\u0039' | '\\u0660' .. '\\u0669' | '\\u06f0' .. '\\u06f9' | '\\u0966' .. '\\u096f' | '\\u09e6' .. '\\u09ef' | '\\u0a66' .. '\\u0a6f' | '\\u0ae6' .. '\\u0aef' | '\\u0b66' .. '\\u0b6f' | '\\u0be7' .. '\\u0bef' | '\\u0c66' .. '\\u0c6f' | '\\u0ce6' .. '\\u0cef' | '\\u0d66' .. '\\u0d6f' | '\\u0e50' .. '\\u0e59' | '\\u0ed0' .. '\\u0ed9' | '\\u1040' .. '\\u1049' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:929:5: ( '\\u0030' .. '\\u0039' | '\\u0660' .. '\\u0669' | '\\u06f0' .. '\\u06f9' | '\\u0966' .. '\\u096f' | '\\u09e6' .. '\\u09ef' | '\\u0a66' .. '\\u0a6f' | '\\u0ae6' .. '\\u0aef' | '\\u0b66' .. '\\u0b6f' | '\\u0be7' .. '\\u0bef' | '\\u0c66' .. '\\u0c6f' | '\\u0ce6' .. '\\u0cef' | '\\u0d66' .. '\\u0d6f' | '\\u0e50' .. '\\u0e59' | '\\u0ed0' .. '\\u0ed9' | '\\u1040' .. '\\u1049' )
             // /Users/dhara/Documents/543/Project/JavaJava.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= '\u0660' && input.LA(1) <= '\u0669')||(input.LA(1) >= '\u06F0' && input.LA(1) <= '\u06F9')||(input.LA(1) >= '\u0966' && input.LA(1) <= '\u096F')||(input.LA(1) >= '\u09E6' && input.LA(1) <= '\u09EF')||(input.LA(1) >= '\u0A66' && input.LA(1) <= '\u0A6F')||(input.LA(1) >= '\u0AE6' && input.LA(1) <= '\u0AEF')||(input.LA(1) >= '\u0B66' && input.LA(1) <= '\u0B6F')||(input.LA(1) >= '\u0BE7' && input.LA(1) <= '\u0BEF')||(input.LA(1) >= '\u0C66' && input.LA(1) <= '\u0C6F')||(input.LA(1) >= '\u0CE6' && input.LA(1) <= '\u0CEF')||(input.LA(1) >= '\u0D66' && input.LA(1) <= '\u0D6F')||(input.LA(1) >= '\u0E50' && input.LA(1) <= '\u0E59')||(input.LA(1) >= '\u0ED0' && input.LA(1) <= '\u0ED9')||(input.LA(1) >= '\u1040' && input.LA(1) <= '\u1049') ) {
@@ -3563,10 +3564,10 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:935:5: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:935:8: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:945:5: ( ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' ) )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:945:8: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             {
-            // /Users/dhara/Documents/543/Project/JavaJava.g:935:8: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:945:8: ( ' ' | '\\r' | '\\t' | '\\u000C' | '\\n' )
             int alt26=5;
             switch ( input.LA(1) ) {
             case ' ':
@@ -3604,7 +3605,7 @@ public class JavaJavaLexer extends Lexer {
 
             switch (alt26) {
                 case 1 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:935:9: ' '
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:945:9: ' '
                     {
                     match(' '); 
 
@@ -3613,7 +3614,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:935:20: '\\r'
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:945:20: '\\r'
                     {
                     match('\r'); 
 
@@ -3622,7 +3623,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:935:32: '\\t'
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:945:32: '\\t'
                     {
                     match('\t'); 
 
@@ -3631,7 +3632,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 4 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:935:44: '\\u000C'
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:945:44: '\\u000C'
                     {
                     match('\f'); 
 
@@ -3640,7 +3641,7 @@ public class JavaJavaLexer extends Lexer {
                     }
                     break;
                 case 5 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:935:60: '\\n'
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:945:60: '\\n'
                     {
                     match('\n'); 
 
@@ -3670,39 +3671,51 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:939:5: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:939:9: '/*' ( options {greedy=false; } : . )* '*/'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:949:5: ( '/*' ( options {greedy=false; } : '\\n' | . )* '*/' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:949:9: '/*' ( options {greedy=false; } : '\\n' | . )* '*/'
             {
             match("/*"); 
 
 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:939:14: ( options {greedy=false; } : . )*
+            // /Users/dhara/Documents/543/Project/JavaJava.g:949:14: ( options {greedy=false; } : '\\n' | . )*
             loop27:
             do {
-                int alt27=2;
+                int alt27=3;
                 int LA27_0 = input.LA(1);
 
                 if ( (LA27_0=='*') ) {
                     int LA27_1 = input.LA(2);
 
                     if ( (LA27_1=='/') ) {
-                        alt27=2;
+                        alt27=3;
                     }
                     else if ( ((LA27_1 >= '\u0000' && LA27_1 <= '.')||(LA27_1 >= '0' && LA27_1 <= '\uFFFF')) ) {
-                        alt27=1;
+                        alt27=2;
                     }
 
 
                 }
-                else if ( ((LA27_0 >= '\u0000' && LA27_0 <= ')')||(LA27_0 >= '+' && LA27_0 <= '\uFFFF')) ) {
+                else if ( (LA27_0=='\n') ) {
                     alt27=1;
+                }
+                else if ( ((LA27_0 >= '\u0000' && LA27_0 <= '\t')||(LA27_0 >= '\u000B' && LA27_0 <= ')')||(LA27_0 >= '+' && LA27_0 <= '\uFFFF')) ) {
+                    alt27=2;
                 }
 
 
                 switch (alt27) {
             	case 1 :
-            	    // /Users/dhara/Documents/543/Project/JavaJava.g:939:42: .
+            	    // /Users/dhara/Documents/543/Project/JavaJava.g:949:42: '\\n'
+            	    {
+            	    match('\n'); 
+
+            	    commentline++;commentcount++;
+
+            	    }
+            	    break;
+            	case 2 :
+            	    // /Users/dhara/Documents/543/Project/JavaJava.g:949:81: .
             	    {
             	    matchAny(); 
 
@@ -3720,6 +3733,8 @@ public class JavaJavaLexer extends Lexer {
             match("*/"); 
 
 
+
+            commentline++;
 
             _channel=HIDDEN;
 
@@ -3739,14 +3754,14 @@ public class JavaJavaLexer extends Lexer {
         try {
             int _type = LINE_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/dhara/Documents/543/Project/JavaJava.g:943:5: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( '\\r' )? '\\n' )
-            // /Users/dhara/Documents/543/Project/JavaJava.g:943:7: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( '\\r' )? '\\n'
+            // /Users/dhara/Documents/543/Project/JavaJava.g:953:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
+            // /Users/dhara/Documents/543/Project/JavaJava.g:953:7: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
             {
             match("//"); 
 
 
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:943:12: (~ ( ( '\\n' | '\\r' ) ) )*
+            // /Users/dhara/Documents/543/Project/JavaJava.g:953:12: (~ ( '\\n' | '\\r' ) )*
             loop28:
             do {
                 int alt28=2;
@@ -3759,7 +3774,7 @@ public class JavaJavaLexer extends Lexer {
 
                 switch (alt28) {
             	case 1 :
-            	    // /Users/dhara/Documents/543/Project/JavaJava.g:
+            	    // /Users/dhara/Documents/543/Project/JavaJava.g:953:14: ~ ( '\\n' | '\\r' )
             	    {
             	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
@@ -3771,6 +3786,8 @@ public class JavaJavaLexer extends Lexer {
             	    }
 
 
+            	    commentcount++;
+
             	    }
             	    break;
 
@@ -3780,9 +3797,9 @@ public class JavaJavaLexer extends Lexer {
             } while (true);
 
 
-            /*INSERT COUNT*/
+            commentline++;
 
-            // /Users/dhara/Documents/543/Project/JavaJava.g:943:49: ( '\\r' )?
+            // /Users/dhara/Documents/543/Project/JavaJava.g:953:63: ( '\\r' )?
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -3791,7 +3808,7 @@ public class JavaJavaLexer extends Lexer {
             }
             switch (alt29) {
                 case 1 :
-                    // /Users/dhara/Documents/543/Project/JavaJava.g:943:49: '\\r'
+                    // /Users/dhara/Documents/543/Project/JavaJava.g:953:63: '\\r'
                     {
                     match('\r'); 
 
@@ -4688,7 +4705,7 @@ public class JavaJavaLexer extends Lexer {
             this.transition = DFA18_transition;
         }
         public String getDescription() {
-            return "845:1: FloatingPointLiteral : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )? | '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )? | ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )? | ( '0' .. '9' )+ FloatTypeSuffix );";
+            return "855:1: FloatingPointLiteral : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( Exponent )? ( FloatTypeSuffix )? | '.' ( '0' .. '9' )+ ( Exponent )? ( FloatTypeSuffix )? | ( '0' .. '9' )+ Exponent ( FloatTypeSuffix )? | ( '0' .. '9' )+ FloatTypeSuffix );";
         }
     }
     static final String DFA30_eotS =
