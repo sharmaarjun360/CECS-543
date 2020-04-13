@@ -29,7 +29,6 @@ public class CodeWindow extends JFrame {
         JPanel panel = new JPanel(false);
         JPanel secondaryPanel = new JPanel(false);
         secondaryPanel.setLayout(new BoxLayout(secondaryPanel,BoxLayout.Y_AXIS));
-        //secondaryPanel.setBorder(new EmptyBorder(21,11,1,1));
         panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
        // panel.setBorder(new EmptyBorder(20,10,0,0));
 
