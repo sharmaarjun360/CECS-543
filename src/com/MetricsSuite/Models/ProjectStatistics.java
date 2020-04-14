@@ -109,17 +109,17 @@ public class ProjectStatistics {
             JavaJavaParser parser = new JavaJavaParser(token);
             parser.compilationUnit();
 
-            System.out.println("uniqueIdentifiers: "+JavaMetrics.uniqueIdentifiers);
-            System.out.println("uniqueConstants: "+JavaMetrics.uniqueConstants);
-
-            System.out.println("uniqueKeywords:"+ JavaMetrics.uniqueKeywords);
-            System.out.println("uniqueSpecial: "+JavaMetrics.uniqueSpecial);
-
-            System.out.println("identcount: "+parser.identcount);
-            System.out.println("constant: "+lexer.constantcount);
-
-            System.out.println("keywordCount: "+parser.keywordCount);
-            System.out.println("specialcount: "+parser.specialcount);
+//            System.out.println("uniqueIdentifiers: "+JavaMetrics.uniqueIdentifiers);
+//            System.out.println("uniqueConstants: "+JavaMetrics.uniqueConstants);
+//
+//            System.out.println("uniqueKeywords:"+ JavaMetrics.uniqueKeywords);
+//            System.out.println("uniqueSpecial: "+JavaMetrics.uniqueSpecial);
+//
+//            System.out.println("identcount: "+parser.identcount);
+//            System.out.println("constant: "+lexer.constantcount);
+//
+//            System.out.println("keywordCount: "+parser.keywordCount);
+//            System.out.println("specialcount: "+parser.specialcount);
 
             this.fileSize = this.file.length();
             this.ws = lexer.ws;

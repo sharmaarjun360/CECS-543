@@ -58,15 +58,18 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
 
         switch (e.getActionCommand()) {
             case MetricsConstants.P_MENU_ITEM_FILE_NEW:
+                selectedCodeFiles = new ArrayList<>();
                 activeSubWindow = newProjectWindow(context);
                 break;
             case MetricsConstants.P_MENU_ITEM_FILE_OPEN:
+                selectedCodeFiles = new ArrayList<>();
                 openProject(context);
                 break;
             case MetricsConstants.P_MENU_ITEM_FILE_EXIT:
                 exitTheApplication();
                 break;
             case MetricsConstants.P_MENU_ITEM_FILE_SAVE:
+                selectedCodeFiles = new ArrayList<>();
                 try {
                     boolean isSaved = saveProject(MetricsSuite.getInstance().getProjectData());
                     if(isSaved){
@@ -438,7 +441,7 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                     System.out.println("Delete "+path);
                     selectedNode[0] = path.getLastPathComponent()+"";
                     int resultSelection = MetricsAlert.getInstance().showConfirmAlert(context,"Are you sure, you wan't to delete?");
-        if (resultSelection == JOptionPane.YES_OPTION) {
+                    if (resultSelection == JOptionPane.YES_OPTION) {
 
                     for (int i=0; i<count; i++) {
                         if(selectedNode[0].equalsIgnoreCase(tabbedPane.getTitleAt(i))){
@@ -449,26 +452,30 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
                                 if(fpArray.get(i).getTabName().equalsIgnoreCase(selectedNode[0])){
                                     MetricsSuite.getInstance().getProjectData().getFpArray().remove(fpArray.remove(i));
 
-                                    ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
-                                    ((MainWindow)context).revalidate();
                                 return;
                                 }
                             }
                             if(MetricsSuite.getInstance().getProjectData().getSmiData()!=null) {
                                 MetricsSuite.getInstance().getProjectData().setSmiData(null);
-                                ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
                                 ((MainWindow)context).enableSMIMenu(true);
-                                ((MainWindow)context).revalidate();
                                 return;
                             }else{
+                                ArrayList<File> codeFilesArray = MetricsSuite.getInstance().getProjectData().getCodeFilesArray();
 
+                                for (int j = 0; j < codeFilesArray.size(); j++){
+                                    File selectedFile = codeFilesArray.get(j);
+                                    if(selectedFile.getName().equalsIgnoreCase(selectedNode[0])){
+                                        codeFilesArray.remove(selectedFile);
+                                        MetricsSuite.getInstance().getProjectData().setCodeFilesArray(codeFilesArray);
+                                    }
+                                }
                             }
-                            //else if(MetricsSuite.getInstance().getProjectData().getNewTabs().contains(selectedNode[0])){
-//
-//                            }
                             break;
                         }
                     }
+
+                    ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
+                    context.revalidate();
                 }
                 }
             });

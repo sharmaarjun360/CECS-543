@@ -58,7 +58,7 @@ public class CodeWindow extends JFrame {
                 "<br>Difficulty = " + df.format(statistics.getDifficulty()) +
                 "<br>Effort = " + df.format(statistics.getEffort()) +
                 "  Time = " + df.format(statistics.getTime()) +
-                " (" + df.format(statistics.getTime()/60) +" minutes or " + df.format(statistics.getTime()/3600) + " hours or ? person months" + ")" +
+                " (" + df.format(statistics.getTime()/60) +" minutes or " + df.format(statistics.getTime()/3600) + " hours or "+df.format(statistics.getTime()/(3600*170))+" person months" + ")" +
                 "<br>Bugs expected = " + df.format(statistics.getBugs()) +
                 "</html>"
         );

@@ -28,7 +28,7 @@ public class SMIActionListner implements ActionListener{
 
         if(e.getSource() == smiWindow.add_row_btn){
             // fix this
-            Object[] obj = new Object[] { " ", " ", " ", " ", " " };
+            Object[] obj = new Object[] { " ", "0", "0", "0", " " };
             smiWindow.model.addRow(obj);
         } else if(e.getSource() == smiWindow.compute_index_btn){
             DefaultTableModel model = smiWindow.model;
