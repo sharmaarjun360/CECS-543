@@ -53,7 +53,15 @@ public class SMIWindow {
             // make column non-editable
             public boolean isCellEditable(int rowIndex, int columnIndex)
             {
-                if(rowIndex == this.getRowCount()-1) return true;
+                if(rowIndex == this.getRowCount()-1){
+                    switch (columnIndex){
+                        case 1:
+                        case 2:
+                        case 3:
+                            return true;
+                    }
+                    return false;
+                }
                 return false;
             }
         };
@@ -73,7 +81,7 @@ public class SMIWindow {
         compute_index_btn = new JButton("Compute Index");
 
         SMI_heading.setBounds(20,10,590,20);
-        scrollPane.setBounds(20,45,590,370);
+        scrollPane.setBounds(20,45,700,370);
         compute_index_btn.setBounds(180, 450, 130,30);
         add_row_btn.setBounds(20, 450, 130,30);
 

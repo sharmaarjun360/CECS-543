@@ -19,7 +19,7 @@ public class MetricsConstants {
     /**
      * Main Window Dimension
      */
-    public static final int MAIN_WINDOW_WIDTH = 700;
+    public static final int MAIN_WINDOW_WIDTH = 1000;
     public static final int  MAIN_WINDOW_HEIGHT = 600;
     public static final int MAIN_WINDOW_LOCATION_X = 200;
     public static final int MAIN_WINDOW_LOCATION_Y = 100;
@@ -58,7 +58,7 @@ public class MetricsConstants {
     /**
      * JTree
      */
-    public static final int JTREE_WINDOW_WIDTH = 100;
+    public static final int JTREE_WINDOW_WIDTH = 250;
     public static final int  JTREE_WINDOW_HEIGHT = 360;
     /**
      * New Project Window Dimension
