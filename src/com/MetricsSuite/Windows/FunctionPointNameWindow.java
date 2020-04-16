@@ -3,11 +3,13 @@ package com.MetricsSuite.Windows;
 import com.MetricsSuite.Alert.MetricsAlert;
 import com.MetricsSuite.GlobalConstants.MetricsConstants;
 import com.MetricsSuite.MetricsSuite;
+import com.MetricsSuite.Models.FunctionPointData;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class FunctionPointNameWindow extends JFrame {
 
@@ -69,6 +71,16 @@ public class FunctionPointNameWindow extends JFrame {
                     MetricsAlert.getInstance().showAlert(self,"Please Enter Function Point Window Name");
                     self.fpWindowName_text.requestFocusInWindow();
                     return;
+                }
+                // check for unique name
+                List<FunctionPointData> fpArray = ((MainWindow)self.mainWindow).metricsSuite.getProjectData().getFpArray();
+
+                for(FunctionPointData fpData: fpArray){
+                    if(fpData.getTabName().equalsIgnoreCase(name)){
+                        MetricsAlert.getInstance().showAlert(self,"Function Point window name should be unique");
+                        self.fpWindowName_text.requestFocusInWindow();
+                        return;
+                    }
                 }
 
                 // create function point window

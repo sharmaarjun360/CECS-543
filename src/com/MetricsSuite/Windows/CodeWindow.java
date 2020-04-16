@@ -8,6 +8,7 @@ import javax.swing.tree.TreePath;
 import java.io.File;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class CodeWindow extends JFrame {
 
@@ -47,6 +48,9 @@ public class CodeWindow extends JFrame {
         JLabel label = new JLabel("Halstead metrics: ");
         secondaryPanel.add(label);
 
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setGroupingUsed(true);
+
         JLabel halsteadMetricsValue = new JLabel("<html>" +
                 "Unique operators: "+statistics.getUniqueOperators() +
                 "<br>Unique operands: "+statistics.getUniqueOperands() +
@@ -57,8 +61,8 @@ public class CodeWindow extends JFrame {
                 "<br>Volumn = " + df.format(statistics.getVolumn()) +
                 "<br>Difficulty = " + df.format(statistics.getDifficulty()) +
                 "<br>Effort = " + df.format(statistics.getEffort()) +
-                "  Time = " + df.format(statistics.getTime()) +
-                " (" + df.format(statistics.getTime()/60) +" minutes or " + df.format(statistics.getTime()/3600) + " hours or "+df.format(statistics.getTime()/(3600*170))+" person months" + ")" +
+                "  Time = " + nf.format(Double.parseDouble(df.format(statistics.getTime()))) +
+                " (" + nf.format(Double.parseDouble(df.format(statistics.getTime()/60))) +" minutes or " + nf.format(Double.parseDouble(df.format(statistics.getTime()/3600))) + " hours or "+nf.format(Double.parseDouble(df.format(statistics.getTime()/(3600*170))))+" person months" + ")" +
                 "<br>Bugs expected = " + df.format(statistics.getBugs()) +
                 "</html>"
         );
