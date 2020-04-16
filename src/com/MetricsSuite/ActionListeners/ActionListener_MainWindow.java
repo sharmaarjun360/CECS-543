@@ -22,14 +22,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ActionListener_MainWindow implements ActionListener, MouseListener {
 
     private static ActionListener_MainWindow actionListener_MainWindow_Instance = null;
     private Component context;
     private static JFrame activeSubWindow = null;
-    private List<File> selectedCodeFiles = new ArrayList<>();
+//    private List<File> selectedCodeFiles = new ArrayList<>();
+    private HashMap<String, File> selectedCodeFiles = new HashMap<>();
     //public Set<String> tabName = new HashSet<String>();
 
     private ActionListener_MainWindow(Component context) {
@@ -58,18 +61,18 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
 
         switch (e.getActionCommand()) {
             case MetricsConstants.P_MENU_ITEM_FILE_NEW:
-                selectedCodeFiles = new ArrayList<>();
+                selectedCodeFiles = new HashMap<>();
                 activeSubWindow = newProjectWindow(context);
                 break;
             case MetricsConstants.P_MENU_ITEM_FILE_OPEN:
-                selectedCodeFiles = new ArrayList<>();
+                selectedCodeFiles = new HashMap<>();
                 openProject(context);
                 break;
             case MetricsConstants.P_MENU_ITEM_FILE_EXIT:
                 exitTheApplication();
                 break;
             case MetricsConstants.P_MENU_ITEM_FILE_SAVE:
-                selectedCodeFiles = new ArrayList<>();
+                selectedCodeFiles = new HashMap<>();
                 try {
                     boolean isSaved = saveProject(MetricsSuite.getInstance().getProjectData());
                     if(isSaved){
@@ -105,7 +108,7 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
 
                     for (File selectedFile : selectedFiles) {
                         MetricsSuite.getInstance().getProjectData().getCodeFilesArray().add(selectedFile);
-                        selectedCodeFiles.add(selectedFile);
+                        selectedCodeFiles.put(selectedFile.getName(), selectedFile);
                     }
                     ((MainWindow)context).updateTree(MetricsSuite.getInstance().getProjectData());
                     ((MainWindow)context).toggleProjectCode(true);
@@ -114,17 +117,17 @@ public class ActionListener_MainWindow implements ActionListener, MouseListener 
             case MetricsConstants.P_MENU_ITEM_METRICS_PROJECT_CODE_STATISTICS:
 
                 if(this.selectedCodeFiles.size() > 0){
-                    List<File> codeFiles = selectedCodeFiles;
+                    HashMap<String, File> codeFiles = selectedCodeFiles;
 
                     if(codeFiles.size() == 0){
                         // TODO: show failure message
                     }
 
-                    for (File selectedFile : codeFiles) {
-                        addCodeWindowPane(selectedFile);
+                    for (Map.Entry mapElement : codeFiles.entrySet()) {
+                        addCodeWindowPane((File)mapElement.getValue());
                     }
 
-                    selectedCodeFiles = new ArrayList<>();
+                    selectedCodeFiles = new HashMap<>();
                     ((MainWindow)context).toggleProjectCode(false);
                 }
 
